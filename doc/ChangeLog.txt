@@ -1,0 +1,3385 @@
+2009-05-14  idf1  <idf1@voyager.nodomain.org>
+
+        * all files: Port to CMake developement system.
+
+        * all files: Update license to GPL version 3.
+
+        * mlapack/all files: Updated to version 3.2.1.
+        Changed directory name from lapack to mlapack. 
+        Added LAPACK_LICENSE file.
+
+        * doc: New directory for documentation.
+      
+        * install: New directory for build sctipts.
+
+        * tests/runnec.sh.cmake: New driver for testsuite.
+
+        * tests/runsomnec.sh.cmake: New driver for testsuite.
+
+2005-05-25  idf1  <idf1@voyager.nodomain.org>
+
+	* configure.ac: Bumped version number to 0.7.3a1.
+
+	* configure.ac: Bumped version number to 0.7.2 and released.
+	
+	* ALL: Changed copyright dates to go up to 2005.
+
+	* nec/netwk.F (NETWK): Added calls to FLUSH after all write to
+	impedance output file when multi-file output is used.
+
+	* nec/Makefile.am (fnec2_SOURCES): Changed netwk.f to netwk.F.
+
+	* netwk.F: Renamed netwk.f to netwk.F.
+
+	* acinclude.m4: Added macro IDF_F77_FLUSH.
+
+	* configure.ac (HAVE_FLUSH): Added call to IDF_F77_FLUSH.
+
+	* acinclude.m4: Changed all occurrences of AC_TRY_LINK to use
+	AC_LINK_IFELSE and AC_LANG_PROGRAM construct.
+
+2005-05-23  idf1  <idf1@voyager.nodomain.org>
+
+	* configure.ac: Added AC_F77_MAIN macro.
+
+	* nec/cnec2d.c: Added HAVE_G2C guard to prevent problem with Linux
+	Intel C compiler which is identified as gcc by AC_ macros.
+
+	* nec/Makefile.am (cnec2_LDADD): Added FLIBS to cnec2_LDADD.
+
+	* somnec/Makefile.am (somnec_LDADD): Added FLIBS to somnec_LDADD.
+
+	* somnec/csomnec.c: Added HAVE_G2C guard to prevent problem with
+	Linux Intel C compiler which is identified as gcc by AC_ macros.
+
+	* tests/runtests.in: Fixed logic error in test to omit stest*.nec
+	when no builtin somnec.
+
+2005-05-14  Ian David Flintoft  <idf1@enterprise.nodomain.org>
+
+	* tests/runtests.in (ECHO_T): Added support for test which are
+	only run if comnec is built into the cnec2 executable. Tests
+	called stest*.nec will be run if SOMNEC is null indicating that
+	somnec support is built-in.
+
+	* tests/Makefile.am (distclean): Added stestdip case.
+	
+	* tests/stestdip.nec: New file. Sommerfield test case. 900 MHz
+	  dipole against lossy ground. IEEE1528 SAR validation case.
+
+	* tests/stestdip.val: New file.
+
+	* somnec/saoa.f (SAOA): Added SAVE statements for the variables XL
+	  , DXL , CGAM1 , CGAM2 , B0 , B0P , COM , DGAM , DEN1 , DEN2
+	  according to the necpp_20041129 sources.
+
+	* somnec/rom1.f (ROM1): Added SAVE statements for the variables Z
+	  , ZE , S , EP , ZEND , DZ , DZOT , TR , TI , T00 , T11 , T02 ,
+	  G1 , G2 , G3 , G4 , G5 , T01 , T10 , T20 according to the
+	  necpp_20041129 sources.
+	
+	* somnec/hankel.f (HANKEL): Added SAVE statements for the
+	  variables M , A1 , A2 , A3 , A4 , FJ , FJX , INIT according to
+	  the necpp_20041129 sources.
+	  
+	* somnec/gshank.f (GSHANK): Added SAVE statements for the
+	  variables RBK , AMG , DEN , DENM according to the necpp_20041129
+	  sources.
+      
+	* somnec/evlua.f (EVLUA): Added SAVE statements for the variables
+	  DEL , SLOPE , RMIS , CP1 , CP2 , CP3 , BK , DELTA , DELTA2
+	  according to the necpp_20041129 sources.
+
+	* somnec/bessel.f (BESSEL): Added SAVE statements for the
+	  variables M , A1 , A2 , FJX , FJ , INIT according to the
+	  necpp_20041129 sources.
+
+	* nec/intrp.f (INTRP): Added SAVE statements for the variables IX
+	, IY , IXS , IYS , IGRS , IXEG , IYEG , NXM2 , NYM2 , NXMS , NYMS
+	, ND , NDP , DX , DY , XXS , YYS , XZ , YZ according to the
+	necpp_20041129 sources.
+
+	* acinclude.m4 (strng): Added check for Intel Fortran compiler
+	which requires main suppression in IDF_F77_NOMAIN.
+
+	* nec/netwk.f (NETWK): Added three more occurrences of writing
+	impedance to the impedance file which have not been picked up
+	before.
+
+2002-07-17  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* nec/nec.c (version_info): Updated missed copyright date to 2002.
+
+	* configure.in: Bumped version number to 0.7.a2.
+
+2002-07-16  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* configure.in: Bumped version number to 0.7.1.
+
+	* ALL: Changed copyright dates to go up to 2002.
+
+2002-07-11  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* ALL: Renamed package cnec2 since there is an existing version of
+	NEC2 called nec2d! Also changed name of fortran driven version
+	from fnec2d to fnec2.
+
+2001-07-30  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* configure.in (FFLAGS): Added configuration summary at end of
+	checks
+
+	* README (--with-blas): Update info on installing with mingw.
+
+	* configure.in: Removed call to IDF_NEC_MINGW macro.
+
+	* acinclude.m4 (CHEEV): Removed IDF_NEC_MINGW macro.
+
+	* README (--with-blas): Added comments on builtin somnec.
+	
+	* doc/Makefile.am: Added support for conditional
+	installation of somnec man page.
+
+	* configure.in (FFLAGS): Added support for conditional
+	installation of somnec man page.
+
+	* nec/nec2d.F (NEC2D): Added local variables OFMHZ, OEPSR and OSIG
+	to hold old values of ground parameters to see if somnec needs to
+	be called.
+	(NEC2D): If using builtin somnec now check to see of ground
+	parameters or frequency have changed in order to decide wheter to
+	call somnec or not. If not built in use old behaviour.
+	(NEC2D): Added new local variable LOADSM to check whether to load
+	the somnec data when using external somnec. Replaces use of NXA(1)
+	which causes problems with builtin somnec.
+	(NEC2D): 
+
+	* somnec/somnec.f (SOMNEC): Moved initialisation of ggrid arrays
+	into a block data statement.
+
+2001-07-29  Ian David Flintoft  <idf1@claudia>
+
+	* tests/runtests.in (ECHO_T): Added checks to see if somnec is
+	built-into NEC or not.
+
+	* somnec/somnec.f (SOMNEC): If output file name is 'NOOUT' do not
+	create an output binary data file. Used when called from within
+	nec.
+
+	* nec/nec2d.F (NEC2D): Added support for conditional building in
+	of somnec code.
+
+	* nec/Makefile.am (fnec2d_LDADD): Changed references to nec2d.f to
+	nec2d.F. Added libsomnec.a to LDADDs.
+
+	* nec2d.F: Renamed nec2d.f to nec2d.F.
+
+	* nec/nec2d.f (NEC2D): Added inclide for config.h
+
+	* somnec/somnec.f (SOMNEC): Added include for ggrid.inc.
+
+	* somnec/Makefile.am: Added support for conditional building of
+	somnec binaries.
+
+	* tests/runtests.in: Changed reference to testsuite directory
+	to tests.
+
+	* README (--with-blas): Changed reference to testsuite directory
+	to tests.
+
+	* configure.in (FFLAGS): Changed reference to gnu directory to
+	lib. Changed reference to testsuite directory to tests.
+
+	* BUGS (Workaround): Changed reference to gnu directory to lib
+
+	* lib: Renamed testsuite directoy tests!
+
+	* Makefile.am (dist-hook): Changed reference to gnu directory to
+	lib. Changed reference to testsuite directory to tests.
+
+	* COPYING: Changed reference to gnu directory to lib
+
+	* AUTHORS: Changed reference to gnu directory to lib
+
+	* nec/Makefile.am (fnec2d_SOURCES): Changed reference to gnu
+	directory to lib.
+
+	* lib: Renamed gnu directoy lib!
+
+	* somnec/Makefile.am (somnec_LDADD): Changed reference to gnu
+	directory to lib.
+
+	* Makefile.am (DIST_SUBDIRS): Somnec now built before nec.
+
+	* somnec/Makefile.am: Split somnec into a library and an
+	executable rule.
+
+2001-07-27  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* acinclude.m4 (CHEEV): Replaced {} with quadragraphs for [ ] an
+	help strings.
+
+2001-07-26  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* configure.in: Bumped version number to 0.7.1a1.
+
+	* configure.in: Bumped version number to 0.7.0.
+	
+	* configure.in: Raised required autoconf to 2.50.
+
+	* nec/Makefile.am (fnec2d_2000_LDFLAGS): Changed nec2000 binary
+	name to fnec2d to be consistent with fsomnec.
+
+2001-07-25  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* doc/somnec.1: Update man page to reflect new C interface to
+	somnec.
+
+	* somnec/cdrive.c (get_options): Fixed bug in e option using sigma
+	instead of epsilon_r for test.
+	(usage): Fixed program name been wrong in help screen.
+	(usage): Added p option to help screen.
+
+	* testsuite/runtests.in (ECHO_T): Update to use new C interface to
+	somnec.
+
+	* somnec/somnec.f (SOMNEC): Now a subroutine that can be called
+	from C of Fortran with appropriate arguments.
+
+	* somnec/fdrive.f (FDRIVE): NEW FILE. Fortran driver to SOMNEC.
+
+	* somnec/csomnec.h: NEW FILE. C interface to SOMNEC.
+
+	* somnec/csomnec.c: NEW FILE. C interface to SOMNEC.
+
+	* somnec/cdrive.h: NEW FILE. C interface to SOMNEC.
+
+	* somnec/cdrive.c: NEW FILE. C interface to SOMNEC.
+
+	* somnec/Makefile.am (somnec_LDFLAGS): Added support for C
+	interface.
+
+	* configure.in: Bumped version to 0.7.0a1.
+	(FFLAGS): Added support for SOMNEC_F77 to hold mangled Fortran
+	symbol name.
+
+2001-07-24  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* README (extensions): Major updates to all sections.
+
+	* doc/nec2d.1: Update options and other minor fixes.
+
+	* somnec/Makefile.am (#EXTRA_DIST): Nolonger shipping mkxxx files in
+
+	* nec/Makefile.am (#EXTRA_DIST): Nolonger shipping mkxxx files in
+	distribution.
+
+	* acinclude.m4 (CHEEV): Added support for Intel Math Kernel
+	Library.
+
+2001-05-04  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* nec/cnec2d.c: Added case for IFAIL 49.
+
+	* nec/cnec2d.h: Added case for IFAIL 49.
+
+	* nec/nec2d.f (NEC2D): Changed ERR for opening results file to 703
+	and now return IFAIL 49.
+
+2001-04-06  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* configure.in: Bumped version number to 0.6.8.
+
+	* nec/nec.c (get_options): Added option remove_old (-r
+	--remove-old) to allow removing of old files before running
+	solver.
+
+	* nec/cnec2d.h: Added support for IFAIL = 48 to enum.
+
+	* nec/cnec2d.c: Added message for IFAIL = 48.
+
+	* nec/gfout.f (GFOUT): Added code to catch file open error when
+	there is an existing NGF file and give sensible error
+	message. Uses IFAIL = 48.
+
+	* nec/fdrive.f (FDRIVE): Added code to catch case where input file
+	name contains embedded suffix, e.g. fred.nec.nec. 
+
+	* nec/parsit.f (PARSIT): Explicitly zero both integer and real
+	fields at start of routine.
+
+2001-03-30  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* nec/cnec2d.c (cnec2d): Added #ifdef to support official
+	Fortran/C interface if using GCC/G77. Use FTNLEN for type of
+	string length used by Fortran interface. Added include for g2c.h.
+
+	* configure.in: Added subst USING_GCC and USING_G77.
+
+2001-03-06  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* nec/fdrive.f (FDRIVE): Improved input file name checking so, for
+	example nec.nec, doesn't cause problems. Will still get a problem
+	with name like fred.nec.nec. 
+
+2001-01-19  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* configure.in: Bumped version number to 0.6.7.
+
+2001-01-17  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* nec/cnec2d.c: Removed CNEC2D_BUF_EXTRA define to cnec2d.h.
+
+	* nec/cnec2d.h: Added CNEC2D_BUF_EXTRA define that used to be in
+	cnec2d.c.
+
+	* nec/nec.c: Added include file cnec2d.h for use in new functio
+	remove_old_files.
+	(remove_old_files): New function remove_old_files.
+
+2001-01-12  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* nec/rdpat.f (RDPAT): Changed open status of radiation pattern
+	file to NEW.
+
+	* nec/nfpat.f (NFPAT): Changed open status of electric and
+	magnetic near field  files to NEW.
+
+	* nec/nec2d.f (NEC2D): Changed open status of results file and
+	impedance file to NEW.
+
+	* nec/fdrive.f (FDRIVE): Changed open status of results file to
+	NEW. 
+
+	* nec/nec.c (main): Added one to end of filename buffer to solve
+	filename dependent results problem on linux. Not clear why this
+	needs to be done yet - something in the C - F77 interface.
+
+2000-10-13  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* configure.in: Bumped version number to 0.6.6.
+
+	* testsuite/runtests.in (ECHO_T): Fixed portability problem with
+	eval.
+
+	* acinclude.m4 (IDF_F77_SIZEOF): Fixed code for determining size
+	of integer and added output on variable sizes.
+
+2000-10-12  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* nec/nec.c (verify_input_file): Removed all check from
+	xmalloc. This is now caught in xmalloc which exit program.
+	(verify_input_file): Added check on fclose and check using ferror
+	after opening input file.
+
+	* nec/cnec2d.c: Changed calls to exit to use EXIT_SUCCESS and
+	EXIT_FAILURE.
+	(EXIT_FAILURE): Added checks for EXIT_SUCCESS and EXIT_FAILURE if
+	not standard C.  Removed all check from xmalloc and alloc_
+	functions. This is now caught in xmalloc which exit program.
+
+	* nec/nec.c (get_options): Changed calls to exit to use
+	EXIT_SUCCESS and EXIT_FAILURE.
+	(EXIT_FAILURE): Added checks for EXIT_SUCCESS and EXIT_FAILURE if
+	not standard C.
+
+	* testsuite/runtests.in (ECHO_T): Fixed bug in new eval code.
+
+	* nec/nec.c (verify_input_file): Changed strcmp to strncmp.
+
+	* gnu/strstr.c: NEW FUNCTION. From GNU C library.
+
+	* configure.in: Added AC_REPLACE_FUNCS for strstr.
+
+2000-10-10  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* testsuite/runtests.in (ECHO_T): Rewrote check for valid nec2d
+	executable to use eval instead of $?.
+
+	* configure.in: Test if value return for NEC2D from AC_F77_FUNC is
+	unknown. If so guess nec2d_ and pray.
+
+2000-10-09  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* acinclude.m4 (CHEEV): Added work around for linking with sunperf
+	library using the stupid -xlic_lib=sunperf Sunism.
+
+2000-10-08  Ian David Flintoft  <idf1@claudia>
+
+	* acinclude.m4 (CHEEV): Fixed check for sunperf library.
+
+	* COPYING: Added note about origin of update stuff in gnu
+	directory.
+
+	* acinclude.m4 (CHEEV): Added message suggesting use --with-blas
+	as well if lapack linking fails and BLAS_LDADD not set.  (CHEEV):
+	Replace all elif's with if... else ladders.
+
+	* nec/nec.c: Added protection for string and stdlib functions.
+
+	* nec/cnec2d.c: Protected string header file for non GNU systems.
+
+	* configure.in: Added check for string.h.
+
+	* nec/cnec2d.c (cnec2d_err): Fixed spelling mistake in error
+	string.
+
+	* gnu/Makefile.am: Updated to reflect new sources.
+
+	* gnu: Updates all sources with those from GNU textutils.
+
+	* configure.in: Added AC_REPLACE_FUNC for strtod.
+
+	* nec/nec.c: Changed to use GNU xalloc.h interface.
+
+	* nec/cnec2d.c: Changed to use GNU xalloc.h interface.
+
+2000-10-06  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* configure.in: Added test to make sure NEC2D is set by
+	AC_F77_FUNC. If fails try nec2d_.
+	
+	* configure.in: Bumped version number to 0.6.6a1.
+	
+2000-10-04  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* configure.in: Bumped version number to 0.6.5.
+
+	* testsuite/Makefile.am: Added runtests and *.som to removed files
+	for maintainer-clean and distclean.
+
+	* acinclude.m4: Improved style and quoting of macros. Fixed atlas
+	tests - need to use C linkage for atlas and cblas not Fortran!
+
+2000-10-03  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* nec/cnec2d.c (cnec2d): Changed prototype and call of NEC2D to
+	use NEC2D_F77 determined by configure script.
+
+	* configure.in: AC_SUBST'ed ECHO_N, ECHO_C and ECHO_T.  Added
+	support for finding how the NEC2D symbol is mangled by the Fortran
+	compiler and defining NEC2D_F77 appropriately in config.h.
+
+	* testsuite/runtests.in: Modified to use ECHO_N, ECHO_C and ECHO_T
+	as set by autoconf and substituted.
+
+	* README: Made examples of specifying CFLAGS etc on configure
+	command line more portable.
+
+	* acconfig.h: REMOVED FILE. All now done via comments in
+	AC_DEFINE's.
+
+	* configure.in: Modified to use new AC_LANG() macro.  Modified to
+	use new AC_OUTPUT_FILES, AC_OUTPUT_COMMANDS, AC_OUTPUT.  Modified
+	to use new AC_INIT and AC_CONFIG_SRCDIR.  Added comment to all
+	AC_DEFINE's.
+
+	* acinclude.m4: Changed to use new AC_LANG_PUSH() and AC_LANG_POP
+	macros.
+
+	* Makefile.am: Added DIST_SUBDIRS to solve problem with lapack
+	directory.
+
+	* acinclude.m4: Modified all AC_TRY_LINK's to use new f77 format.
+
+2000-10-02  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* testsuite/runtests.in: Added run time code to determine whether
+	echo or echo -e recognises escape sequences.
+
+	* README: Updated with information on the new --with-lapack option
+	and references to NEC2 resources.
+
+	* configure.in: Tried using AC_F77_LIBRARY_LDFLAGS but seems to
+	cause a strange awk related error.
+
+	* nec/Makefile.am: Added @FLIBS@ to nec2d_LDADD.
+
+	* configure.in: Modified to use new IDF_BLAS and IDF_LAPACK
+	macros.
+
+	* acinclude.m4: Added new versions of IDF_BLAS and
+	IDF_LAPACK. Rename old ones IDF_BLAS_OLD and IDF_LAPACK_OLD.
+
+2000-10-01  Ian David Flintoft  <idf1@claudia>
+
+	* ALL: Updated copyright info.
+	
+	* nec/nec.c (version_info): Removed restriction from copyright
+	message.
+
+	* COPYING: Copyright notice is now fully GPL.
+	
+	* configure.in: Bumped version to 0.6.5a1.
+
+2000-04-17  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* configure.in: Bumped version to 0.6.4.
+
+2000-04-13  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* nec/nec.c (version_info): Added conditionally compiled printf to
+	notify which solver is used.  (usage): Changed misleading
+	definition of -c (--core-size) option in help message.
+
+2000-03-30  Ian David Flintoft  <idf1@emc5.ohm.york.ac.uk>
+
+	* Remove testdip3 test due to ill conditioning leading to variable
+	results for ill defined values cross platforms.
+
+2000-03-22  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* testsuite/runtests.in: Added temp variable to check if there is
+	a FILL/FACTOR line in results file to solve problem with some
+	versions of awk.
+
+	* testsuite/runtests.in: Added rm -f testvdip.som to remove old
+	somnec file since somnec will not overwrite and generate error if
+	testsuite run twice.
+
+	* configure.in: Bumped version to 0.6.4a1.
+
+2000-03-21  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* configure.in: Bumped version to 0.6.3.
+
+	* testsuite/runtests.in: Added output clauses around somnec file
+	generation bit.
+
+	* testsuite/Makefile.am: Added testvdip.nec and testvdip.val test
+	using somnec.
+
+	* nec/timer.F (TIMER): Added EXTERNAL statements for ETIME,
+	CPU_TIME and SECOND.
+
+	* somnec/timer.F (TIMER): Added EXTERNAL statements for ETIME,
+	CPU_TIME and SECOND.
+
+	* configure.in: Bumped version to 0.6.3a2.
+
+	* testsuite: Added testvdip.nec and testvdip.val test using
+	somnec.
+
+	* testsuite/runtests.in (junk): Added support for creating somnec
+	files.
+
+	* nec/intrp.f (INTRP): Added SAVE statement for all local
+	variables to fix operation with somnec. Hopefully this fixes the
+	longstanding problems with somnec and the GNU Fortran compiler.
+
+	* somnec/gshank.f (GSHANK): Backed out initialisation for Q1 and
+	Q2 arrays.
+
+	* somnec/hankel.f (HANKEL): Backed out initialisation of M and A1,
+	A2, A3 and A4 arrays and added SAVE statement to save all local
+	variables.  (HANKEL):
+
+	* somnec/bessel.f (BESSEL): Backed out initialisation of M and A1,
+	A2 arrays and added SAVE statement to save all local variables.
+
+	* somnec/gshank.f (GSHANK): Added EXTERNAL statement for ROM1.
+
+	* somnec/somnec.f (SOMNEC): Put space in eight PRINTXXX
+	statements.  (SOMNEC): Commented out unused format statement (15).
+
+	* nec/datagn.f (DATAGN): Added initialisation for X4, Y4, Z4, X3,
+	Y3 and Z3 to 0.0D0.
+
+	* nec/ffld.f (FFLD): Added initialisation for CIX, CIY and CIZ to
+	(0.0D0,0.0D0).
+
+	* nec/datagn.f (DATAGN): Commented out unused format statement
+	(42).
+
+	* nec/nec2d.f (NEC2D): Commented out unused format statement
+	(136).
+
+	* nec/subph.f (SUBPH): Commented out unused FORMAT statement (14).
+
+	* nec/datagn.f (DATAGN): Changed declaration of IFX(2), IFY(2),
+	IFZ(2), IPT(4) to be CHARACTER*1 not INTEGER.
+
+	* nec/fdrive.f (FDRIVE): Added EXTERNAL statement for FILSUF.
+
+	* nec/cabc.f (CABC): Added EXTERNAL statement for TBF.
+
+	* nec/couple.f (COUPLE): Added D0 to 0., 1. and .01.
+
+	* nec/datagn.f (DATAGN): Added D0 to 1. and -1..
+
+	* nec/efld.f (EFLD): Added D0 to two occurrences of 0.95.
+
+	* nec/fbar.f (FBAR): Replaced 3. by 3.0D0.
+
+	* nec/gfld.f (GFLD): Replace .5 by 0.5D0, 1.E5 with 1.0D5 and
+	1.D-20 by 1.0D-20.
+
+	* nec/prnt.f (PRNT): Replace six occurrences of 1.E-30 with
+	1.0D-30.
+
+	* nec/sbf.f (SBF): Added D0 to 0.015..
+
+	* nec/tbf.f (TBF): Added D0 to two occurrences of 0.015..
+
+	* nec/zint.f (ZINT): Added D0 to constants 110. and 8..
+
+2000-02-02  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* nec/intrp.f (INTRP): Added initialisation for ND and NDP using
+	data statements. This fixes another serious bug when using somnec.
+
+1999-12-23  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* doc/somnec.1: NEW FILE. Man page for somnec.
+
+	* doc/Makefile.am (EXTRA_DIST): Removed preface.html and
+	somnec_readme.txt to maintainer directory. Added somnec man page.
+
+	* somnec/evlua.f (EVLUA): Added initialisation for BK just in
+	case.
+
+	* somnec/gshank.f (GSHANK): Added initialisation for Q1 and Q2
+	arrays as well just in case.
+
+	* somnec/hankel.f (HANKEL): Added initialisation for A1, A2, A3
+	and A4 arrays as well just in case.
+
+	* somnec/bessel.f (BESSEL): Added initialisation for A1 and A2
+	arrays as well just in case.
+
+	* somnec/hankel.f (HANKEL): Fix bug causing segmentation fault
+	with g77. Added initialisation code for M array.
+
+	* somnec/bessel.f (BESSEL): Fix bug causing segmentation fault
+	with g77. Added initialisation code for M array.
+
+1999-12-11  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* somnec/hankel.f (HANKEL): Renamed local variable TEST to TESTT.
+
+	* somnec/bessel.f (BESSEL): Renamed local variable TEST to TESTT.
+
+	* somnec/gshank.f (GSHANK): Renamed local variable INT to INTT.
+
+1999-12-03  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* testsuite/runtests.in: Changed explicit awk's to @AWK@'s.
+
+	* nec/rdpat.f (RDPAT): Added code to print ground wave fields to
+	separate files. (RP 1 option).
+
+1999-12-01  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* Makefile.am: Removed (commented out) distribution of maintainer
+	directory.
+
+	* HISTORY: Removed.
+
+	* Makefile.am (EXTRA_DIST): Removed HISTORY files from extra
+	includes.
+
+	* COPYING: Updated copying info.
+
+1999-10-09  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* configure.in: Bumped version to 0.6.2.
+
+	* doc: Removed PDF and HTML documentation. Modified Makefile.am
+	appropriately.
+
+	* nec/nec2d.f (NEC2D): Added local variable ISOPEN in checks using
+	INQUIRE to close open files.
+
+	* nec/rdpat.f (RDPAT): Fixed problem with -M only giving data from
+	last card in NE/NH card.
+
+	* nec/nfpat.f (NFPAT): Fixed problem with -M only giving data from
+	last card in RP card.
+
+1999-09-19  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* doc/nec2d.1: Swapped -V and -v.
+
+	* nec/fdrive.f (FDRIVE): Tidied up the error spaghetti.
+
+	* nec/Makefile.am: Rename most .F files to .f and modified rules
+	accordingly.
+
+	* nec/qdsrc.F (QDSRC): Passed DEBUG thru to TBF.
+
+	* nec/cmngf.F (CMNGF): Passed DEBUG thru to TBF.
+
+	* nec/cabc.F (CABC): Passed DEBUG thru to TBF.
+
+	* nec/tbf.F (TBF): Added DEBUG to dummy args.
+
+	* nec/trio.F (TRIO): Passed DEBUG thru to SBF.
+
+	* nec/sbf.F (SBF): Added DEBUG to dummy args.
+
+	* nec/nhfld.F (NHFLD): Passed DEBUG thru to HINTG.
+
+	* nec/cmss.F (CMSS): Passed DEBUG thru to HINTG.
+
+	* nec/hintg.F (HINTG): Added DEBUG to dummy args.
+
+	* nec/parsit.F (PARSIT): Passed DEBUG thru to UPCASE.
+
+	* nec/nec2d.F (NEC2D): Passed DEBUG thru to UPCASE.
+
+	* nec/upcase.F (UPCASE): Added DEBUG to dummy args.
+
+	* nec/conect.F (CONECT): Passed DEBUG thru to SUBPH.
+
+	* nec/subph.F (SUBPH): Added DEBUG to dummy args.
+
+	* nec/lunscr.F (LUNSCR): Passed DEBUG thru to BLCKIN.
+
+	* nec/ltsolv.F (LTSOLV): Passed DEBUG thru to BLCKIN.
+
+	* nec/gfout.F (GFOUT): Passed DEBUG thru to BLCKIN.
+
+	* nec/gfil.F (GFIL): Passed DEBUG thru to BLCKIN.
+
+	* nec/factrs.F (FACTRS): Passed DEBUG thru to BLCKIN.
+
+	* nec/facio.F (FACIO): Passed DEBUG thru to BLCKIN.
+
+	* nec/blckin.F (BLCKIN): Added DEBUG to dummy args.
+
+	* nec/lunscr.F (LUNSCR): Passed DEBUG thru to BLCKOT.
+
+	* nec/gfout.F (GFOUT): Passed DEBUG thru to BLCKOT.
+
+	* nec/gfil.F (GFIL): Passed DEBUG thru to BLCKOT.
+
+	* nec/factrs.F (FACTRS): Passed DEBUG thru to BLCKOT.
+
+	* nec/facio.F (FACIO): Passed DEBUG thru to BLCKOT.
+
+	* nec/cmset.F (CMSET): Passed DEBUG thru to BLCKOT.
+
+	* nec/blckot.F (BLCKOT): Added DEBUG to dummy args.
+
+	* nec/facgf.F (FACGF): Passed DEBUG thru to REBLK.
+
+	* nec/reblk.F (REBLK): Added DEBUG to dummy args.
+
+	* nec/Makefile.am: Removed error.F.
+
+	* nec/nec2d.F (NEC2D): Removed call to ERROR.
+
+	* nec/load.F (LOAD): Passed DEBUG thru to ZINT.
+
+	* nec/zint.F (ZINT): Added DEBUG to dummy args.
+
+	* nec/datagn.F (DATAGN): Passed DEBUG thru to WIRE.
+
+	* nec/wire.F (WIRE): Added DEBUG to dummy args.
+
+	* nec/cmsw.F (CMSW): Passed DEBUG thru to TRIO.
+
+	* nec/cmset.F (CMSET): Passed DEBUG thru to TRIO.
+
+	* nec/cmngf.F (CMNGF): Passed DEBUG thru to TRIO.
+
+	* nec/trio.F (TRIO): Added DEBUG to dummy args.
+
+	* nec/solves.F (SOLVES): Passed DEBUG thru to SOLVE.
+
+	* nec/solgf.F (SOLGF): Passed DEBUG thru to SOLVE.
+
+	* nec/netwk.F (NETWK): Passed DEBUG thru to SOLVE.
+
+	* nec/solve.F (SOLVE): Added DEBUG to dummy args.
+
+	* nec/datagn.F (DATAGN): Passed DEBUG thru to REFLC.
+
+	* nec/reflc.F (REFLC): Added DEBUG to dummy args.
+
+	* nec/etmns.F (ETMNS): Passed DEBUG thru to QDSRC.
+
+	* nec/qdsrc.F (QDSRC): Added DEBUG to dummy args.
+
+	* nec/load.F (LOAD): Passed DEBUG thru to PRNT.
+
+	* nec/prnt.F (PRNT): Added DEBUG to dummy args.
+
+	* nec/datagn.F (DATAGN): Passed DEBUG thru to PATCH.
+
+	* nec/patch.F (PATCH): Added DEBUG to dummy args.
+
+	* nec/nec2d.F (NEC2D): Passed DEBUG thru to READMN.
+
+	* nec/readmn.F (READMN): Added DEBUG to dummy args. Passed DEBUG
+	thru to PARSIT.
+
+	* nec/datagn.F (DATAGN): Passed DEBUG thru to READGM.
+
+	* nec/readgm.F (READGM): Added DEBUG to dummy args. Passed DEBUG
+	thru to PARSIT.
+
+	* nec/parsit.F (PARSIT): Added DEBUG to dummy args.
+
+	* nec/nfpat.F (NFPAT): Passed DEBUG thru to NHFLD.
+
+	* nec/nhfld.F (NHFLD): Added DEBUG to dummy args. Passed DEBUG
+	thru to NEFLD.
+
+	* nec/nfpat.F (NFPAT): Passed DEBUG thru to NEFLD.
+
+	* nec/nefld.F (NEFLD): Added DEBUG to dummy args.
+
+	* nec/factrs.F (FACTRS): Passed DEBUG thru to LUNSCR.
+
+	* nec/facgf.F (FACGF): Passed DEBUG thru to LUNSCR.
+
+	* nec/lunscr.F (LUNSCR): Added DEBUG to dummy args.
+
+	* nec/solgf.F (SOLGF): Passed DEBUG thru to SOLVES.
+
+	* nec/facgf.F (FACGF): Passed DEBUG thru to SOLVES.
+
+	* nec/solves.F (SOLVES): Added DEBUG to dummy args. Passed DEBUG
+	thru to LTSOLV.
+
+	* nec/netwk.F (NETWK): Passed DEBUG thru to SOLGF.
+
+	* nec/solgf.F (SOLGF): Added DEBUG to dummy args. Passed DEBUG
+	thru to LTSOLV.
+
+	* nec/ltsolv.F (LTSOLV): Added DEBUG to dummy args.
+
+	* nec/nec2d.F (NEC2D): Passed DEBUG thru to LOAD.
+
+	* nec/load.F (LOAD): Added DEBUG to dummy args.
+
+	* nec/facio.F (FACIO): Passed DEBUG thru to LFACTR.
+
+	* nec/lfactr.F (LFACTR): Added DEBUG to dummy args.
+
+	* nec/nec2d.F (NEC2D): Passed DEBUG thru to ISEGNO.
+
+	* nec/datagn.F (DATAGN): Passed DEBUG thru to MOVE.
+
+	* nec/move.F (MOVE): Added DEBUG to dummy args. Passed DEBUG thru
+	to ISEGNO.
+
+	* nec/couple.F (COUPLE): Passed DEBUG thru to ISEGNO.
+
+	* nec/isegno.F (ISEGNO): Added DEBUG to dummy args.
+
+	* nec/datagn.F (DATAGN): Passed DEBUG thru to HELIX.
+
+	* nec/helix.F (HELIX): Added DEBUG to dummy args.
+
+	* nec/nec2d.F (NEC2D): Passed DEBUG thru to RDPAT.
+
+	* nec/rdpat.F (RDPAT): Passed DEBUG thru to FILSUF. Added DEBUG to
+	dummy args.
+
+	* nec/nec2d.F (NEC2D): Passed DEBUG thru to NFPAT.
+
+	* nec/nfpat.F (NFPAT): Passed DEBUG thru to FILSUF. Added DEBUG to
+	dummy args.
+
+	* nec/nec2d.F (NEC2D): Passed DEBUG thru to FILSUF.
+
+	* nec/gfout.F (GFOUT): Passed DEBUG thru to FILSUF. Added DEBUG to
+	dummy args.
+
+	* nec/nec2d.F (NEC2D): Passed DEBUG thru to GFOUT.
+
+	* nec/gfout.F (GFOUT): Passed DEBUG thru to FILSUF.
+
+	* nec/datagn.F (DATAGN): Passed DEBUG thru to FILSUF.
+
+	* nec/gfil.F (GFIL): Added DEBUG to dummy args. Passed DEBUG thru
+	to FILSUF.
+
+	* nec/fdrive.F (FDRIVE): Passed DEBUG thru to FILSUF.
+
+	* nec/filsuf.F (FILSUF): Added DEBUG to dummy args.
+
+	* nec/datagn.F (DATAGN): Passed DEBUG thru to ARC.
+
+	* nec/arc.F (ARC): Added DEBUG to dummy args.
+
+1999-09-18  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* nec/nec2d.F (NEC2D): Passed DEBUG thru to FBNGF.
+
+	* nec/fbngf.F (FBNGF): Added DEBUG to dummy args.
+
+	* nec/fblock.F (FBLOCK): Added DEBUG to dummy args.
+
+	* nec/nec2d.F (NEC2D): Passed DEBUG thru to FBLOCK.
+
+	* nec/netwk.F (NETWK): Passed DEBUG thru to FACTR.
+
+	* nec/factrs.F (FACTRS): Passed DEBUG thru to FACTR.
+
+	* nec/facgf.F (FACGF): Passed DEBUG thru to FACTR.
+
+	* nec/factr.F (FACTR): Added DEBUG to dummy args.
+
+	* nec/nec2d.F (NEC2D): Passed DEBUG thru to FACTRS.
+
+	* nec/factrs.F (FACTRS): Passed DEBUG thru to FACIO. Added DEBUG
+	to dummy args.
+
+	* nec/facgf.F (FACGF): Passed DEBUG thru to FACIO.
+
+	* nec/facio.F (FACIO): Added DEBUG to dummy args.
+
+	* nec/nec2d.F (NEC2D): Passed DEBUG thru to FACGF.
+
+	* nec/facgf.F (FACGF): Added DEBUG to dummy args.
+
+	* nec/nec2d.F (NEC2D): Passed DEBUG thru to ETMNS.
+
+	* nec/etmns.F (ETMNS): Added DEBUG to dummy args.
+
+	* nec/nec2d.F (NEC2D): Passed DEBUG thru to COUPLE.
+
+	* nec/couple.F (COUPLE): Added DEBUG to dummy args.
+
+	* nec/nec2d.F (NEC2D): Passed DEBUG thru to DATAGN.
+
+	* nec/datagn.F (DATAGN): Passed DEBUG thru to CONECT.  (DATAGN):
+	Added DEBUG to dummy args.
+
+	* nec/conect.F (CONECT): Added DEBUG to dummy args.
+
+	* nec/cmngf.F (CMNGF): Passed DEBUG thru to CMWW.
+
+	* nec/cmset.F (CMSET): Passed DEBUG thru to CMWW.
+
+	* nec/cmww.F (CMWW): Added DEBUG to dummy args.
+
+	* nec/cmngf.F (CMNGF): Passed DEBUG thru to CMWS.
+
+	* nec/cmset.F (CMSET): Passed DEBUG thru to CMWS.
+
+	* nec/cmws.F (CMWS): Added DEBUG to dummy args.
+
+	* nec/cmngf.F (CMNGF): Passed DEBUG thru to CMSW.
+
+	* nec/cmset.F (CMSET): Passed DEBUG thru to CMSW.
+
+	* nec/cmsw.F (CMSW): Added DEBUG to dummy args.
+
+	* nec/cmngf.F (CMNGF): Passed DEBUG thru to CMSS.
+
+	* nec/cmset.F (CMSET): Passed DEBUG thru to CMSS.
+
+	* nec/cmss.F (CMSS): Added DEBUG to dummy args.
+
+	* nec/cmset.F (CMSET): Added DEBUG to dummy args.
+
+	* nec/cmngf.F (CMNGF): Added DEBUG to dummy args.
+
+	* nec/nec2d.F (NEC2D): Passed DEBUG thru to NETWK, CMNGF, CMSET.
+
+	* nec/netwk.F (NETWK): Added DEBUG to dummy args and passed thru
+	to CABC.
+
+	* nec/cnec2d.c (cnec2d): Added DEBUG to nec2d_ call.
+
+	* nec/fdrive.F (FDRIVE): Added DEBUG to NEC2D call.
+
+	* nec/nec2d.F (NEC2D): Added DEBUG to dummy args.
+
+1999-09-16  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* nec/cnec2d.h: Added verbose to prototype.
+
+	* nec/cnec2d.c (cnec2d): Added verbose to args.
+
+	* nec/nec.c (get_options): Added verbose and debug args.
+	(version_info): Added verbose args.  (main): Added verbose to
+	cnec2d call.
+
+	* nec/nec.h: Added args for verbose and debug to get_options and
+	version_info.
+
+	* nec/cnec2d.c (cnec2d): Added debug to args.
+
+	* nec/cnec2d.h (cnec2d): Added debug to prototype.
+
+	* nec/nec.c (usage): Added debug level to help and swap -v abd -V.
+	(get_options): Added debug options and swapped -V/-v.  (main):
+	Passed debug to cnec2d.
+
+	* nec/nec.h: Added DEBUG_* to enum.
+
+1999-09-12  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* nec/nec.c: Added support for verbose version info with -V -v
+	options.
+
+1999-09-11  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* nec/rdpat.F (RDPAT): Removed ISENS from output to rdp file and
+	added new FORMAT statement 48.
+
+1999-09-10  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* testsuite/runtests: Tested for NR==0 in awk calculations which
+	happens when result file has no FILL/FACTOR line.
+
+1999-09-06  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* acinclude.m4: Improved detection od Digital/Compaq Fortran
+	compilers.
+
+	* nec/nec.c (verify_input_file): Added 1 to strncpy length to fix
+	bug!
+
+1999-09-05  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* configure.in: Bumped version to 0.6.
+
+	* debian: NEW DIRECTORY. First bash at debianisation.
+
+	* doc/Makefile.am (EXTRA_DIST): Added rules to install man page.
+
+	* doc/nec2d.1: NEW FILE. First bash at a man page. Very basic.
+
+	* configure.in: Bumped version number to 0.6b1.
+
+	* somnec/timer.F (TIMER): Added include for config.h to top of
+	file.
+
+	* testsuite/runtests.in (junk): Added sanity checks on the nec2d
+	executable.
+
+1999-09-04  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* configure.in: Added call to IDF_F77_NOMAIN.
+
+	* acinclude.m4: Added macro IDF-F77_NOMAIN to see if compile/link
+	flags to suppress main in Fortran are require.
+
+	* lapack/zlaswp.f (ZLASWP): NEW FILE.
+
+	* lapack/zgetrs.f (ZGETRS): NEW FILE.
+
+	* lapack/zgetrf.f (ZGETRF): NEW FILE.
+
+	* lapack/zgetf2.f (ZGETF2): NEW FILE.
+
+	* lapack/ilaenv.f (ILAENV): NEW FILE.
+
+	* lapack/ieeeck.f (IEEECK): NEW FILE.
+
+	* configure.in: Added lapack/Makefile to output and rename lib to
+	gnu.
+
+	* gnu: NEW DIRECTORY. Renamed lib to gnu.
+
+	* Makefile.am: Added lapack directory. Renamed lib to gnu.
+
+	* lapack: NEW DIRECTORY.
+
+	* nec: Removed lapack.F.
+
+	* nec/Makefile.am: Removed lapack.F from sources. Added
+	FORTRAN_NOMAIN and LAPACK_LDADD to flags.
+
+1999-09-01  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* nec/nec.h: Renamed NEC_SUFFIX to SUFINP and removed dot.
+
+	* acinclude.m4: Modified IDF_F77_SIZEOF to use awk to do integer
+	arithmetic.
+
+	* configure.in: Added call to IDF_F77_SIZEOF macro for testing
+	purposes but don't actually use it yet.
+
+	* acconfig.h: Added undef's for Fortran data types sizes.
+
+	* acinclude.m4: Added macro which tries to determine the size of
+	Fortran data types based on an iterative scheme which finds when
+	2**I wraps, i.e. 2**(I+1) <= 2**I.
+
+1999-08-26  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* testsuite/runtests.in (ret): Fixed bugs for non VPATH build!
+
+	* configure.in: Added runtests to output and added a chmod u+x so
+	it is executable.
+
+	* testsuite/runtests.in (ret): New file. Old runtests with
+	autoconf'ed top_srcdir to allow testsuite to run with VPATH
+	builds. Also removed sh function for portability.
+	
+
+1999-08-25  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* nec/gf.F (GF): Added D0 to constant 0.2.
+
+	* nec/nec.c (main): Added test of d_ld against LD_MAX.
+
+	* nec/nec.h: Added constant LD_MAX to limit as hard limit to job
+	size. Adjusted maximum number of segments to 10000 until the
+	problems with PATOFF are understood.
+
+	* nec/patch.F (PATCH): Added D0 to 0.9998 embedded constant.
+
+	* nec/Makefile.am: Added lapack2.F to EXTRA_DIST.
+
+	* nec/lapack.F: Replaced old LAPACK 2.0 routines with those from
+	LAPACK 3.0. Old version is now in lapack2.F. This will disappear
+	as soon as I have confidence in the new version.
+
+	* Makefile.am: Added ChangeLog.1 to EXTRA_DIST.
+
+1999-08-25  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* nec (ALL): Renamed include file iochan.inc to nec2d.inc. Changed
+	INCLUDE lines in all relevant files.
+
+	* nec/conect.F (CONECT): Removed second LD from call to SUBPH.
+
+	* nec/subph.F (SUBPH): Removed second LD from dummy args.
+
+	* nec/datagn.F (DATAGN): Removed second LD from call to REFLC.
+
+	* nec/reflc.F (REFLC): Removed second LD from dummy args.
+
+	* nec/nec2d.F (NEC2D): Removed second LD from call to RDPAT.
+
+	* nec/rdpat.F (RDPAT): Removed second LD from dummy args.
+
+	* nec/etmns.F (ETMNS): Removed second LD from call to QDSRC.
+
+	* nec/qdsrc.F (QDSRC): Removed second LD from dummy args.
+
+	* nec/datagn.F (DATAGN): Removed second LD from call to PATCH.
+
+	* nec/patch.F (PATCH): Removed second LD from dummy args.
+
+	* nec/nfpat.F (NFPAT): Removed second LD from call to NHFLD.
+
+	* nec/nhfld.F (NHFLD): Removed second LD from dummy args.
+
+	* nec/nec2d.F (NEC2D): Removed second LD from call to NFPAT.
+
+	* nec/nfpat.F (NFPAT): Removed second LD from dummy args.
+
+	* nec/nec2d.F (NEC2D): Removed second LD from call to NETWK.
+
+	* nec/netwk.F (NETWK): Removed second LD from dummy args.
+
+	* nec/nhfld.F (NHFLD): Removed second LD from call to NEFLD.
+
+	* nec/nfpat.F (NFPAT): Removed second LD from call to NEFLD.
+
+	* nec/nefld.F (NEFLD): Removed second LD from dummy args.
+
+	* nec/nec2d.F (NEC2D): Removed line LD=LD.
+
+	* nec/nec.c: Renamed maxseg to ld and MAXSEG to LD.
+
+	* nec/datagn.F (DATAGN): Removed second LD from call to MOVE.
+
+	* nec/move.F (MOVE): Removed second LD from dummy args.
+
+	* nec/limits.inc: Changed all references to MAXSEG to LD.
+
+	* nec/nec2d.F (NEC2D): Removed second LD from call to GFOUT.
+
+	* nec/gfout.F (GFOUT): Removed second LD from dummy args.
+
+	* nec/rdpat.F (RDPAT): Removed second LD from call to GFLD.
+
+	* nec/gfld.F (GFLD): Removed second LD from dummy args.
+
+	* nec/datagn.F (DATAGN): Removed second LD from call to GFIL.
+
+	* nec/gfil.F (GFIL): Removed second LD from dummy args.
+
+	* nec/ffld.F (FFLD): Removed second LD from call to FFLDS.
+
+	* nec/fflds.F (FFLDS): Removed second LD from dummy args.
+
+	* nec/rdpat.F (RDPAT): Removed second LD from call to FFLD.
+
+	* nec/gfld.F (GFLD): Removed second LD from call to FFLD.
+
+	* nec/ffld.F (FFLD): Removed second LD from dummy args.
+
+	* nec/nec2d.F (NEC2D): Removed second LD from call to ETMNS.
+
+	* nec/etmns.F (ETMNS): Removed second LD from dummy args.
+
+	* nec/nec2d.F (NEC2D): Removed second LD from call to DATAGN.
+
+	* nec/datagn.F (DATAGN): Removed second LD from call to CONECT.
+	(DATAGN): Removed second LD from dummy args.
+
+	* nec/conect.F (CONECT): Removed second LD from dummy args.
+
+	* nec/cnec2d.c: Renamed maxseg to ld and MAXSEG to LD.
+
+	* nec/cmset.F (CMSET): Removed second LD from call to CMWS.
+
+	* nec/cmngf.F (CMNGF): Removed second LD from call to CMWS.
+
+	* nec/cmws.F (CMWS): Removed second LD from dummy args.
+
+	* nec/cmset.F (CMSET): Removed second LD from call to CMSW.
+
+	* nec/cmngf.F (CMNGF): Removed second LD from call to CMSW.
+
+	* nec/cmsw.F (CMSW): Removed second LD from dummy args.
+
+	* nec/cmset.F (CMSET): Removed second LD from call to CMSS.
+
+	* nec/cmngf.F (CMNGF): Removed second LD from call to CMSS.
+
+	* nec/cmss.F (CMSS): Removed second LD from dummy args.
+
+	* nec/nec2d.F (NEC2D): Removed second LD from call to CMSET.
+
+	* nec/cmset.F (CMSET): Removed second LD from dummy args.
+
+	* nec/nec2d.F (NEC2D): Removed second LD from call to CMNGF.
+
+	* nec/cmngf.F (CMNGF): Removed second LD from dummy args.
+
+	* nec/netwk.F (NETWK): Removed second LD from call to CABC.
+
+	* nec/cabc.F (CABC): Removed second LD from dummy args.
+
+	* nec (ALL .F FILES): Global renamed MAXSEG LD.
+	
+	* nec (ALL .F FILES): Added include for config.h if not already
+	there.
+
+	* nec: Moved maintainer source into main distribution directory.
+
+	* somnec: Moved maintainer source into main distribution
+	directory.
+
+1999-08-24  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* maintainer/nec/trio.F (TRIO): Changed 10000 into PATOFF.
+
+	* maintainer/nec/tbf.F (TBF): Changed 10000 into PATOFF.
+
+	* maintainer/nec/sbf.F (SBF): Changed 10000 into PATOFF.
+
+	* maintainer/nec/intrp.F (INTRP): Changed 10000 into PATOFF.
+	Added iochan.inc include statement.
+
+	* maintainer/nec/conect.F (CONECT): Changed 10000 into PATOFF and
+	10001 into PATOFF + 1.
+
+	* maintainer/nec/iochan.inc: Added PATOFF offset, 10000.
+
+	* maintainer/nec/cmsw.F (CMSW): Changed 10000 into PATOFF
+	parameter.
+
+1999-08-20  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* configure.in: Bumped to version 0.5.
+
+	* nec/cnec2d.c: Changed error messages for FILSUF.
+
+	* maintainer/nec/iochan.inc: Removed unused CHSTOT entry.
+
+	* maintainer/nec/nfpat.F (NFPAT): Added support for
+	--old-multi-file (-M) option, MULTIF=2.
+
+	* maintainer/nec/rdpat.F (RDPAT): Added support for
+	--old-multi-file (-M) option, MULTIF=2.
+
+	* nec/nec.c (get_options): Added support for --old-multi-file (-M)
+	option, MULTIF=2.
+
+	* acinclude.m4: Added AC_LANG_SAVE, AC_LANG_FORTRAN77,.....,
+	AC_LANG_RESTORE to all macros doing Fortran tests.
+
+	* nec/nec.c (verify_input_file): modified to accept name from
+	command line and determine if a suffix is required. Set the job
+	name if necessary.  (main): Now malloc storage for the job
+	name. File name whole inside verify_input_file.
+
+	* nec/cnec2d.c: Modified to accept jobname as an arg and generate
+	a file name buffer. Both are passed to nec2d_.
+
+	* maintainer/nec/filsuf.F (FILSUF): Rewritten implementation and
+	interface to allow file names of the type jobname-XXXX.suf to be
+	generated.
+
+	* maintainer/nec/gfil.F (GFIL): Modified to use new FILSUF
+	interface.
+
+	* maintainer/nec/gfout.F (GFOUT): Modified to use new FILSUF
+	interface.
+
+	* maintainer/nec/nec2d.F (NEC2D): Modified to use new FILSUF
+	interface.
+
+	* maintainer/nec/nfpat.F (NFPAT): Modified to use new FILSUF
+	interface.
+
+	* maintainer/nec/rdpat.F (RDPAT): Modified to use new FILSUF
+	interface.
+
+	* maintainer/nec/nfpat.F (NFPAT): Added NRECNT and NRHCNT to dummy
+	args.
+
+	* maintainer/nec/rdpat.F (RDPAT): Added RDPCNT to dummy args.
+
+	* maintainer/nec/nec2d.F (NEC2D): Added local variables RDPCNT,
+	NRECNT and NRHCNT and initialised to one. Passed RDPCNT to RDPAT
+	and NRECNT/NRHCNT to NFPAT.
+
+	* maintainer/nec/fdrive.F (FDRIVE): Changed FILNAM to JOBNAM and
+	FILBUF. Calculate jobname from input file name using index - not
+	robust.
+
+	* maintainer/nec/nfpat.F (NFPAT): Changed FILNAM to JOBNAM and
+	FILBUF.
+
+	* maintainer/nec/rdpat.F (RDPAT): Changed FILNAM to JOBNAM and
+	FILBUF.
+
+	* maintainer/nec/gfout.F (GFOUT): Changed FILNAM to JOBNAM and
+	FILBUF.
+
+	* maintainer/nec/gfil.F (GFIL): Changed FILNAM to JOBNAM and
+	FILBUF.
+
+	* maintainer/nec/datagn.F (DATAGN): Changed FILNAM to JOBNAM and
+	FILBUF. Passed to GFIL.
+
+	* maintainer/nec/nec2d.F (NEC2D): Changed FILNAM to JOBNAM and
+	FILBUF. Passed to DATAGN, GFOUT, RDPAT and NFPAT.
+
+1999-08-19  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* nec/Makefile.am: Added MINGW_LDFLAGS option.
+
+	* somnec/Makefile.am: Added MINGW_LDFLAGS option.
+
+	* configure.in: Added call to IDF_NEC_MINGW macro.
+
+	* acinclude.m4: Added macro to test for cygwin/mingw and set up
+	compile and link flags.
+
+	* maintainer/nec/filsuf.F (FILSUF): Commented out error messages
+	to stdout.
+
+	* maintainer/nec/parsit.F (PARSIT): Made error output go to
+	results file and not stdout.
+
+	* maintainer/nec/move.F (MOVE): Added tests to fix major array
+	overflow bug which causes segmentation fault in the C driven
+	version. Seem to get away with it to some extent in Fortran driven
+	version - must be overwriting something "unimportant".
+
+	* maintainer/nec/trio.F (TRIO): Uses new error codes for IFAIL.
+
+	* maintainer/nec/tbf.F (TBF): Uses new error codes for IFAIL.
+
+	* maintainer/nec/sbf.F (SBF): Uses new error codes for IFAIL.
+
+	* maintainer/nec/rom2.F (ROM2): Uses new error codes for IFAIL.
+
+	* maintainer/nec/reflc.F (REFLC): Uses new error codes for IFAIL.
+
+	* maintainer/nec/patch.F (PATCH): Uses new error codes for IFAIL.
+
+	* maintainer/nec/parsit.F (PARSIT): Uses new error codes for
+	IFAIL.
+
+	* maintainer/nec/netwk.F (NETWK): Uses new error codes for IFAIL.
+
+	* maintainer/nec/nec2d.F (NEC2D): Uses new error codes for IFAIL.
+
+	* maintainer/nec/load.F (LOAD): Uses new error codes for IFAIL.
+
+	* maintainer/nec/isegno.F (ISEGNO): Uses new error codes for
+	IFAIL.
+
+	* maintainer/nec/filsuf.F (FILSUF): Uses new error codes for
+	IFAIL.
+
+	* maintainer/nec/fbngf.F (FBNGF): Uses new error codes for IFAIL.
+
+	* maintainer/nec/fblock.F (FBLOCK): Uses new error codes for
+	IFAIL.
+
+	* maintainer/nec/datagn.F (DATAGN): Uses new error codes for
+	IFAIL.
+
+	* maintainer/nec/conect.F (CONECT): Uses new error codes for
+	IFAIL.
+
+	* maintainer/nec/blckin.F (BLCKIN): Uses new error codes for
+	IFAIL.
+
+	* maintainer/nec/arc.F (ARC): Uses new error codes for IFAIL.
+
+	* nec/nec.c: Now uses new error codes and error function.
+
+	* nec/cnec2d.c: Added error functions.
+
+	* nec/cnec2d.h: Added error codes and prototype for error
+	function.
+
+1999-08-16  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* nec/cnec2d.c (cnec2d): Freed all memory after call to nec2d_ in
+	case want to incorporate into another program or run multiple
+	times.
+
+1999-08-12  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* acinclude.m4: Fixed bug in list directed i/o test.
+
+	* testsuite/runtests: Fixed bug that generated spurious output
+	with results files containing multiple frequency points.
+
+	* nec/nec.c: Fixed bug in version info option parsing.
+
+	* configure.in: Bumped version to 0.5b2.
+
+1999-08-10  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* maintainer/nec/fdrive.F (FDRIVE): Added local arrays IPNT,
+	NTEQA, NTSCA, CMN, RHNT, RHS, VSRC, RHNX and passed to NETWK.
+
+	* maintainer/nec/nec2d.F (NEC2D): Made IPNT, NTEQA, NTSCA, CMN,
+	RHNT, RHS, VSRC, RHNX into dummy args and passed to NETWK.
+
+	* maintainer/nec/netwk.F (NETWK): Made IPNT, NTEQA, NTSCA, CMN,
+	RHNT, RHS, VSRC, RHNX into dummy args.
+
+	* maintainer/nec/factrs.F (FACTRS): Passed IFAIL thru to
+	LUNSCR. Checked IFAIL after return from LUNSCR.
+
+	* maintainer/nec/facgf.F (FACGF): Passed IFAIL thru to
+	LUNSCR. Checked IFAIL after return from LUNSCR.
+
+	* maintainer/nec/lunscr.F (LUNSCR): Added IFAIL to dummy
+	args. Passed IFAIL thru to BKCKIN. Checked IFAIL after return from
+	BLCKIN.
+
+	* maintainer/nec/facgf.F (FACGF): Passed IFAIL thru to
+	SOLVES. Checked IFAIL after return from SOLVES.
+
+	* maintainer/nec/solgf.F (SOLGF): Passed IFAIL thru to
+	SOLVES. Checked IFAIL after return from SOLVES.
+
+	* maintainer/nec/solves.F (SOLVES): Added IFAIL to dummy
+	args. Passed IFAIL thru to LTSOLV. Checked IFAIL after return from
+	LTSOLV.
+	
+	* maintainer/nec/netwk.F (NETWK): Passed IFAIL thru to
+	SOLGF. Checked IFAIL after return from SOLGF.
+
+	* maintainer/nec/solgf.F (SOLGF): Added IFAIL to dummy
+	args. Passed IFAIL thru to LTSOLV. Checked IFAIL after return from
+	LTSOLV.
+
+	* maintainer/nec/ltsolv.F (LTSOLV): Added IFAIL to dummy
+	args. Passed IFAIL thru to BKCKIN. Checked IFAIL after return from
+	BLCKIN.
+
+	* maintainer/nec/gfout.F (GFOUT): Passed IFAIL thru to
+	BKCKIN. Checked IFAIL after return from BLCKIN.
+
+	* maintainer/nec/gfil.F (GFIL): Passed IFAIL thru to
+	BKCKIN. Checked IFAIL after return from BLCKIN.
+
+	* maintainer/nec/factrs.F (FACTRS): Passed IFAIL thru to
+	BKCKIN. Checked IFAIL after return from BLCKIN.
+
+	* maintainer/nec/nec2d.F (NEC2D): Passed IFAIL thru to
+	FACTRS. Checked IFAIL after return from FACTRS.
+
+	* maintainer/nec/factrs.F (FACTRS): Added IFAIL to dummy
+	args. Passed IFAIL thru to FACIO. Checked IFAIL after return from
+	FACIO.
+
+	* maintainer/nec/nec2d.F (NEC2D): Passed IFAIL thru to
+	FACGF. Checked IFAIL after return from FACGF.
+
+	* maintainer/nec/facgf.F (FACGF): Added IFAIL to dummy
+	args. Passed IFAIL thru to FACIO. Checked IFAIL after return from
+	FACIO.
+
+	* maintainer/nec/facio.F (FACIO): Added IFAIL to dummy
+	args. Passed IFAIL thru to BLCKIN. Checked IFAIL after return from
+	BLCKIN.
+
+	* maintainer/nec/blckin.F (BLCKIN): Added IFAIL to dummy
+	args. Made STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/datagn.F (DATAGN): Passed IFAIL thru to
+	DATAGN. Checked IFAIL after return from DATAGN.
+
+	* maintainer/nec/gfil.F (GFIL): Added IFAIL to dummy args. Passed
+	IFAIL thru to FILSUF. Checked IFAIL after return from FILSUF.
+
+	* maintainer/nec/nec2d.F (NEC2D): Passed IFAIL thru to
+	GFOUT. Checked IFAIL after return from GFOUT.
+
+	* maintainer/nec/gfout.F (GFOUT): Added IFAIL to dummy
+	args. Passed IFAIL thru to FILSUF. Checked IFAIL after return from
+	FILSUF.
+
+	* maintainer/nec/fdrive.F (FDRIVE)
+
+	* maintainer/nec/nec2d.F (NEC2D): Passed IFAIL thru to
+	FILSUF. Checked IFAIL after return from FILSUF.
+
+	* maintainer/nec/nfpat.F (NFPAT): Passed IFAIL thru to
+	FILSUF. Checked IFAIL after return from FILSUF.
+
+	* maintainer/nec/nec2d.F (NEC2D): Passed IFAIL thru to
+	RDPAT. Checked IFAIL after return from RDPAT.
+
+	* maintainer/nec/rdpat.F (RDPAT): Added IFAIL to dummy
+	args. Passed IFAIL thru to FILSUF. Checked IFAIL after return from
+	FILSUF.
+
+	* maintainer/nec/fdrive.F (FDRIVE): Passed IFAIL thru to
+	FILSUF. Checked IFAIL after return from FILSUF.
+
+	* maintainer/nec/filsuf.F (FILSUF): Added IFAIL to dummy args.
+	Made STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/nec2d.F (NEC2D): Passed IFAIL thru to
+	NETWK. Checked IFAIL after return from NETWK.  (NEC2D): Made
+	STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/netwk.F (NETWK): Added IFAIL to dummy args.
+	Passed IFAIL thru to CABC.  Checked IFAIL after return from
+	CABC. Made STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/cabc.F (CABC): Added IFAIL to dummy args.  Passed
+	IFAIL thru to TBF.  Checked IFAIL after return from TBF.
+
+	* maintainer/nec/cmngf.F (CMNGF): Passed IFAIL thru to TBF.
+	Checked IFAIL after return from TBF.
+
+	* maintainer/nec/qdsrc.F (QDSRC): Passed IFAIL thru to TBF.
+	Checked IFAIL after return from TBF.
+ 	
+	* maintainer/nec/tbf.F (TBF): Added IFAIL to dummy args.  Made
+	STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/nec2d.F (NEC2D): Passed IFAIL thru to
+	LOAD. Checked IFAIL after return from LOAD.
+
+	* maintainer/nec/load.F (LOAD): Added IFAIL to dummy args.  Made
+	STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/nec2d.F (NEC2D): Passed IFAIL thru to
+	FBLOCK. Checked IFAIL after return from FBLOCK.
+
+	* maintainer/nec/fbngf.F (FBNGF): Added IFAIL to dummy args.  Made
+	STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/nec2d.F (NEC2D): Passed IFAIL thru to
+	FBLOCK. Checked IFAIL after return from FBLOCK.
+
+	* maintainer/nec/fblock.F (FBLOCK): Added IFAIL to dummy args.
+	Made STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/nec2d.F (NEC2D): Passed IFAIL thru to
+	READMN. Checked IFAIL after return from READMN.
+
+	* maintainer/nec/readmn.F (READMN): Added IFAIL to dummy args.
+	Passed IFAIL thru to PARSIT. Checked IFAIL after return from
+	PARSIT.
+
+	* maintainer/nec/datagn.F (DATAGN): Passed IFAIL thru to
+	READGM. Checked IFAIL after return from READGM.
+
+	* maintainer/nec/readgm.F (READGM): Added IFAIL to dummy args.
+	Passed IFAIL thru to PARSIT. Checked IFAIL after return from
+	PARSIT.
+
+	* maintainer/nec/parsit.F (PARSIT): Added IFAIL to dummy
+	args. Made STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/datagn.F (DATAGN): Passed IFAIL thru to
+	CONECT. Checked IFAIL after return from CONECT.
+
+	* maintainer/nec/conect.F (CONECT): Added IFAIL to dummy
+	args. Made STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/datagn.F (DATAGN): Passed IFAIL thru to
+	PATCH. Checked IFAIL after return from PATCH.
+
+	* maintainer/nec/patch.F (PATCH): Added IFAIL to dummy args. Made
+	STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/datagn.F (DATAGN): Passed IFAIL thru to
+	REFLC. Checked IFAIL after return from REFLC.
+
+	* maintainer/nec/reflc.F (REFLC): Added IFAIL to dummy args. Made
+	STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/datagn.F (DATAGN): Passed IFAIL thru to
+	ARC. Checked IFAIL after return from ARC.
+
+	* maintainer/nec/arc.F (ARC): Added IFAIL to dummy args. Made
+	STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/datagn.F (DATAGN): Added IFAIL to dummy
+	args. Passed IFAIL thru to MOVE. Checked IFAIL after return from
+	MOVE.  (DATAGN): Made STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/nec2d.F (NEC2D): Passed IFAIL thru to ISEGNO and
+	DATAGN. Checked IFAIL after return from ISEGNO and DATAGN.
+
+	* maintainer/nec/move.F (MOVE): Added IFAIL to dummy args. Passed
+	IFAIL thru to ISEGNO. Checked IFAIL after return from ISEGNO.
+
+	* maintainer/nec/nec2d.F (NEC2D): Passed IFAIL thru to
+	COUPLE. Checked IFAIL after return from COUPLE.
+
+	* maintainer/nec/couple.F (COUPLE): Added IFAIL to dummy
+	args. Passed IFAIL thru to ISEGNO. Checked IFAIL after return from
+	ISEGNO.
+
+	* maintainer/nec/isegno.F (ISEGNO): Added IFAIL to dummy args and
+	made STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/cmngf.F (CMNGF): Passed IFAIL thru to
+	CMSW. Checked IFAIL after return from CMSW.
+
+	* maintainer/nec/cmset.F (CMSET): Passed IFAIL thru to
+	CMSW. Checked IFAIL after return from CMSW.
+
+	* maintainer/nec/cmsw.F (CMSW): Added IFAIL to dummy args. Passed
+	IFAIL thru to TRIO. Checked IFAIL after return from TRIO.
+
+	* maintainer/nec/cmngf.F (CMNGF): Passed IFAIL thru to
+	TRIO. Checked IFAIL after return from TRIO.
+
+	* maintainer/nec/cmset.F (CMSET): Passed IFAIL thru to
+	TRIO. Checked IFAIL after return from TRIO.
+
+	* maintainer/nec/trio.F (TRIO): Added IFAIL to dummy args. Passed
+	IFAIL thru to SBF. Checked IFAIL after return from SBF. Made
+	STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/sbf.F (SBF): Added IFAIL to dummy args and made
+	STOP's into IFAIL=1, RETURN.
+
+	* maintainer/nec/nec2d.F (NEC2D): Passed IFAIL thru to CMSET and
+	CMNGF. Checked IFAIL after return from CMSET and CMNGF.
+
+	* maintainer/nec/cmngf.F (CMNGF): Added IFAIL to dummy args passed
+	thru to CMWW. Checked IFAIL after return from CMWW.
+
+	* maintainer/nec/cmset.F (CMSET): Added IFAIL to dummy args passed
+	thru to CMWW. Checked IFAIL after return from CMWW.
+
+	* maintainer/nec/cmww.F (CMWW): Added IFAIL to dummy args passed
+	thru to EFLD. Checked IFAIL after return from EFLD.
+
+	* maintainer/nec/nec2d.F (NEC2D): Passed IFAIL thru to
+	NFPAT. Checked IFAIL after return from NFPAT.
+
+	* maintainer/nec/nfpat.F (NFPAT): Added IFAIL to dummy args passed
+	thru to NEFLD and NHFLD. Checked IFAIL after return from NEFLD and
+	NHFLD.
+
+	* maintainer/nec/nefld.F (NEFLD): Added IFAIL to dummy args passed
+	thru to EFLD. Checked IFAIL after return from EFLD.
+
+	* maintainer/nec/nhfld.F (NHFLD): Added IFAIL to dummy args passed
+	thru to NEFLD. Checked IFAIL after return from NEFLD.
+
+	* maintainer/nec/nec2d.F (NEC2D): Passed IFAIL thru to
+	ETMNS. Checked IFAIL after return from ETMNS.
+
+	* maintainer/nec/etmns.F (ETMNS): Added IFAIL to dummy args passed
+	thru to QDSRC. Checked IFAIL after return from QDSRC.
+
+	* maintainer/nec/qdsrc.F (QDSRC): Added IFAIL to dummy args passed
+	thru to EFLD. Checked IFAIL after return from EFLD.
+
+	* maintainer/nec/efld.F (EFLD): Added IFAIL to dummy args passed
+	thru to ROM2. Checked IFAIL after return from ROM2.
+
+	* maintainer/nec/rom2.F (ROM2): Added IFAIL to dummy args and made
+	STOP's into IFAIL=1, RETURN.
+
+	* Makefile.am: Added support for lib directory routines.
+
+	* configure.in: Fixed problem with AC_LANG_.. using wrong compiler
+	in wrong place! Added support for lib directory routines.
+
+	* nec/lib: NEW DIRECTORY and FILES. Various GNU routines for
+	option parsing and error handling. Need by some non Linux systems.
+
+	* nec/nec.c: Modified to use GNU getopt_long for option parsing
+	and error for all error messages. Added const as appropriate to
+	prototypes.
+
+	* nec/nec.h: Added const as appropriate to prototypes.
+
+	* nec/cnec2d.h: Added const as appropriate to prototypes.
+
+	* nec/cnec2d.c: Added const as appropriate to prototypes.
+
+1999-08-09  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* configure.in: Bumped version to 0.5b1.
+		
+	* maintainer/nec/rdpat.F (RDPAT): Added MULTIF to dummy args and
+	changed #ifdef MULTI_FILE..#endif to IF( MULTIFD.EQ.1 ).....ENDIF.
+
+	* maintainer/nec/nfpat.F (NFPAT): Added MULTIF to dummy args and
+	changed #ifdef MULTI_FILE..#endif to IF( MULTIFD.EQ.1 ).....ENDIF.
+
+	* maintainer/nec/nec2d.F (NEC2D): Added MULTIF to end of arg list
+	in calls to NETWK, RDPAT and NFPAT.
+
+	* maintainer/nec/netwk.F (NETWK): Added MULTIF to dummy args and
+	changed #ifdef MULTI_FILE..#endif to IF( MULTIFD.EQ.1 ).....ENDIF.
+
+	* maintainer/nec/fdrive.F (FDRIVE): Added IFAIL to call to nec2d.
+
+	* maintainer/nec/nec2d.F (NEC2D): Added IFAIL to dummy args.
+
+	* nec/cnec2d.c (cnec2d): Added IFAIL to nec2d_ call.
+
+1999-08-06  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* testsuite/runtests: Added support for new front end. Old method
+	still available with ./runtests old.
+
+	* nec/nec.h: NEW FILE. Includes for nec.c.
+
+	* nec/nec.c: NEW FILE. New C front end for NEC replacing cdrive.c.
+
+	* nec/cnec2d.h: NEW FILE. C driver interface for NEC.
+
+	* nec/cnec2d.c (cnec2d): NEW FILE. C driver for NEC. First try.
+
+	* maintainer/nec/fdrive.F (FDRIVE): Added MULTIF to call to NEC2D.
+
+	* maintainer/nec/nec2d.F (NEC2D): Added MULTIF to dummy args.
+
+1999-08-04  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* maintainer/nec: Added new routine interface documentation to all
+	Fortran files using gxchk.sum.
+
+	* maintainer/nec/cdrive.c: Added routines for allocating INTEGER,
+	REAL_8 and COMPLEX_16 arrays with error checking. Added prototype
+	for nec2d_.
+
+	* maintainer/nec/mkdep: Added support for fdrive and cdrive.
+
+	* maintainer/nec/assemble: Modified to allow both limits.inc and
+	iochan.inc to be optionally incorporated. Also exported fdrive.F
+	and cdrive.c to distribution directory.
+
+	* maintainer/nec/Makefile: Modified to compile a fort ran (nec)
+	and C (cnec) driven version of NEC.
+
+	* maintainer/nec/cdrive.c: NEW FILE. C driver for the nec2d
+	routine. First cut - naive C to Fortran interface.
+
+1999-08-03  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* maintainer/nec/dataj.inc: Removed unused variables INDD1, INDD2
+	and PADDIN.
+
+	* maintainer/nec/timer.F (TIMER): Renamed CPUSECS to CPUSEC.
+
+	* maintainer/nec/parsit.F (PARSIT): Renamed TBUFFER to TBUFF.
+
+	* maintainer/nec/fdrive.F (FDRIVE): NEW FILE. New top level
+	program to drive NEC2D subroutine. Uses limits.h to set array
+	sizes.
+
+	* maintainer/nec/nec2d.F (NEC2D): Renamed NEC.F to
+	NEC2D.F. Removed limits.inc and added dummy args for
+	variables. Made limits, FILNAM and arrays dummy args to new
+	subroutine.
+
+	* maintainer/nec/filsuf.F (FILSUF): NEW FILE. Change a 3 character
+	suffix on a file name.
+
+	* maintainer/nec/unere.F (UNERE): Added DATAEQ common block via
+	dataeq.inc and removed equivalences to DATAJ variables.
+
+	* maintainer/nec/nefld.F (NEFLD): Added DATAEQ common block via
+	dataeq.inc and removed equivalences to DATAJ variables.
+
+	* maintainer/nec/hintg.F (HINTG): Added DATAEQ common block via
+	dataeq.inc and removed equivalences to DATAJ variables.
+
+	* maintainer/nec/pcint.F (PCINT): Added DATAEQ common block via
+	dataeq.inc and removed equivalences to DATAJ variables.
+
+	* maintainer/nec/nhfld.F (NHFLD): Added DATAEQ common block via
+	dataeq.inc and removed equivalences to DATAJ variables.
+
+	* maintainer/nec/cmss.F (CMSS): Added DATAEQ common block via
+	dataeq.inc and removed equivalences to DATAJ variables.
+
+	* maintainer/nec/cmsw.F (CMSW): Added DATAEQ common block via
+	dataeq.inc and removed equivalences to DATAJ variables.
+
+	* maintainer/nec/dataeq.inc: NEW FILE. Equivalenced variables in
+	data.inc.
+
+	* maintainer/nec/nfpat.F (RDPAT): Modified MULTI_FILE branch to
+	output info to extra AND main results file.
+
+	* maintainer/nec/nfpat.F (NFPAT): Modified MULTI_FILE branch to
+	output info to extra AND main results file.
+
+	* maintainer/nec/nec2.F (NEC2): Made OPEN uses FILSUF and FILNAM
+	with appropriate suffices.
+
+	* maintainer/nec/nfpat.F (NFPAT): Made OPEN use FILSUF and FILNAM
+	with suffix nre or nrh as appropriate.
+
+	* maintainer/nec/rdpat.F (RDPAT): Made OPEN use FILSUF and FILNAM
+	with suffix rdp.
+
+	* maintainer/nec/gfout.F (GFOUT): Made OPEN use FILSUF and FILNAM
+	with suffix ngf.
+
+	* maintainer/nec/gfil.F (GFIL): Made OPEN use FILSUF and FILNAM
+	with suffix ngf.
+
+	* maintainer/nec/nfpat.F (NFPAT): Added FILNAM to dummy args.
+
+	* maintainer/nec/rdpat.F (RDPAT): Added FILNAM to dummy args.
+
+	* maintainer/nec/gfout.F (GFOUT): Added FILNAM to dummy args.
+
+	* maintainer/nec/gfil.F (GFIL): Added FILNAM to dummy args.
+
+	* maintainer/nec/datagn.F (DATAGN): Added FILNAM to dummy args and
+	passed thru to GFIL.
+
+	* maintainer/nec/nec2.F (NEC2): Renamed INFILE to FILNAM and
+	passed thru to DATAGN, GFOUT, RDPAT and NFPAT.
+
+1999-08-02  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* maintainer/nec/trio.F (TRIO): Passed JMAX thru to SBF.
+
+	* maintainer/nec/sbf.F (SBF): Added JMAX to dummy args.
+
+	* maintainer/nec/cmws.F (CMWS): Added JMAX, NSMAXX, NPMAX, JSNO,
+	NSCON, NPCON, JCO, ISCON, IPCON, AX, BX and CX to dummy
+	args. Removed segj.inc.
+
+	* maintainer/nec/cmww.F (CMWW): Added JMAX, NSMAXX, NPMAX, JSNO,
+	NSCON, NPCON, JCO, ISCON, IPCON, AX, BX and CX to dummy
+	args. Removed segj.inc.
+
+	* maintainer/nec/trio.F (TRIO): Added JMAX, NSMAXX, NPMAX, JSNO,
+	NSCON, NPCON, JCO, ISCON, IPCON, AX, BX and CX to dummy
+	args. Removed segj.inc.
+
+	* maintainer/nec/cmsw.F (CMSW): Added JMAX, NSMAXX, NPMAX, JSNO,
+	NSCON, NPCON, JCO, ISCON, IPCON, AX, BX and CX to dummy args and
+	passed thru to TRIO. Removed segj.inc.
+
+	* maintainer/nec/cmngf.F (CMNGF): Added JMAX, NSMAXX, NPMAX, JSNO,
+	NSCON, NPCON, JCO, ISCON, IPCON, AX, BX and CX to dummy args and
+	passed thru to TRIO, CMSW, CMWW, CMWS and TBF. Removed segj.inc.
+
+	* maintainer/nec/cmset.F (CMSET): Added JMAX, NSMAXX, NPMAX, JSNO,
+	NSCON, NPCON, JCO, ISCON, IPCON, AX, BX and CX to dummy args and
+	passed thru to TRIO, CMSW, CMWW and CMWS. Removed segj.inc.
+
+	* maintainer/nec/qdsrc.F (QDSRC): Added JMAX, NSMAXX, NPMAX, JSNO,
+	NSCON, NPCON, JCO, ISCON, IPCON, AX, BX and CX to dummy args and
+	passed thru to TBF. Removed segj.inc.
+
+	* maintainer/nec/etmns.F (ETMNS): Added JMAX, NSMAXX, NPMAX, JSNO,
+	NSCON, NPCON, JCO, ISCON, IPCON, AX, BX and CX to dummy args and
+	passed thru to QDFSC. Removed segj.inc.
+
+	* maintainer/nec/conect.F (CONECT): Added JMAX, NSMAXX, NPMAX,
+	JSNO, NSCON, NPCON, JCO, ISCON, IPCON, AX, BX and CX to dummy
+	args. Removed segj.inc.
+
+	* maintainer/nec/datagn.F (DATAGN): Added JMAX, NSMAXX, NPMAX,
+	JSNO, NSCON, NPCON, JCO, ISCON, IPCON, AX, BX and CX to dummy args
+	and passed thru to CONECT. Removed segj.inc.
+
+	* maintainer/nec/tbf.F (TBF): Added JMAX, NSMAXX, NPMAX, JSNO,
+	NSCON, NPCON, JCO, ISCON, IPCON, AX, BX and CX to dummy
+	args. Removed segj.inc.
+
+	* maintainer/nec/solgf.F (SOLGF): Added JMAX, NSMAXX, NPMAX, JSNO,
+	NSCON, NPCON, JCO, ISCON, IPCON, AX, BX and CX to dummy
+	args. Removed segj.inc.
+
+	* maintainer/nec/cabc.F (CABC): Added JMAX, NSMAXX, NPMAX, JSNO,
+	NSCON, NPCON, JCO, ISCON, IPCON, AX, BX and CX to dummy args and
+	passed thru to TBF. Removed segj.inc.
+
+	* maintainer/nec/netwk.F (NETWK): Added JMAX, NSMAXX, NPMAX, JSNO,
+	NSCON, NPCON, JCO, ISCON, IPCON, AX, BX and CX to dummy args and
+	passed thru to CABC and SOLGF.
+
+	* maintainer/nec/nec2.F (NEC2): Incorporated SEGJ common block
+	from segj.inc and passed JMAX, NSMAXX, NPMAX, JSNO, NSCON, NPCON,
+	JCO, ISCON, IPCON, AX, BX and CX thru to NETWK, DATAGN, CMSET,
+	CMNGF and ETMNS. Removed segj.inc.
+
+	* maintainer/nec/nfpat.F (NFPAT): Added NTH, NPH, IPD, IAVP, INOR,
+	IAX, IXTYP, NEAR, NFEH, NRX, NRY, NRZ, THETS, PHIS, DTH, DPH,
+	RFLD, GNOR, CLT, CHT, EPSR2, SIG2, XPR6, PINR, PNLR, PLOSS, XNR,
+	YNR, ZNR, DXNR, DYNR, DZNR to dummy args. Removed fpat.inc.
+
+	* maintainer/nec/rdpat.F (RDPAT): Added NTH, NPH, IPD, IAVP, INOR,
+	IAX, IXTYP, NEAR, NFEH, NRX, NRY, NRZ, THETS, PHIS, DTH, DPH,
+	RFLD, GNOR, CLT, CHT, EPSR2, SIG2, XPR6, PINR, PNLR, PLOSS, XNR,
+	YNR, ZNR, DXNR, DYNR, DZNR to dummy args. Removed fpat.inc.
+
+	* maintainer/nec/nec2.F (NEC2): Incorporated FPAT common block
+	from fpat.inc and passed NTH, NPH, IPD, IAVP, INOR, IAX, IXTYP,
+	NEAR, NFEH, NRX, NRY, NRZ, THETS, PHIS, DTH, DPH, RFLD, GNOR, CLT,
+	CHT, EPSR2, SIG2, XPR6, PINR, PNLR, PLOSS, XNR, YNR, ZNR, DXNR,
+	DYNR, DZNR thru to RDPAT and NFPAT. Removed fpat.inc.
+
+	* maintainer/nec/rdpat.F (RDPAT): Added IPLP1, IPLP2, IPLP3 and
+	IPLP4 thru to dummy args. Removed plot.inc.
+
+	* maintainer/nec/nfpat.F (NFPAT): Added IPLP1, IPLP2, IPLP3 and
+	IPLP4 thru to dummy args. Removed plot.inc.
+
+	* maintainer/nec/datagn.F (DATAGN): Added IPLP1, IPLP2, IPLP3 and
+	IPLP4 thru to dummy args. Removed plot.inc.
+
+	* maintainer/nec/nec2.F (NEC2): Incorporated PLOT common block and
+	passed IPLP1, IPLP2, IPLP3 and IPLP4 thru to DATAGN, RDPAT and
+	NFPAT. Removed plot.inc.
+
+	* maintainer/nec/netwk.F (NETWK): Added NETMX, NEQ, NPEQ, NEQ2,
+	NONET, NTSOL, NPRINT, MASYM, ISEG1, ISEG2, NTYP, PIN, PNLS, X11R,
+	X11I, X12R, X12I, X22R, X22I and ZPED to dummy args and netcx.inc.
+
+	* maintainer/nec/nec2.F (NEC2): Incorporated NETCX common block
+	from netcx.inc. Passed NETMX, NEQ, NPEQ, NEQ2, NONET, NTSOL,
+	NPRINT, MASYM, ISEG1, ISEG2, NTYP, PIN, PNLS, X11R, X11I, X12R,
+	X12I, X22R, X22I and ZPED thru to NETWK and removed netcx.inc.
+
+	* maintainer/nec/couple.F (COUPLE): Added MXCOUP, MXCOU2, NCOUP,
+	ICOUP, NCTAG, NCSEG, Y11A and Y12A thru to dummy args. Removed
+	yparm.inc.
+
+	* maintainer/nec/nec2.F (NEC2): Incorporated YPARM common block
+	from yparm.inc and pass MXCOUP, MXCOU2, NCOUP, ICOUP, NCTAG,
+	NCSEG, Y11A and Y12A thru to COUPLE. Removed yparm.inc.
+
+	* maintainer/nec/qdsrc.F (QDSRC): Added NSMAX, NVQD, NSANT, NQDS,
+	IVQD, ISANT, IQDS, VQD, VSANT and VQDS to dummy arguments and
+	removed vsorc.inc.
+
+	* maintainer/nec/etmns.F (ETMNS): Added NSMAX, NVQD, NSANT, NQDS,
+	IVQD, ISANT, IQDS, VQD, VSANT and VQDS to dummy arguments and
+	passed thru to QDSRC. Removed vsorc.inc.
+
+	* maintainer/nec/couple.F (COUPLE): Added NSMAX, NVQD, NSANT,
+	NQDS, IVQD, ISANT, IQDS, VQD, VSANT and VQDS to dummy arguments
+	and removed vsorc.inc.
+
+	* maintainer/nec/cabc.F (CABC): Added NSMAX, NVQD, NSANT, NQDS,
+	IVQD, ISANT, IQDS, VQD, VSANT and VQDS to dummy arguments and
+	removed vsorc.inc.
+
+	* maintainer/nec/netwk.F (NETWK): Added NSMAX, NVQD, NSANT, NQDS,
+	IVQD, ISANT, IQDS, VQD, VSANT and VQDS to dummy arguments and
+	passed thru to CABC. Removed vsorc.inc.
+
+	* maintainer/nec/nec2.F (NEC2): Incorporated VSORC common block
+	from vsorc.inc and definition of NSMAX from nec. Passed NSMAX,
+	NVQD, NSANT, NQDS, IVQD, ISANT, IQDS, VQD, VSANT and VQDS thru to
+	NETWK, COUPLE and ETMNS.
+
+1999-07-31  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* maintainer/nec/nhfld.f (NHFLD): Added arrays XS, YS and ZS and
+	removed equivalence to X, Y and Z.
+
+	* maintainer/nec/nfpat.F (NFPAT): Added arrays XS, YS and ZS and
+	passed thru to NHFLD.
+
+	* maintainer/nec/fflds.f (FFLDS): Added arrays XS, YS, ZS and Z2S
+	and passed thru to FFLDS. Removed equivalence to X, Y, Z and BI.
+
+	* maintainer/nec/ffld.f (FFLD): Added arrays XS, YS, ZS and Z2S
+	and passed thru to FFLDS.
+
+	* maintainer/nec/gfld.f (GFLD): Added arrays XS, YS, ZS and Z2S
+	and passed thru to FFLD.
+
+	* maintainer/nec/rdpat.F (RDPAT): Added arrays XS, YS, ZS and Z2S
+	and passed thru to GFLD and FFLD.
+
+	* maintainer/nec/nec2.F (NEC2): Added arrays XS, YS, ZS and Z2S
+	and passed thru to RDPAT and NFPAT.
+
+1999-07-30  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* maintainer/nec/cmngf.f (CMNGF): Added T1X, T1Y, T1Z, T2X, T2Y
+	and T2Z to dummy args and passed to CMSW, CMSS and CMWS.
+
+	* maintainer/nec/cmws.f (CMWS): Added T1X, T1Y, T1Z, T2X, T2Y and
+	T2Z to dummy args, removed equivalences to SI, ALP, BET, ICON1,
+	ICON2 and ITAG.
+
+	* maintainer/nec/cmss.f (CMSS): Added T1X, T1Y, T1Z, T2X, T2Y and
+	T2Z to dummy args, removed equivalences to SI, ALP, BET, ICON1,
+	ICON2 and ITAG.
+
+	* maintainer/nec/cmsw.f (CMSW): Added T1X, T1Y, T1Z, T2X, T2Y and
+	T2Z to dummy args, removed equivalences to SI, ALP, BET, ICON1,
+	ICON2 and ITAG.
+
+	* maintainer/nec/cmset.f (CMSET): Added T1X, T1Y, T1Z, T2X, T2Y
+	and T2Z to dummy args and passed to CMSW, CMSS and CMWS.
+
+	* maintainer/nec/nhfld.f (NHFLD): Added T1X, T1Y, T1Z, T2X, T2Y
+	and T2Z to dummy args, removed equivalences to SI, ALP, BET,
+	ICON1, ICON2 and ITAG. Passed to NEFLD.
+
+	* maintainer/nec/nefld.f (NEFLD): Added T1X, T1Y, T1Z, T2X, T2Y
+	and T2Z to dummy args, removed equivalences to SI, ALP, BET,
+	ICON1, ICON2 and ITAG.
+
+	* maintainer/nec/nfpat.F (NFPAT): Added T1X, T1Y, T1Z, T2X, T2Y
+	and T2Z to dummy args and passed to NEFLD and NHFLD.
+
+	* maintainer/nec/qdsrc.f (QDSRC): Added T1X, T1Y, T1Z, T2X, T2Y
+	and T2Z to dummy args, removed equivalences to SI, ALP, BET,
+	ICON1, ICON2 and ITAG.
+
+	* maintainer/nec/etmns.f (ETMNS): Added T1X, T1Y, T1Z, T2X, T2Y
+	and T2Z to dummy args, removed equivalences to SI, ALP, BET,
+	ICON1, ICON2 and ITAG. Passed to QDSRC.
+
+	* maintainer/nec/helix.f (HELIX): Added X2, Y2, Z2 to dummy args
+	and removed equivalence to SI, ALP and BET.
+
+	* maintainer/nec/wire.f (WIRE): Added X2, Y2, Z2 to dummy args and
+	removed equivalence to SI, ALP and BET.
+
+	* maintainer/nec/move.f (MOVE): Added T1X, T1Y, T1Z, T2X, T2Y and
+	T2Z arrays, removed equivalences to SI, ALP, BET, ICON1, ICON2 and
+	ITAG.  (MOVE): Added X2, Y2, Z2 to dummy args and removed
+	equivalence to SI, ALP and BET.
+
+	* maintainer/nec/patch.f (PATCH): Added T1X, T1Y, T1Z, T2X, T2Y
+	and T2Z arrays, removed equivalences to SI, ALP, BET, ICON1, ICON2
+	and ITAG.
+
+	* maintainer/nec/subph.f (SUBPH): Added T1X, T1Y, T1Z, T2X, T2Y
+	and T2Z arrays, removed equivalences to SI, ALP, BET, ICON1, ICON2
+	and ITAG.
+
+	* maintainer/nec/conect.f (CONECT): Added T1X, T1Y, T1Z, T2X, T2Y
+	and T2Z arrays, removed equivalences to SI, ALP, BET, ICON1, ICON2
+	and ITAG. Passed to SUBPH.
+
+	* maintainer/nec/reflc.f (REFLC): Added T1X, T1Y, T1Z, T2X, T2Y
+	and T2Z arrays, removed equivalences to SI, ALP, BET, ICON1, ICON2
+	and ITAG.
+
+	* maintainer/nec/datagn.f (DATAGN): Added T1X, T1Y, T1Z, T2X, T2Y
+	and T2Z arrays, removed equivalences to SI, ALP, BET, ICON1, ICON2
+	and ITAG. Passed to REFLC, CONECT, PATCH and MOVE.
+
+	* maintainer/nec/cabc.f (CABC): Added T1X, T1Y, T1Z, T2X, T2Y and
+	T2Z arrays, removed equivalences to SI, ALP, BET, ICON1, ICON2 and
+	ITAG.
+
+	* maintainer/nec/netwk.F (NETWK): Added T1X, T1Y, T1Z, T2X, T2Y
+	and T2Z to dummy args and passed thru to CABC.
+
+	* maintainer/nec/nec2.F (NEC2): Added T1X, T1Y, T1Z, T2X, T2Y and
+	T2Z arrays, removed equivalences to SI, ALP, BET, ICON1, ICON2 and
+	ITAG. Passed to NETWK, DATAGN, CMSET, CMNGF, NFPAT and ETMNS.
+
+	* maintainer/nec/gfil.f (GFIL): Added T2X, T2Y and T2Z to dummy
+	args and removed equivalence to ICON1, ICON2 and ITAG.
+
+	* maintainer/nec/gfout.f (GFOUT): Added T2X, T2Y and T2Z to dummy
+	args and removed equivalence to ICON1, ICON2 and ITAG.
+
+	* maintainer/nec/qdsrc.f (QDSRC): Added CAB and SAB to dummy args
+	and removed equivalence to ALP and BET.
+
+	* maintainer/nec/etmns.f (ETMNS): Added CAB and SAB to dummy args
+	and removed equivalence to ALP and BET. Passed thru to QDSRC.
+
+	* maintainer/nec/nhfld.f (NHFLD): Added CAB and SAB to dummy args
+	and removed equivalence to ALP and BET. Passed thru to NEFLD.
+
+	* maintainer/nec/nefld.f (NEFLD): Added CAB and SAB to dummy args
+	and removed equivalence to ALP and BET.
+
+	* maintainer/nec/nfpat.F (NFPAT): Added CAB and SAB to dummy args
+	and passed thru to NEFLD and NHFLD.
+
+	* maintainer/nec/cmngf.f (CMNGF): Added CAB and SAB to dummy args
+	and passed thru to CMSW, CMWW and CMWS.
+
+	* maintainer/nec/cmws.f (CMWS): Added CAB and SAB to dummy args
+	and removed equivalence to ALP and BET.
+
+	* maintainer/nec/cmww.f (CMWW): Added CAB and SAB to dummy args
+	and removed equivalence to ALP and BET.
+
+	* maintainer/nec/cmsw.f (CMSW): Added CAB and SAB to dummy args
+	and removed equivalence to ALP and BET.
+
+	* maintainer/nec/cmset.f (CMSET): Added CAB and SAB to dummy args
+	and passed thru to CMSW, CMWW and CMWS.
+
+	* maintainer/nec/gfld.f (GFLD): Added CAB and SAB to dummy args
+	and removed equivalence to ALP and BET. Passed thru to FFLD.
+
+	* maintainer/nec/ffld.f (FFLD): Added CAB and SAB to dummy args
+	and removed equivalence to ALP and BET.
+
+	* maintainer/nec/rdpat.F (RDPAT): Added CAB and SAB to dummy args
+	and passed thru to GFLD and FFLD.
+
+	* maintainer/nec/nec2.F (NEC2): Added arrays CAB and SAB and
+	removed equivalence to ALP and BET. Passed thru to DATAGN, CMSET,
+	CMNGF, NFPAT, RDPAT and ETMNS.
+
+	* maintainer/nec/datagn.f (DATAGN): Added CAB and SAB to dummy
+	args and removed equivalence to ALP and BET.
+
+	* maintainer/nec/conect.f (CONECT): Added X2, Y2, Z2 to dummy args
+	and removed equivalence to SI, ALP and BET.
+
+	* maintainer/nec/reflc.f (REFLC): Added X2, Y2, Z2 to dummy args
+	and removed equivalence to SI, ALP and BET.
+
+	* maintainer/nec/arc.f (ARC): Added X2, Y2, Z2 to dummy args and
+	removed equivalence to SI, ALP and BET.
+
+	* maintainer/nec/nec2.F (NEC2): Added arrays X2, Y2 and Z2 and
+	passed to DATAGN. Removed equivalence to SI, ALP and BET.
+
+	* maintainer/nec/datagn.f (DATAGN): Added dummy args X2, Y2 and Z2
+	and removed their equivalence to SI, ALP and BET. Passed thru to
+	ARC, REFLC, MOVE, HELIX, WIRE and CONECT.
+
+	* maintainer/nec/rdpat.F (RDPAT): Added GAIN to dummy args and
+	removed equivalence to D and GAIN.
+
+	* maintainer/nec/nec2.F (NEC2): Added GAIN to arrays and passed to
+	RDPAT.
+
+	* maintainer/nec/nefld.f (NEFLD): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and removed data.inc.
+
+	* maintainer/nec/nhfld.f (NHFLD): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and passed thru to NEFLD. Removed data.inc.
+
+	* maintainer/nec/nfpat.F (NFPAT): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and passed thru to NEFLD and NHFLD. Removed
+	data.inc.
+
+	* maintainer/nec/qdsrc.f (QDSRC): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and passed thru to TBF. Removed data.inc.
+
+	* maintainer/nec/etmns.f (ETMNS): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and passed thru to QDSRC. Removed data.inc.
+
+	* maintainer/nec/cmngf.f (CMNGF): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and passed thru to CMSS, CMSW, CMWS, CMWW,
+	TBF and TRIO. Removed data.inc.
+
+	* maintainer/nec/cmww.f (CMWW): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and removed data.inc.
+
+	* maintainer/nec/cmws.f (CMWS): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and removed data.inc.
+
+	* maintainer/nec/cmsw.f (CMSW): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and passed thru to TRIO. Removed data.inc.
+
+	* maintainer/nec/cmss.f (CMSS): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and removed data.inc.
+
+	* maintainer/nec/sbf.f (SBF): Added MAXSEG, IPSYM, LD, N1, N2, N,
+	NP, M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI,
+	BI, ALP, BET to dummy args and removed data.inc.
+
+	* maintainer/nec/trio.f (TRIO): Added MAXSEG, IPSYM, LD, N1, N2,
+	N, NP, M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z,
+	SI, BI, ALP, BET to dummy args and passed thru to SBF. Removed
+	data.inc.
+
+	* maintainer/nec/cmset.f (CMSET): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and passed thru to CMSS, CMSW, CMWS, CMWW
+	and TRIO. Removed data.inc.
+
+1999-07-29  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* maintainer/nec/gfld.f (GFLD): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and passed thru to FFLD. Removed data.inc.
+
+	* maintainer/nec/fflds.f (FFLDS): Added MAXSEG, IPSYM, LD, N1, N2,
+	N, NP, M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z,
+	SI, BI, ALP, BET to dummy args and removed data.inc.
+
+	* maintainer/nec/ffld.f (FFLD): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and passed thru to FFLDS. Removed data.inc.
+
+	* maintainer/nec/rdpat.F (RDPAT): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and passed thru to FFLD and GFLD. Removed
+	data.inc.
+
+	* maintainer/nec/nec2.F (NEC2): Added MAXSEG, ITAG and N to calls
+	to ISEGNO.
+
+	* maintainer/nec/couple.f (COUPLE): Added MAXSEG, ITAG and N to
+	dummy args and passed thru to ISEGNO.
+
+	* maintainer/nec/gfout.f (GFOUT): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and removed data.inc.
+
+	* maintainer/nec/helix.f (HELIX): Added MAXSEG, IPSYM, LD, N1, N2,
+	N, NP, M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z,
+	SI, BI, ALP, BET to dummy args and removed data.inc.
+
+	* maintainer/nec/isegno.f (ISEGNO): Added MAXSEG, ITAG and N to
+	dummy args and removed data.inc.
+
+	* maintainer/nec/move.f (MOVE): Added MAXSEG, IPSYM, LD, N1, N2,
+	N, NP, M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z,
+	SI, BI, ALP, BET to dummy args and passed thru to ISEGNO. Removed
+	data.inc.
+
+	* maintainer/nec/patch.f (PATCH): Added MAXSEG, IPSYM, LD, N1, N2,
+	N, NP, M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z,
+	SI, BI, ALP, BET to dummy args and removed data.inc.
+
+	* maintainer/nec/wire.f (WIRE): Added MAXSEG, IPSYM, LD, N1, N2,
+	N, NP, M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z,
+	SI, BI, ALP, BET to dummy args and removed data.inc.
+
+	* maintainer/nec/subph.f (SUBPH): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and removed data.inc.
+
+	* maintainer/nec/conect.f (CONECT): Added IPSYM, LD, N1, N2, N,
+	NP, M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI,
+	BI, ALP, BET to dummy args and passed thru to SUBPH. Removed
+	data.inc.
+
+	* maintainer/nec/reflc.f (REFLC): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and removed data.inc.
+
+	* maintainer/nec/arc.f (ARC): Added MAXSEG, IPSYM, LD, N1, N2, N,
+	NP, M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI,
+	BI, ALP, BET to dummy args and removed data.inc.
+
+	* maintainer/nec/gfil.f (GFIL): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and removed data.inc.
+
+	* maintainer/nec/datagn.f (DATAGN): Added IPSYM, LD, N1, N2, N,
+	NP, M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI,
+	BI, ALP, BET to dummy args and passed thru to GFIL, ARC, REFLC,
+	CONECT, WIRE, PATCH, MOVE and HELIX. Removed data.inc.
+
+	* maintainer/nec/tbf.f (TBF): Added MAXSEG, IPSYM, LD, N1, N2, N,
+	NP, M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI,
+	BI, ALP, BET to dummy args and removed data.inc.
+
+	* maintainer/nec/cabc.f (CABC): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and passed thru to TBF. Removed data.inc.
+
+	* maintainer/nec/netwk.F (NETWK): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and passed thru to CABC. Removed data.inc.
+
+	* maintainer/nec/load.f (LOAD): Added IPSYM, LD, N1, N2, N, NP,
+	M1, M2, M, MP, ICON1, ICON2, ITAG, ICONX, WLAM, X, Y, Z, SI, BI,
+	ALP, BET to dummy args and removed data.inc.
+
+	* maintainer/nec/nec2.F (NEC2): Incorporated data.inc and passed
+	IPSYM, LD, N1, N2, N, NP, M1, M2, M, MP, ICON1, ICON2, ITAG,
+	ICONX, WLAM, X, Y, Z, SI, BI, ALP, BET to LOAD, NETWK, DATAGN,
+	GFOUT, ISEGNO, RDPAT, CMSET, CMNGF, NFPAT, COUPLE and ETMNS.
+
+	* maintainer/nec/rdpat.F (RDPAT): Added SCRWLT and SCHWRT to dummy
+	args and removed save.inc.
+
+	* maintainer/nec/nec2.F (NEC2): Added IP, EPSR, SIG, SCRWLT,
+	SCHWRT and FHMZ to calls to DATAGN and GFOUT. Added SCRWLT and
+	SCHWRT to call to RDPAT.
+
+	* maintainer/nec/gfout.f (GFOUT): Added IP, EPSR, SIG, SCRWLT,
+	SCHWRT and FHMZ to dummy args and removed save.inc.
+
+	* maintainer/nec/gfil.f (GFIL): Added IP, EPSR, SIG, SCRWLT,
+	SCHWRT and FHMZ to dummy args and removed save.inc.
+
+	* maintainer/nec/datagn.f (DATAGN): Added IP, EPSR, SIG, SCRWLT,
+	SCHWRT and FHMZ to dummy args and passed thru to GFIL.
+
+	* maintainer/nec/gfout.f (GFOUT): Added KCOM and COM to calls to
+	dummy args.
+
+	* maintainer/nec/nec2.F (NEC2): Added KCOM and COM to calls to
+	DATAGN and GFOUT.
+
+	* maintainer/nec/gfil.f (GFIL): Added KCOM and COM to dummy args.
+
+	* maintainer/nec/datagn.f (DATAGN): Added KCOM and COM to dummy
+	args and passed thru to GFIL.
+
+	* maintainer/nec/lfactr.f (LFACTR): Added MAXSEG and D to dummy
+	args and removed scratm.inc.
+
+	* maintainer/nec/facio.f (FACIO): Added MAXSEG and D to dummy args
+	and passed thru to LFACTR..
+
+	* maintainer/nec/factrs.F (FACTRS): Added MAXSEG and D to dummy
+	args and passed thru to FACTR and FACIO.
+
+	* maintainer/nec/factr.f (FACTR): Added MAXSEG and D to dummy args
+	and removed scratm.inc.
+
+	* maintainer/nec/solves.F (SOLVES): Added MAXSEG and D to dummy
+	args and removed scratm.inc. Passed thru to SOLVE and LTSOLV.
+
+	* maintainer/nec/ltsolv.f (LTSOLV): Added MAXSEG and D to dummy
+	args and removed scratm.inc.
+
+	* maintainer/nec/facgf.f (FACGF): Added MAXSEG and D to dummy args
+	and passed thru to SOLVES, FACIO, FACTR.
+
+	* maintainer/nec/solve.f (SOLVE): Added MAXSEG and D to dummy args
+	and removed scratm.inc.
+
+	* maintainer/nec/solgf.f (SOLGF): Added MAXSEG and D to dummy args
+	and removed scratm.inc. Passed thru to LTSOLV, SOLVES and SOLVE.
+ 
+	* maintainer/nec/netwk.F (NETWK): Added D to dummy args and passed
+	thru to SOLGF, FACTR and SOLVE.
+
+	* maintainer/nec/rdpat.F (RDPAT): Added D to dummy args and
+	removed scratm.inc.
+
+	* maintainer/nec/cmset.f (CMSET): Added D to dummy args and
+	removed scratm.inc.
+
+	* maintainer/nec/nec2.F (NEC2): Incorporated scratrm.inc and
+	passed D and MAXSEG thru to CMSET, RDPAT, FACGF and NETWK.
+
+	* maintainer/nec/qdsrc.f (QDSRC): Added NLOAD, NLODF and ZARRAY to
+	dummy args and removed zload.inc.
+
+	* maintainer/nec/etmns.f (ETMNS): Added NLOAD, NLODF and ZARRAY to
+	dummy args and passed thru to QDSRC.
+
+	* maintainer/nec/cmset.f (CMSET): Added NLOAD, NLODF and ZARRAY to
+	dummy args and removed zload.inc.
+
+	* maintainer/nec/cmngf.f (CMNGF): Added NLOAD, NLODF and ZARRAY to
+	dummy args and removed zload.inc.
+
+	* maintainer/nec/gfout.f (GFOUT): Added NLOAD, NLODF and ZARRAY to
+	dummy args and removed zload.inc.
+
+	* maintainer/nec/gfil.f (GFIL): Added NLOAD, NLODF and ZARRAY to
+	dummy args and removed zload.inc.
+
+	* maintainer/nec/datagn.f (DATAGN): Added MAXSEG, NLOAD, NLODF and
+	ZARRAY to dummy args and passed thru to GFIL.
+
+	* maintainer/nec/load.f (LOAD): Added MAXSEG, NLOAD, NLODF and
+	ZARRAY to dummy args and removed zload.inc.
+
+	* maintainer/nec/nec2.F (NEC2): Incorporated zload.inc and passed
+	MAXSEG, NLOAD, NLODF and ZARRAY to LOAD, DATAGN, CMSET, CMNGF and
+	ETMNS.
+
+	* maintainer/nec/nhfld.f (NHFLD): Added AIR, AII, BIR, BII, CIR,
+	CII, CUR to dummy args and removed crnt.inc. Passed thru to NEFLD.
+
+	* maintainer/nec/nefld.f (NEFLD): Added AIR, AII, BIR, BII, CIR,
+	CII, CUR to dummy args and removed crnt.inc.
+
+	* maintainer/nec/nfpat.F (NFPAT): Added AIR, AII, BIR, BII, CIR,
+	CII, CUR to dummy args and passed thru to NEFLD and NHFLD.
+
+	* maintainer/nec/gfld.f (GFLD): Added AIR, AII, BIR, BII, CIR,
+	CII, CUR to dummy args and removed crnt.inc.
+
+	* maintainer/nec/ffld.f (FFLD): Added AIR, AII, BIR, BII, CIR,
+	CII, CUR to dummy args and removed crnt.inc.
+
+	* maintainer/nec/rdpat.F (RDPAT): Added AIR, AII, BIR, BII, CIR,
+	CII, CUR to dummy args and passed thru to GFLD and FFLD.
+
+	* maintainer/nec/cabc.f (CABC): Added MAXSEG, AIR, AII, BIR, BII,
+	CIR, CII, CUR to dummy args and removed crnt.inc.
+
+	* maintainer/nec/netwk.F (NETWK): Added MAXSEG, AIR, AII, BIR,
+	BII, CIR, CII, CUR to dummy args and passed thru to CABC. Removed
+	crnt.inc.
+
+	* maintainer/nec/nec2.F (NEC2): Added IRESRV to call to FBNGF.
+	(NEC2): Incorporated crnt.inc. Passed CUR, AIR, AII, BIR, BII,
+	CIR, CIR and MAXSEG thru to NETWK, RDPAT and NFPAT.
+
+	* maintainer/nec/fbngf.f (FBNGF): Added IRESRV to dummy args.
+
+	* maintainer/nec/gfout.f (GFOUT): Added IRESRV and CM to dummy
+	args and removed cmb.inc.
+
+	* maintainer/nec/nec2.F (NEC2): Added IRESRV and CM to calls to
+	DATAGN, GFOUT and NFPAT.
+
+	* maintainer/nec/gfil.f (GFIL): Added IRESRV and CM to dummy args
+	and removed cmb.inc.
+
+	* maintainer/nec/datagn.f (DATAGN): Added IRESRV and CM to dummy
+	args and passed thru to GFIL.
+
+	* maintainer/nec/nefld.f (NEFLD): Added MAXSEG and SALP to dummy
+	args and removed angl.inc.
+
+	* maintainer/nec/datagn.f (DATAGN):
+
+	* maintainer/nec/qdsrc.f (QDSRC): Added MAXSEG and SALP to dummy
+	args and removed angl.inc.
+
+	* maintainer/nec/etmns.f (ETMNS): Added MAXSEG and SALP to dummy
+	args and passed thru to QDSRC. Removed angl.inc.
+
+	* maintainer/nec/nhfld.f (NHFLD): Added MAXSEG and SALP to dummy
+	args and removed angl.inc. Passed thru to NEFLD.
+
+	* maintainer/nec/nfpat.F (NFPAT): Added MAXSEG and SALP to dummy
+	args and passed thru to NHFLD and NEFLD.
+
+	* maintainer/nec/cmngf.f (CMNGF): Added MAXSEG and SALP to dummy
+	arguments and passed thru to CMSS, CMSW, CMWS and CMWW.
+
+	* maintainer/nec/cmww.f (CMWW): Added MAXSEG and SALP to dummy
+	args and removed angl.inc.
+
+	* maintainer/nec/cmws.f (CMWS): Added MAXSEG and SALP to dummy
+	args and removed angl.inc.
+
+	* maintainer/nec/cmsw.f (CMSW): Added MAXSEG and SALP to dummy
+	args and removed angl.inc.
+
+	* maintainer/nec/cmss.f (CMSS): Added MAXSEG and SALP to dummy
+	args and removed angl.inc.
+
+	* maintainer/nec/cmset.f (CMSET): Added MAXSEG and SALP to dummy
+	args and passed thru to CMSW , CMWW , CMSS and CMWS.
+
+	* maintainer/nec/ffld.f (FFLD): Added MAXSEG and SALP to dummy arg
+	and removed angl.inc.
+
+	* maintainer/nec/gfld.f (GFLD): Added MAXSEG and SALP to dummy arg
+	and removed angl.inc.
+
+	* maintainer/nec/rdpat.F (RDPAT): Added MAXSEG and SALP to dummy
+	arguments and passed thru to GFLD and FFLD.
+
+	* maintainer/nec/gfout.f (GFOUT): Added MAXSEG and SALP to dummy
+	args and removed angl.inc.
+
+	* maintainer/nec/nec2.F (NEC2): Added MAXSEG and SALP to calls to
+	DATAGN, GFOUT, CMSET, RDPAT, CMNGF, NFPAT and ETMNS.
+
+	* maintainer/nec/move.f (MOVE): Added MAXSEG and SALP to dummy
+	args and removed angl.inc.
+
+	* maintainer/nec/patch.f (PATCH): Added MAXSEG and SALP to dummy
+	args and removed angl.inc.
+
+	* maintainer/nec/gfil.f (GFIL): Added MAXSEG and SALP to dummy
+	args and removed angl.inc.
+
+	* maintainer/nec/subph.f (SUBPH): Added MAXSEG and SALP to dummy
+	args and removed anlg.inc.
+
+	* maintainer/nec/conect.f (CONECT): Added MAXSEG and SALP to dummy
+	args and passed through to SUBPH.
+
+	* maintainer/nec/datagn.f (DATAGN): Added MAXSEG and SALP to dummy
+	args and passed through to REFLC, CONECT, PATCH, MOVE and
+	GFIL. Removed angl.inc.
+
+	* maintainer/nec/reflc.f (REFLC): Added MAXSEG and SALP to dummy
+	args and removed angl.inc.
+
+	* maintainer/nec/nec2.F (NEC2): Added MAXSEG and IRESRV from
+	nec.inc.
+
+	* maintainer/nec/nec.inc: Removed MAXSEG and IRESRV from nec.inc.
+	
+
+1999-07-28  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* maintainer/nec/zint.f (ZINT): Renamed variables D to DD, S to
+	SSS, X to XX and Y to YY.
+
+	* maintainer/nec/wire.f (WIRE): Renamed variable XS2 to XXS2.
+
+	* maintainer/nec/unere.f (UNERE): Renamed variable R2 to RR2.
+
+	* maintainer/nec/timer.F (TIMER): Renamed variable T1 to TT1.
+
+	* maintainer/nec/tbf.f (TBF): Renamed variables D to DD and SIG to
+	SSIG.
+
+	* maintainer/nec/subph.f (SUBPH): Renamed variables XS to XXS, YS
+	to YYS and ZS to ZZS.
+
+	* maintainer/nec/solves.F (SOLVES): Renamed variables B to BB, IP
+	to IIP, M to MM, MP to MMP, N to NN, NEQ to NNEQ and NP to NNP.
+
+	* maintainer/nec/solve.f (SOLVE): Renamed variables B to BB, IP to
+	IIP and N to NN.
+
+	* maintainer/nec/solgf.f (SOLGF): Renamed variables IP ti IIP, M
+	to MM, M1 to MM1, MP to MMP, N to NN, N2 to NN2, NEQ to NNEQ and
+	NP to NNP.
+
+	* maintainer/nec/sbf.f (SBF): Renamed variables D to DD, JSNO to
+	JJSNO and SIG to SSIG.
+
+	* maintainer/nec/rom2.f (ROM2): Renamed variables B to BB, N to
+	NN, S to SSS and Z to ZZ.
+
+	* maintainer/nec/reblk.f (REBLK): Renamed variables B to BB and Bx
+	to BBX.
+
+	* maintainer/nec/readgm.f (READGM): Renamed variables R1 to RR1
+	and R2 to RR2.
+
+	* maintainer/nec/pcint.f (PCINT): Renamed variables D to DD and XS
+	to XXS.
+
+	* maintainer/nec/patch.f (PATCH): Renamed variables X2 to XXX2, XS
+	to XXS, Y2 to YYY2, YS to YYS, Z2 to ZZZ2, ZS to ZZS.
+
+	* maintainer/nec/nhfld.f (NHFLD): renamed variable AX to AAX.
+
+	* maintainer/nec/netwk.F (NETWK): Renamed variables CM to CCM,
+	FMHZ to FFMHZ and IP to IIP.
+
+	* maintainer/nec/nefld.f (NEFLD): Renamed variables AX to AAX and
+	IP to IIP.
+
+	* maintainer/nec/nec2.F (NEC2): Renamed variables IEXK to IIEXK
+	and RKH to RRKH.
+
+	* maintainer/nec/move.f (MOVE): Renamed variables XS to XXS, YS to
+	YYS, and ZS to ZZS.
+
+	* maintainer/nec/lunscr.f (LUNSCR): Renamed variable IP to IIP.
+
+	* maintainer/nec/ltsolv.f (LTSOLV): Renamed variables B to BB and
+	NEQ to NNEQ.
+
+	* maintainer/nec/lfactr.f (LFACTR): Renamed variables IP to IIP,
+	R1 to RR1 and R2 to RR2.
+
+	* maintainer/nec/intx.f (INTX): Renamed variables B to BB, S to
+	SSS and Z to ZZ.
+
+	* maintainer/nec/intrp.f (INTRP): Renamed variables B to BB, D to
+	DD, X to XXX, XS to XXS, Y to YYY and YS to YYS.
+
+	* maintainer/nec/hsflx.f (HSFLX): Renamed variables R1 to RR1, R2
+	to RR2, S to SSS, T1 to TT1, T2 to TT" and Z2 to ZZ2.
+
+	* maintainer/nec/hsfld.f (HSFLD): Renamed variable IP to IIP.
+
+	* maintainer/nec/hintg.f (HINTG): Renamed variable IP to IIP.
+
+	* maintainer/nec/hfk.f (HFK): Renamed variables S to SSS and Z to
+	ZZ.
+
+	* maintainer/nec/helix.f (HELIX): Renamed variable S to SSS.
+
+	* maintainer/nec/gxx.f (GXX): Renamed variables R2 to RR2, T1 to
+	TT1 and T2 to TT2.
+
+	* maintainer/nec/gx.f (GX): Renamed variable R2 to RR2.
+
+	* maintainer/nec/gwave.f (GWAVE): Renamed variable T1 to TT1, T2
+	to TT" and X2 to XXX2.
+
+	* maintainer/nec/gfout.f (GFOUT): Renamed variables NEQ to NNEQ
+	and NPEQ to NNPEQ.
+
+	* maintainer/nec/gfld.f (GFLD): Renamed variable B to BB and KSYMP
+	to KKSYMP.
+
+	* maintainer/nec/gfil.f (GFIL): Renamed variables NEQ to NNEQ and
+	NPEQ to NNPEQ.
+
+	* maintainer/nec/gf.f (GF): Renamed variable SI to SSI.
+
+	* maintainer/nec/ffld.f (FFLD): Renamed variables B to BB, D to DD
+	and IP to IIP.
+
+	* maintainer/nec/fbngf.f (FBNGF): Renamed variables NEQ to NNEQ
+	and NEQ2 to NNEQ2.
+
+	* maintainer/nec/fblock.f (FBLOCK): Renamed variable IPSYM to
+	IIPSYM.
+
+	* maintainer/nec/fbar.f (FBAR): Renamed variables Z to ZZ and ZS
+	to ZZS.
+
+	* maintainer/nec/factrs.F (FACTRS): Renamed variables IP to IIP
+	and NP to NNP.
+
+	* maintainer/nec/factr.f (FACTR): Renamed variables IP to IIP and
+	N to NN.
+
+	* maintainer/nec/facio.f (FACIO): Renamed variables IP to IIP, T1
+	to TT1 and T2 to TT2.
+
+	* maintainer/nec/facgf.f (FACGF): Renamed variables B to BB, BX to
+	BBX, D to DD, IP to IIP, M1 to MM1, MP to MMP, N1 to NN1, NP to
+	NNP.
+
+	* maintainer/nec/etmns.f (ETMNS): Renamed variables CX to CCX and
+	NEQ to NNEQ.
+
+	* maintainer/nec/ekscx.f (EKSCX): Renamed variables B to BB, Bx to
+	BBX, EZC to EEZC, EZS to EEZS, EZK to EEZK, S to SSS, Z to ZZ and
+	Z2 to ZZ2.
+
+	* maintainer/nec/eksc.f (EKSC): Renamed variables EZC to EEZC, EZS
+	to EEZS, EZK to EEZK, S to SSS, Z to ZZ and Z2 to ZZ2.
+
+	* maintainer/nec/efld.f (EFLD): Renamed local variable IJX ti IIJX
+	and IP to IIP.
+
+	* maintainer/nec/db20.f (DB20): Renamed variable X to XX.
+
+	* maintainer/nec/db10.f (DB10): Renamed variable X to XX.
+
+	* maintainer/nec/datagn.f (DATAGN): Renamed variable XS2 to XXS2.
+
+	* maintainer/nec/couple.f (COUPLE): Renamed variables CUR to CCUR
+	and WLAM to WWLAM.
+
+	* maintainer/nec/conect.f (CONECT): Renamed variables XS to XXS,
+	YS to YYS and ZS to ZZS.
+
+	* maintainer/nec/cmww.f (CMWW): Renamed variable CM to CCM.
+
+	* maintainer/nec/cmws.f (CMWS): Renamed variable CM to CCM.
+
+	* maintainer/nec/cmsw.f (CMSW): Renamed variables CM to CCM and IP
+	to IIP.
+
+	* maintainer/nec/cmss.f (CMSS): Renamed variable CM to CCM.
+
+	* maintainer/nec/cmset.f (CMSET): Renamed variables CM to CCM, NEQ
+	to NNEQ and NPEQ to NNPEQ.
+
+	* maintainer/nec/cang.f (CANG): Renamed variable Z to ZZ.
+
+	* maintainer/nec/atgn2.f (ATGN2): Renamed variables X to XX and Y
+	to YY.
+
+	* maintainer/nec/arc.f (ARC): Renamed variable XS2 to XXS2.
+
+1999-07-21  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* configure.in: Added call to macro for multiple file output flag.
+
+	* acinclude.m4: Added macro to check for multiple file output
+	flag.
+
+	* maintainer/nec/netwk.F (NETWK): Added support to output to
+	separate impedance.dat file.  (NETWK): Added FMHZ to parameter
+	list to support impedance.dat file.
+
+	* maintainer/nec/rdpat.F (RDPAT): Added support to output to
+	separate rdpat file.
+
+	* maintainer/nec/nec.inc: Added definitions for near_e, near_h,
+	rdpat and impedance.dat files.
+
+	* maintainer/nec/nfpat.F (NFPAT): Added support for output to
+	separate near_e and near_h files.
+
+1999-06-15  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* configure.in: Replaced IDF_NEC_LAPACK with IDF_NEC_BLAS.
+
+	* acinclude.m4: Added macro IDF_NEC_BLAS to check if BLAS version
+	required and verify linkage.
+
+	* acconfig.h: Changed USE_LAPACK to USE_BLAS.
+
+	* maintainer/nec/solves.F (SOLVES): Changed USE_LAPACK to
+	USE_BLAS.
+
+	* maintainer/nec/factrs.F (FACTRS): Changed USE_LAPACK to
+	USE_BLAS.
+
+	* maintainer/nec/lapack.F: NEW FILE. Isolated the lapack routines
+	which are actually used with the BLAS version of NEC into this
+	file. This is assembled into the nec directory.
+
+1999-05-16  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* maintainer/nec/parsit.f (PARSIT): Fixed comment detection for
+	case were line starts "#X" where X is anything but space.
+
+1999-04-28  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* testsuite/testcomm.val: NEW FILE. Comment card parsing test
+	validation file.
+
+	* testsuite/testcomm.nec: NEW FILE. Comment card parsing test.
+
+	* maintainer/nec/datagn.f (DATAGN): Added support for IG virtual
+	IG card returned by READGM if record is a comment. Need to catch
+	it in three places!
+
+	* maintainer/nec/parsit.f (PARSIT): Added checks for blank lines
+	and comment lines. Now returns a code of 'IG' for lines which can
+	be ignored.
+
+	* maintainer/nec/nec2.F (NEC2): Added support for IG virtual card
+	returned by READMN if record is a comment.
+
+1999-04-11  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* configure.in: Added call to macro to test equivalencing of
+	REAL*8 and INTEGER is OK.
+
+	* acinclude.m4: Added macro to test equivalencing of REAL*8 and
+	INTEGER is OK.
+
+	* configure.in: Added calls to macros to test for INCLUDE,
+	preprocessing and list directed I/O from internal files support.
+
+	* acinclude.m4: Added macros to test for INCLUDE, preprocessing
+	and list directed I/O from internal files support.
+
+	* maintainer/nec/nec2.F (NEC2): Modified to use COM as a character
+	array.
+
+	* maintainer/nec/gfil.f (GFIL): Modified to use COM as a character
+	array.
+
+	* maintainer/nec/save.inc: Changed COM from REAL*8 to
+	CHARACTER*78.
+
+1999-04-10  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* maintainer/nec/trio.f (TRIO): Cleaned up I/O channels.
+
+	* maintainer/nec/tbf.f (TBF): Cleaned up I/O channels.
+
+	* maintainer/nec/sbf.f (SBF): Cleaned up I/O channels.
+
+	* maintainer/nec/rom2.f (ROM2): Cleaned up I/O channels.
+
+	* maintainer/nec/reblk.f (REBLK): Cleaned up I/O channels.
+
+	* maintainer/nec/rdpat.f (RDPAT): Cleaned up I/O channels.
+
+	* maintainer/nec/prnt.f (PRNT): Cleaned up I/O channels.
+
+	* maintainer/nec/patch.f (PATCH): Cleaned up I/O channels.
+
+	* maintainer/nec/parsit.f (PARSIT): Cleaned up I/O channels.
+
+	* maintainer/nec/nfpat.f (NFPAT): Cleaned up I/O channels.
+
+	* maintainer/nec/netwk.f (NETWK): Cleaned up I/O channels.
+
+	* maintainer/nec/nec2.F (NEC2): Cleaned up I/O channels.
+
+	* maintainer/nec/load.f (LOAD): Cleaned up I/O channels.
+
+	* maintainer/nec/lfactr.f (LFACTR): Cleaned up I/O channels.
+
+	* maintainer/nec/isegno.f (ISEGNO): Cleaned up I/O channels.
+
+	* maintainer/nec/intx.f (INTX): Cleaned up I/O channels.
+
+	* maintainer/nec/helix.f (HELIX): Cleaned up I/O channels.
+
+	* maintainer/nec/gfout.f (GFOUT): Cleaned up I/O channels.
+
+
+	* maintainer/nec/gfil.f (GFIL): Cleaned up I/O channels.
+
+	* maintainer/nec/fbngf.f (FBNGF): Cleaned up I/O channels.
+
+	* maintainer/nec/fblock.f (FBLOCK): Cleaned up I/O channels.
+
+	* maintainer/nec/factr.f (FACTR): Cleaned up I/O channels.
+
+	* maintainer/nec/facio.f (FACIO): Cleaned up I/O channels.
+
+	* maintainer/nec/facgf.f (FACGF): Cleaned up I/O channels.
+
+	* maintainer/nec/datagn.f (DATAGN): Cleaned up I/O channels.
+
+	* maintainer/nec/nec.inc: Added CHRPAT definition.
+
+	* maintainer/nec/conect.f (CONECT): Cleaned up I/O channels.
+
+	* maintainer/nec/blckin.f (BLCKIN): Cleaned up I/O channels.
+
+	* maintainer/nec/nec.inc: Added definitions for CHINPT, CHRSLT,
+	CHSOMN, CHNGFL, CHTMP1, CHTMP2, CHTMP3, CHTMP4, CHTMP5, CHTMP6.
+
+	* maintainer/nec/arc.f (ARC): Cleaned up I/O channels.
+
+	* testsuite/runtests (ret): Added awk processing of results for
+	results file.
+
+1999-04-09  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* testsuite/testsymm.nec: NEW FILE. Structure with symmetry test
+	file.
+
+	* testsuite/testsymm.val: NEW FILE. Structure with symmetry test
+	validation file.
+
+	* testsuite/testngf2.nec: NEW FILE. NGF solution test file with
+	added structure.
+
+	* testsuite/testngf2.val: NEW FILE. NGF solution test validation
+	file.
+
+	* testsuite/testngf1.nec: NEW FILE. NGF solution test file.
+
+	* testsuite/testngf1.val: NEW FILE. NGF solution test validation
+	file.
+	
+	* testsuite/NGF2D.NEC: NGF input file for NGF tests.
+
+	* testsuite/testnetw.nec: NEW FILE. Network test file.
+
+	* testsuite/testnetw.val: NEW FILE. Network test validation file.
+
+	* testsuite/test2000.nec: NEW FILE. 2000 segment timing input
+	file.
+	
+	* testsuite/test2000.val: NEW FILE. 2000 segment timing validation
+	file.
+
+	* testsuite/test1200.nec: NEW FILE. 1200 segment timing input
+	file.
+	
+	* testsuite/test1200.val: NEW FILE. 1200 segment timing validation
+	file.
+
+	* testsuite/test0600.nec: NEW FILE. 600 segment timing input file.
+	
+	* testsuite/test0600.val: NEW FILE. 600 segment timing validation
+	file.
+
+	* testsuite/test0300.nec: NEW FILE. 300 segment timing input file.
+	
+	* testsuite/test0300.val: NEW FILE. 300 segment timing validation
+	file.
+
+	* configure.in: Bumped version number to 0.3.
+
+	* maintainer/nec/solves.F (SOLVES): Modified code used for LAPACK
+	version to use SOLVE for ICASE = 4 in which ZGETRF was not used
+	for the decomposition and only used ZGETRS for ICASE = 1,2.
+
+1999-04-08  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* Makefile.am: Added autofix to EXTRA_DIST.
+
+	* testsuite/runtests: NEW FILE. Shell script to run checks and
+	timing tests on the nec executable.
+
+	* testsuite/Makefile.am: NEW FILE.
+
+	* configure.in: Added testsuite directory.
+
+	* Makefile.am (SUBDIRS): Added testsuite directory.
+
+	* maintainer/somnec/timer.F (TIMER): Added multiple directive
+	statement for different timing functions.
+
+	* maintainer/nec/timer.F (TIMER): Added multiple directive
+	statement for different timing functions.
+
+	* configure.in: Added tests for cpu_time and second intrinsics.
+
+	* acinclude.m4: Added tests IDF_F77_CPU_TIME and IDF_F77_SECOND
+	for the Fortran time subroutines cpu_time and second.
+
+	* maintainer/somnec/somnec.F (SOMNEC): Changed all references of
+	SECOND to TIMER.
+
+	* maintainer/nec/nec2.F (NEC2): Changed all references of SECOND
+	to TIMER.
+
+	* maintainer/nec/facio.f (FACIO): Changed all references of SECOND
+	to TIMER.
+
+	* maintainer/nec/timer.F (TIMER): RENAMED FILE. Formerly
+	second.F. Renamed subroutine SECOND as TIMER to allow use of real
+	intrinsic second if available.
+
+1999-04-07  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* maintainer/somnec/somnec.F (SOMNEC): Renamed somnec.f and added
+	#include for config.h.
+
+	* maintainer/nec/nec2.F (NEC2): Renamed nec2.f and added #include
+	for config.h.
+
+	* maintainer/somnec/second.F (SECOND): NEW FILE. Copy of SECONDS.F
+	from the NEC2 source.
+
+	* maintainer/somnec/somnec.f (SOMNEC): Changed two calls to SECNDS
+	to use SECONDS subroutine from NEC2 source. Added extra variable
+	TFN for end time.
+
+	* acinclude.m4: Modified etime test to use AC_TRY_LINK and removed
+	INTRINSIC statement which fails on Solaris even though it has an
+	etime.
+
+1999-04-05  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* maintainer/somnec/test.f (TEST): Added declarations, modified
+	intrinsics and made double precision.
+
+	* maintainer/somnec/saoa.f (SAOA): Added declarations, modified
+	intrinsics and made double precision.
+
+	* maintainer/somnec/rom1.f (ROM1): Added declarations, modified
+	intrinsics and made double precision.
+
+	* maintainer/somnec/lambda.f (LAMBDA): Added declarations,
+	modified intrinsics and made double precision.
+
+	* maintainer/somnec/hankel.f (HANKEL): Added declarations,
+	modified intrinsics and made double precision.
+
+	* maintainer/somnec/gshank.f (GSHANK): Added declarations,
+	modified intrinsics and made double precision.
+
+	* maintainer/somnec/evlua.f (EVLUA): Added declarations, modified
+	intrinsics and made double precision.
+
+	* maintainer/somnec/bessel.f (BESSEL): Added declarations,
+	modified intrinsics and made double precision.
+
+	* maintainer/somnec/somnec.f (SOMNEC): Added declarations for all
+	variables. Changed LCOMP from INTEGER to CHARACTER*3.  (SOMNEC):
+	Replaced ACCEPT with READ in five places.  (SOMNEC): Made all
+	intrinsic calls consistent. Made double precision.
+
+	* somnec/Makefile.am: NEW FILE.
+
+	* configure.in: Added somnec Makefile to output.
+
+	* Makefile.am (SUBDIRS): Added somnec to directory list.
+
+	* somnec: NEW DIRECTORY.
+
+	* acinclude.m4: Added macro IDF_F77_DCOMPLEX_INTRINSICS to check
+	availability of double complex intrinsic functions.
+
+1999-04-04  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* acinclude.m4: NEW FILE.
+
+	* configure.in: Moved definition of my macros to acinclude.m4.
+
+	* acconfig.h: Added defs for USE_LAPACK and HAVE_ETIME.
+
+	* configure.in: Added macros IDF_NEC_LAPACK and IDF_F77_ETIME to
+	check for lapack library and ETIME intrinsc.
+
+1999-04-02  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* nec: moved src to nec and made necessary changes to Makefile.am
+	and configure.in.
+
+	* maintainer/nec/solves.F (SOLVES): Made EXTERNAL declaration of
+	ZGETRS directive dependent.
+
+	* maintainer/nec/factrs.F (FACTRS): Made EXTERNAL declaration of
+	ZGETRF directive dependent.
+
+	* maintainer/nec/second.f (SECOND): Added support for ETIME
+	intrinsic with preprocessor defn HAVE_ETIME.
+
+	* maintainer/util/assemble (FILES): Update to use .F as
+	appropriate.
+
+	* maintainer/nec/solves.F (SOLVES): Added preprocessor directives
+	for optional compilation with LAPACK. Changed suffix from .f to
+	.F.
+
+	* maintainer/nec/factrs.F (FACTRS): Added preprocessor directives
+	for optional compilation with LAPACK. Changed suffix from .f to
+	.F.
+
+	
+1998-12-06  Ian David Flintoft  <idf1@claudia.driffield.uk>
+	
+	* configure.in: Bumped version number to 0.2.
+
+	* maintainer/nec/parsit.f (PARSIT): Added TBUFFER to hold results
+	of concatenation of substrings from BUFFER before assigning back
+	to BUFFER. This fixes run time error with PGI compiler.
+
+	* maintainer/nec/parsit.f (PARSIT): Changed length of input buffer
+	from 80 to 160 characters and two FORMAT statements accordingly.
+	
+1998-10-11  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* maintainer/nec/zint.f (ZINT): Increased precision of PI, POT,
+	TP, TPCMU, CMOTP and CNX to 25 digits.
+
+	* maintainer/nec/unere.f (UNERE): Increased precision of TPI and
+	CONST to 25 digits.
+
+	* maintainer/nec/tbf.f (TBF): Increased precision of PI to 25
+	digits. Added local variable and DATA statement for EULER,
+	OO24(1/24) and OO720 (1/720).
+
+	* maintainer/nec/sflds.f (SFLDS): Increased precision of PI, TP
+	and POT to 25 digits.
+
+	* maintainer/nec/sbf.f (SBF): Increased precision of PI to 25
+	digits. Added local variable and DATA statement for EULER,
+	OO24(1/24) and OO720 (1/720).
+
+	* maintainer/nec/reflc.f (REFLC): Increased precision of embedded
+	constant 2*pi.
+
+	* maintainer/nec/rdpat.f (RDPAT): Increased precision of PI, TA,
+	TD and embedded constants eta, pi*eta/3 and eta/(2*pi) to 25
+	digits.
+
+	* maintainer/nec/qdsrc.f (QDSRC): Increased precision of TP and
+	1/60 to 25 digits.
+
+	* maintainer/nec/pcint.f (PCINT): Increased precision of TPI to 25
+	digits.
+
+	* maintainer/nec/nfpat.f (NFPAT): Increased precision of TA and
+	RPD to 25 digits.
+
+	* maintainer/nec/netwk.f (NETWK): Increased precision of TP to 25
+	digits.
+
+	* maintainer/nec/nec2.f (NEC2): Increased precision of TA and CVEL
+	to 25 digits. Also increased precision of embedded constants
+	2*pi*eta and 1/(2*pi*c*e_0) to 25 digits.
+
+	* maintainer/nec/load.f (LOAD): Increased precision of TPCJX to 25
+	digits.
+
+	* maintainer/nec/hsflx.f (HSFLX): Increased precision of TP, FJKX
+	and PI to 25 digits.
+
+	* maintainer/nec/hsfld.f (HSFLD): Increased precision of ETA to 25
+	digits.
+
+	* maintainer/nec/hintg.f (HINTG): Increased precision of TPI and
+	FPI to 25 digits.
+
+	* maintainer/nec/helix.f (HELIX): Increased precision of PI to 25
+	digits.
+
+	* maintainer/nec/gwave.f (GWAVE): Increased precision of TPJX and
+	ECONX to 25 digits.
+
+	* maintainer/nec/gfld.f (GFLD): Increased precision of TP and PI
+	to 25 digits.
+
+	* maintainer/nec/gf.f (GF): Increased precision of expansion
+	coefficients of ( cos(kr)-1 )/ kr, i.e. 1/4! and 1/6!.
+
+	* maintainer/nec/fflds.f (FFLDS): Increased precision of TPI and
+	CONSX to 25 digits.
+
+	* maintainer/nec/ffld.f (FFLD): Increased precision of PI, TP,
+	CONSX and ETA to 25 digits.
+
+	* maintainer/nec/fblock.f (FBLOCK): Added local variable TP (2*PI)
+	and DATA statement. Used in initialisation of PHAZ.
+
+	* maintainer/nec/fbar.f (FBAR): Increased precision for TOSP and
+	SP to 25 digits.
+
+	* maintainer/nec/etmns.f (ETMNS): Increased precision of RETA and
+	TP to 25 digits. Added local variable ETAOTP and DATA statement
+	for constant eta/(2*pi). Also added local variable ZERTOL and DATA
+	statement for tolerance test for zero. Decreased from 1.0D-30 to
+	1.0D-40.
+
+	* maintainer/nec/ekscx.f (EKSCX): Increased precision of CONX to
+	25 digits.
+
+	* maintainer/nec/eksc.f (EKSC): Increased precision of CONX to 25
+	digits.
+
+	* maintainer/nec/efld.f (EFLD): Increased precision of PI, TP and
+	ETA to 25 digits.
+
+	* maintainer/nec/datagn.f (DATAGN): Increased precision of TA and
+	TD to 25 digits.
+
+	* maintainer/nec/cmww.f (CMWW): Added local variable COLTST for
+	collinear test and DATA statement setting to 0.999999D0. Replaced
+	hard coded constants with COLTST.
+
+	* maintainer/nec/cmsw.f (CMSW): Increased precision of PI to 25
+	digits.
+
+	* maintainer/nec/cang.f (CANG): Increased precision of 180/pi used
+	for angle conversion.
+
+	* maintainer/nec/cabc.f (CABC): Increased precision of constants
+	TP and CCJX to 25 digits.
+
+	* maintainer/nec/arc.f (ARC): Increases precision of TA to 25
+	digits. Added local variable ANGTOL to store maximum angle and
+	increased precision to 360.00000001D0.
+
+1998-10-10  Ian David Flintoft  <idf1@claudia.driffield.uk>
+
+	* maintainer/nec/couple.f (COUPLE): Added INCLUDE statement for
+	nec.inc.
+
+	* maintainer/nec/conect.f (CONECT): Removed declaration and DATA
+	statement for NPMAX.
+
+	* maintainer/nec/segj.inc: Parameterised array limit for IPCON
+	with NPMAX.
+
+	* maintainer/nec/nec.inc: Added declaration and PARAMETER
+	statement for NPMAX.
+
+	* maintainer/nec/conect.f (CONECT): Removed declaration and DATA
+	statement for NSMAXX.
+
+	* maintainer/nec/segj.inc: Parameterised array ISCON using NSMAXX.
+
+	* maintainer/nec/nec.inc: Added declaration and PARAMETER
+	statement for NSMAXX.
+
+	* maintainer/nec/nec2.f (NEC2): Changed two occurrences of 5 to
+	MXCOUP in comparisons to NCOUP.
+
+	* maintainer/nec/yparm.inc: Parameterised array limits for NCTAG,
+	NCSEG, Y11A and Y12A using MXCOUP and MXCOU2.
+
+	* maintainer/nec/nec.inc: Added declaration and PARAMETER
+	statement for MXCOUP and MXCOU2.
+
+	* maintainer/nec/nec2.f (NEC2): Removed declaration and DATA
+	statement for NORMF.
+
+	* maintainer/nec/nec.inc: Added declaration and PARAMETER
+	statement for NORMF.
+
+	* maintainer/nec/rdpat.f (RDPAT): Added declaration for NORMAX and
+	NORMAX = 4 * MAXSEG line at top. Re-dimensioned GAIN to 1
+	(equivalenced to COMPLEX*16 array D).
+
+	* maintainer/nec/nec.inc: Removed declaration and parameter
+	statement for NORMAX.
+
+	* maintainer/nec/conect.f (CONECT): Removed declaration and DATA
+	statement for JMAX.
+
+	* maintainer/nec/trio.f (TRIO): Removed declaration and DATA
+	statement for JMAX.
+
+	* maintainer/nec/tbf.f (TBF): Removed declaration and DATA
+	statement for JMAX.
+
+	* maintainer/nec/sbf.f (SBF): Removed declaration and DATA
+	statement for JMAX.
+
+	* maintainer/nec/segj.inc: Parameterised array limits for AX, BX,
+	CX and JCO using JMAX.
+
+	* maintainer/nec/nec.inc: Added declaration and PARAMETER
+	statement for JMAX.
+
+	* maintainer/nec/nec2.f (NEC2): Parameterised array limits for
+	LDTYP, LDTAG, LDTAGF, LDTAGT, ZLR, ZLI and ZLC using
+	LOADMX. Removed declaration and DATA statement for LOADMX.
+
+	* maintainer/nec/nec.inc: Added LOADMX declaration and parameter
+	statement.
+
+	* maintainer/nec/nec2.f (NEC2): Removed declaration and DATA
+	statement for NSMAX.
+
+	* maintainer/nec/nec.inc: Added NSMAX declaration and PARAMETER
+	statement.
+
+	* maintainer/nec/vsorc.inc: Parameterised array limits with NSMAX.
+
+	* maintainer/nec/conect.f (CONECT): renamed local variable NSMAX
+	to NSMAXX to prevent clash with global maximum number of voltage
+	sources.
+
+	* maintainer/nec/netwk.f (NETWK): Removed DATA statements for
+	NDIMN and NDIMNP and added lines NDIMN=NETMX and NDIMNP=NDIMN+1
+	for parameterised number of non-radiating networks. Parameterised
+	array limits for CMN, RHNT, VSRC, RHNX, IPNT, NTEQA, NTSCA. Not
+	sure about VSRC - not mentioned in manual section on array limits.
+	
+	* maintainer/nec/nec.inc: Added NETMX declaration and PARAMETER
+	statement.
+
+	* maintainer/nec/nec2.f (NEC2): Removed NETMX from declarations
+	and DATA statement.
+
+1998-10-06  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* maintainer/nec (all): Changed all calls to DFLOAT to DBLE.
+
+	* maintainer/nec/nec2.f (NEC2): Rename OUTFILE to OUTFIL, IFRTIMP
+	to IFTIMP and IFRTIMW to IFTIMW to keep names to six characters.
+
+	* maintainer/nec/gwave.f (GWAVE): Removed unused variables FJ and
+	FJX and the equivalence between them.
+
+	* maintainer/nec/conect.f (CONECT): Removed last twelve arguments
+	from calls to SUBPH.
+
+	* maintainer/nec/subph.f (SUBPH): Removed unused dummy arguments
+	X1, X2, X3, X4, Y1, Y2, Y3, Y4, Z1, Z2, Z3, Z4.
+
+	* maintainer/nec/nfpat.f (NFPAT): Removed unused variable NOP and
+	it's initialisation statement.
+
+	* maintainer/nec/nec2.f (NEC2): Removed unused variables FMHZS,
+	GPWNXY, INMSG, LGTPT, OUTMSG.
+
+	* maintainer/nec/helix.f (HELIX): Removed unused variable TURNS
+	and it's initialisation statement.
+
+	* maintainer/nec/gwave.f (GWAVE): Removed unused variable PI and
+	it's data statement.
+
+	* maintainer/nec/cabc.f (CABC): Removed INCLUDE for unused
+	angl.inc.
+
+	* maintainer/nec/lunscr.f (LUNSCR): Removed last two arguments
+	from calls to BLCKOT.
+
+	* maintainer/nec/gfout.f (GFOUT): Removed last two arguments from
+	calls to BLCKOT.
+
+	* maintainer/nec/gfil.f (GFIL): Removed last two arguments from
+	calls to BLCKOT.
+
+	* maintainer/nec/factrs.f (FACTRS): Removed last two arguments
+	from calls to BLCKOT.
+
+	* maintainer/nec/facio.f (FACIO): Removed last two arguments from
+	calls to BLCKOT.
+
+	* maintainer/nec/cmset.f (CMSET): Removed last two arguments from
+	calls to BLCKOT.
+
+	* maintainer/nec/blckot.f (BLCKOT): Removed dummy arguments NBLKS
+	and NEOF.
+
+	* maintainer/nec/yparm.inc: Realigned common block.
+
+	* maintainer/nec/save.inc: Realigned common block.
+
+	* maintainer/nec/netcx.inc: Realigned common block.
+
+	* maintainer/nec/gnd.inc: Realigned common block.
+
+	* maintainer/nec/fpat.inc: Realigned common block.
+
+	* maintainer/nec/dataj.inc: Realigned common block.
+
+	* maintainer/nec/data.inc: Realigned common block.
+
+	* maintainer/nec/crnt.inc: Realigned common block.
+
+1998-10-05  Ian David Flintoft  <idf1@blackbat.ohm.york.ac.uk>
+
+	* maintainer/nec/ffld.f (FFLD): Added initialisation lines for
+	DARG and THET to kill compiler warnings.
+
+	* maintainer/nec/etmns.f (ETMNS): Added initialisation line for I2
+	to kill compiler warning.
+
+	* maintainer/nec/cmws.f (CMWS): Added initialisation line for JS
+	to kill compiler warning.
+
+	* maintainer/nec/blckin.f (BLCKIN): Commented out line trying to
+	modify constant argument.
+
+	* maintainer/nec maintainer/nec (all): Made all comments mixed
+	case.
+	
+	* maintainer/nec (all): Encapsulated all common blocks and
+	parameters into include files. Where necessary adjust common block
+	definitions so all are the same.
+
+	* maintainer/nec (all): Added subprogram header comments to all
+	files based on output of spag (plusfort) and included explicit
+	declarations for all variables.
+ 	
+	* maintainer/nec (all): Based is nec2d.tar.gz source.
+	
+	* configure.in: Initial version to 0.1.

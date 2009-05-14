@@ -1,0 +1,4 @@
+       PROGRAM TESTETIM
+       INTEGER IOCH
+       CALL FLUSH(IOCH)
+       END 

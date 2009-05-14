@@ -1,0 +1,20 @@
+CE TESTCOMM.NEC: NEC2 comment parsing test.
+
+# Top comment
+
+GW 0 10 0. 0. 0. 0. 0. 1. .001 
+# GM 0 9 0. 0. 0. .2 0. 0. 
+GM 0 9 0. 0. 0. .2 0. 0. 
+GM 0 2 0. 0. 0. 0. .2 0. 
+GE 0 # No ground plane 
+#
+# Control cards
+#
+EX 0 0 5 0 1. 0
+
+     #
+     # How about this
+     #
+
+XQ
+EN

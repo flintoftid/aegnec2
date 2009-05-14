@@ -1,0 +1,246 @@
+.TH CNEC2 1
+.\"
+.\" cnec2 - Dynamically Allocated Numerical Electromagnetics Code Version 2 
+.\" Copyright (C) 1998-2009 Ian David Flintoft <idf1@ohm.york.ac.uk>
+.\"
+.\" This program is free software: you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation, either version 3 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program.  If not, see <http://www.gnu.org/licenses/>.
+.\"
+
+.SH "NAME"
+cnec2 \- Numerical Electromagnetics Code Version 2.
+
+.SH "SYNOPSIS"
+.B cnec2
+[
+.B \-h
+|
+.B \-\-help
+] [
+.B \-V
+|
+.B \-\-version
+] [
+.B \-v
+| 
+.B \-\-verbose
+] [
+.BR \-d= NUM
+|
+.BR \-\-debug= NUM
+] [
+.BR \-s= NUM
+|
+.BR \-\-segments= NUM
+] [
+.BR \-p= NUM
+|
+.BR \-\-patches= NUM
+] [
+.BR \-c= BYTES
+|
+.BR \-\-core\-size= BYTES
+] [
+.BR \-e= NUM
+|
+.BR \-\-sources= NUM
+] [
+.BR \-l= NUM
+|
+.BR \-\-loads= NUM
+] [
+.BR \-n= NUM
+| 
+.BR \-\-networks= NUM
+] [
+.BR \-x= NUM
+|
+.BR \-\-connect= NUM
+] [
+.BR \-u= NUM
+|
+.BR \-\-coupling= NUM
+] [
+.BR \-S= NUM
+|
+.BR \-\-ngf\-segments= NUM
+] [
+.BR \-P= NUM
+| 
+.BR \-\-ngf\-patches= NUM
+] [
+.BR \-f= NUM
+| 
+.BR \-\-frequencies= NUM
+] [
+.BR \-a= NUM
+| 
+.BR \-\-angles= NUM
+] [
+.B \-m
+| 
+.B \-\-multi\-file
+] [
+.B \-M
+| \-\-old\-multi\-file
+] [
+.B \-r
+| \-\-remove\-old
+]
+.BR jobname [.nec]
+
+.SH "DESCRIPTION"
+.B cnec2
+is a version of the Numerical Electromagnetics Code Version 2. It uses
+the Method of Moments to perform frequency domain electromagnetic
+analysis of wire structures. This implementation allows the storage to
+be allocated dynamically using command line options (see below). 
+
+The program reads a NEC input deck in standard format from the file
+jobname.nec (the nec suffix may be omitted) and writes the result to a
+file called jobname.res. Additional output may be written to files
+with suffices nre, nrh and rdp depending on the options used.
+
+.SH "OPTIONS"
+.TP
+.BR \-h, \-\-help
+Show summary of options and exit.
+.TP
+.B \-V, \-\-version
+Print the version number and exit. If preceded by \-\-verbose detailed 
+version info is given.
+.TP
+.BR \-v, \-\-verbose
+Give detailed output.
+.TP
+.BR \-d= NUM, \-\-debug= NUM
+Debug information output level (default 0).
+.TP
+.BR \-s= NUM, \-\-segments= NUM
+Allocate storage for up to NUM segments (default 300).
+.TP
+.BR \-p= NUM, \-\-patches= NUM
+Allocate storage for up to NUM patches (default 0).
+.TP
+.BR \-c= NUM, \-\-core-size= NUM
+Allocate core storage of NUM bytes. The suffices b, k and m may be
+used for bytes, kilobytes and megabytes respectively, e.g. -c=5m for 5
+megabytes (default is for core size to be just large enough to
+accomodate the number of segments and patches defined by the -s and -p
+options).
+.TP
+.BR \-e= NUM, \-\-sources= NUM
+Allocate storage for up to NUM sources (default 30).
+.TP
+.BR \-l= NUM, \-\-loads= NUM
+Allocate storage for up to NUM loads (default 30).
+.TP
+.BR \-n= NUM, \-\-networks= NUM
+Allocate storage for up to NUM networks (default 30).
+.TP
+.BR \-x= NUM, \-\-connect= NUM
+Allocate storage such that up to NUM segments may meet at a single
+point (default 30).
+.TP
+.BR \-u= NUM, \-\-coupling= NUM
+Allocate storage such that up to NUM points may be used in coupling
+calculations (default 5).
+.TP
+.BR \-S= NUM, \-\-ngf-segments= NUM
+Allocate storage so that new segments may connect to up to NUM
+existing NGF segments (default 50).
+.TP
+.BR \-P= NUM, \-\-ngf-patches= NUM
+Allocate storage so that new patches may connect to up to NUM
+existing NGF patches (default 50).
+.TP
+.BR \-f= NUM, \-\-frequencies= NUM
+Allocate storage for up to NUM frequencies in normalised impedance
+calculations (default 200).
+.TP
+.BR \-a= NUM, \-\-angles= NUM
+Allocate storage for up to NUM angles in received signal strength
+calculation (default 200).
+.TP
+.BR \-m, \-\-multi\-file
+Generate separate data files for impedance, NE, NH and RP card data in
+addition to the main result file. The data for each NE, NH and RP card
+is written to a separate file.
+.TP
+.BR \-M, \-\-old\-multi\-file
+Generate separate data files for impedance, NE, NH and RP card data in
+addition to the main result file. The data from all NE cards is
+appended to the same file. Similarly for NH and RP cards.
+.TP
+.BR \-r, \-\-remove\-old
+Force removal of old output files before starting job.
+
+.SH "EXAMPLES"
+Basic usage:
+.PP
+.B cnec2 dipole.nec
+
+To increase the number of segments allowed to 2000:
+.PP
+.B cnec2 -s 2000 dipole.nec
+
+To limit the core size to 4 megabytes:
+.PP
+.B cnec2 -s 2000 -c 4m dipole.nec
+
+.SH "SEE ALSO"
+.BR somnec (1)
+
+On-line NEC2 Manuals: 
+.P 
+.B http://members.home.net:80/nec2/preface.html
+ 
+The unofficial Numerical Electromagnetic Code (NEC) Archives: 
+.P
+.B http://www.qsl.net/wb6tpu/swindex.html
+ 
+NEC mailing list subscription information
+.P
+.B http://www.emclab.umr.edu/neclist.html
+ 
+NEC mailing list archives:
+.P
+.B http://ectmuxs1.et.tudelft.nl/~koen/Nec/index.html             
+
+.SH "COPYRIGHT"
+GNU General Public License (GPL) Version 2.
+
+.SH "BUGS"
+No known bugs. Please report bugs to Ian David Flintoft
+<idf1@ohm.york.ac.uk>.
+
+.SH "AUTHORS"
+Many people have contributed to NEC2 including:
+.PP
+R. W. Adams,
+J. N. Brittingham,
+G. J. Burke,
+F. J. Deadrick,
+K. K. Hazard,
+D. L. Knepp,
+D. L. Lager,
+R. J. Lytle,
+E. K. Miller,
+J. B. Morton,
+G. M. Pjerrou,
+A. J. Poggio and
+E. S. Selden.
+
+This version of NEC2 was developed by
+.PP
+Ian David Flintoft <idf1@ohm.york.ac.uk>.

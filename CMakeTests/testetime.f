@@ -1,0 +1,4 @@
+       PROGRAM TESTETIM
+       REAL ETIME, T1, TARRAY(2)
+       T1=ETIME(TARRAY)
+       END 

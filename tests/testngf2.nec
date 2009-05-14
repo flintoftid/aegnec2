@@ -1,0 +1,7 @@
+CE TESTNGF2.NEC: NEC2 NGF test program 2.
+GF
+GW 5 10 0.1 0.1 0.2 0.0 0.1 0.2 0.0015
+GE 0
+EX 1 1 1 0 90.0 0.0 0.0 0.0 0.0 0
+XQ
+EN

@@ -1,0 +1,124 @@
+.TH CSOMNEC 1
+.\"
+.\" cnec2 - Dynamically Allocated Numerical Electromagnetics Code Version 2 
+.\" Copyright (C) 1998-2009 Ian David Flintoft <idf1@ohm.york.ac.uk>
+.\"
+.\" This program is free software: you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation, either version 3 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program.  If not, see <http://www.gnu.org/licenses/>.
+.\"
+
+.SH "NAME"
+csomnec (cnec2)\- Sommerfeld-Norton Ground Parameter Program For NEC2.
+
+.SH "SYNOPSIS"
+.B csomnec
+[
+.B \-h
+|
+.B \-\-help
+] [
+.B \-V
+|
+.B \-\-version
+] [
+.B \-v
+| 
+.B \-\-verbose
+] [
+.BR \-d= NUM
+|
+.BR \-\-debug= NUM
+] [
+.BR \-r
+|
+.BR \-\-remove\-old
+] [
+.BR \-p
+|
+.BR \-\-print
+] 
+.BR \-e= FLOAT 
+| 
+.BR \-\-permittivty= FLOAT
+.BR \-c= NUM 
+| 
+.BR \-\-conductivity= FLOAT
+.BR \-f= FLOAT 
+| 
+.BR \-\-frequency= FLOAT
+.BR jobname [.som]
+
+.SH "DESCRIPTION"
+.B csomnec
+is a Sommerfeld-Norton lossy ground program for the Numerical
+Electromagnetics Code Version 2. It reads in user supplied ground
+parameters and generates a binary data file for use in
+.B cnec2
+with the lossy ground options.
+
+.SH "OPTIONS"
+.TP
+.BR \-h, \-\-help
+Show summary of options and exit.
+.TP
+.B \-V, \-\-version
+Print the version number and exit.
+.TP
+.BR \-v, \-\-verbose
+Give detailed output.
+.TP
+.BR \-d= NUM, \-\-debug= NUM
+Debug information output level (default 0).
+.TP
+.BR \-e= FLOAT, \-\-permittivty= FLOAT
+Permittivity of ground is FLOAT (required option).
+.TP
+.BR \-c= FLOAT, \-\-conductivity= FLOAT
+Conductivity of ground is FLOAT S/m (required option).
+.TP
+.BR \-f= FLOAT, \-\-frequency= FLOAT
+Frequency for calculation is FLOAT MHz (required option).
+.TP
+.BR \-r, \-\-remove\-old
+Force removal of old output file before starting job.
+.TP
+.BR \-p, \-\-print
+Print out table of ground calculation.
+
+.SH "EXAMPLES"
+Basic usage:
+.PP
+.B csomnec 
+-e 20.0 -c 0.015 -f 1.0 job.som
+
+will calculate the ground parameters at 1 MHz for
+a relative permittivity of 20.0 and conductivity of 0.015 S/m
+and put the results into the file job.som.
+
+.SH "SEE ALSO"
+.BR cnec2 (1)
+
+.SH "COPYRIGHT"
+GNU General Public License (GPL) Version 2.
+
+.SH "BUGS"
+No known bugs. Please report bugs to Ian David Flintoft
+<idf1@ohm.york.ac.uk>.
+
+.SH "AUTHORS"
+George B. Christianson <gchristianson@pppl.gov>, Princeton University
+Plasma Physics Laboratory.
+
+This version of SOMNEC was developed by
+.PP
+Ian David Flintoft <idf1@ohm.york.ac.uk>.

@@ -1,0 +1,25 @@
+
+See also the files Copyright.txt and ChangeLog.txt.
+
+Many people have contributed to NEC2 including:
+
+R. W. Adams,
+J. N. Brittingham,
+G. J. Burke,
+F. J. Deadrick,
+K. K. Hazard,
+D. L. Knepp,
+D. L. Lager,
+R. J. Lytle,
+E. K. Miller,
+J. B. Morton,
+G. M. Pjerrou,
+A. J. Poggio and
+E. S. Selden.      
+
+This version of NEC2, called cnec2, is maintained by 
+I D Flintoft <idf1@ohm.york.ac.uk>.
+
+The source code in the lapack directory is from netlib. See individual
+source files for author information.
+

@@ -1,0 +1,8 @@
+CE TEST2000.NEC: NEC2 timing test - 2000 segments.
+GW 0 10 0. 0. 0. 0. 0. 1. .001 
+GM 0 9 0. 0. 0. .2 0. 0. 
+GM 0 19 0. 0. 0. 0. .2 0. 
+GE
+EX 0 0 5 0 1. 0
+XQ
+EN
