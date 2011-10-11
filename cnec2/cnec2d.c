@@ -38,7 +38,7 @@
  * array is passed at end of arg list by value as an unsigned long. This is not
  * portable but works on many machines with many compilers.
  */
-void F_nec2d( char*, char*, INTEGER*, INTEGER*, INTEGER*,
+void FC_nec2d( char*, char*, INTEGER*, INTEGER*, INTEGER*,
               INTEGER*, INTEGER*, INTEGER*, INTEGER*, 
               INTEGER*, INTEGER*, INTEGER*, INTEGER*, INTEGER*, INTEGER*, INTEGER*, 
               INTEGER*, INTEGER*, INTEGER*, INTEGER*, INTEGER*, INTEGER*, INTEGER*, 
@@ -219,8 +219,8 @@ cnec2d( char *JOBNAM, const long ld, const long iresrv, const long nsmax,
 
   /* Call NEC2 */
   IFAIL = 0;
-  F_nec2d( JOBNAM,FILBUF,&IFAIL,&DEBUG,&MULTIF,&LD,&IRESRV,&NSMAX,&LOADMX,
-           &NETMX,&NORMF,&MXCOUP, &MXCOU2,&JMAX,&NSMAXX,&NPMAX,
+  FC_nec2d(JOBNAM,FILBUF,&IFAIL,&DEBUG,&MULTIF,&LD,&IRESRV,&NSMAX,&LOADMX,
+            &NETMX,&NORMF,&MXCOUP, &MXCOU2,&JMAX,&NSMAXX,&NPMAX,
            IP,ICON1,ICON2,ITAG,ICONX,IVQD,ISANT,IQDS,NCTAG,NCSEG,
            ISEG1,ISEG2,NTYP,JCO,ISCON,IPCON,LDTYP,LDTAG,LDTAGF,
            LDTAGT,IX,SALP,AIR,AII,BIR,BII,CIR,CII,GAIN,X,Y,Z,SI,

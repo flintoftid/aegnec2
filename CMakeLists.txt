@@ -18,7 +18,7 @@
 
 project ( CNEC2 C Fortran )
 
-cmake_minimum_required( VERSION 2.6.4 )
+cmake_minimum_required( VERSION 2.8.0 )
 
 set( CNEC2_PACKAGE "\"cnec2\"" )
 set( CNEC2_VERSION_MAJOR "0" )
@@ -32,8 +32,12 @@ link_directories ( ${CNEC2_BINARY_DIR}/nec2d )
 
 # Set up C to Fortran interface.
 include( FortranCInterface )
-set( FORTRAN_FUNCTIONS nec2d somnec )
-create_fortran_c_interface( "F_" FORTRAN_FUNCTIONS "${CNEC2_BINARY_DIR}/fcint.h" )
+FortranCInterface_HEADER( "${CNEC2_BINARY_DIR}/fcint.h"
+                          MACRO_NAMESPACE "FC_"
+                          SYMBOL_NAMESPACE "FC_"
+                          SYMBOLS nec2d somnec )
+
+FortranCInterface_VERIFY()
 
 # Determine if to use builtin somnec functionality.
 option( BUILTIN_SOMNEC  "Build somnec functionality into cnec2 programme" ON )

@@ -37,7 +37,7 @@
  * array is passed at end of arg list by value as an unsigned long. This is not
  * portable but works on many machines with many compilers.
  */
-void F_somnec( INTEGER* , INTEGER* , INTEGER* , INTEGER*, REAL_8*, REAL_8*, 
+void FC_somnec( INTEGER* , INTEGER* , INTEGER* , INTEGER*, REAL_8*, REAL_8*, 
                REAL_8*, char *, FTNLEN );
 
 
