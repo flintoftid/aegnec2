@@ -67,7 +67,7 @@ csomnec( int verbose , int debug , int ipt , double epr , double sig ,
 
   /* Call SOMNEC */
   IFAIL = 0;
-  F_somnec( &IFAIL , &VERBSE , &DEBUG , &IPT , &EPR , &SIG , &FMHZ , 
+  FC_somnec(&IFAIL , &VERBSE , &DEBUG , &IPT , &EPR , &SIG , &FMHZ , 
             otfile , otfile_len );
 
   return IFAIL;

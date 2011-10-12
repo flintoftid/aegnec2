@@ -1,3 +1,8 @@
+
+2011-10-11  idf1  <idf1@ohm.york.ac.uk>
+
+        * all files: Updated for CMake 2.8.x.
+
 2009-05-14  idf1  <idf1@voyager.nodomain.org>
 
         * all files: Port to CMake developement system.
