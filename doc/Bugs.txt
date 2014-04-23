@@ -8,7 +8,10 @@ Report all bugs in this version of CNEC2 to idf1@ohm.york.ac.uk
 Known Bugs In CNEC2
 ===================
 
-(1) The validation of testngf1.nec and testngf2.nec is known to fail
+(1) SOMNEC appears to be broken on 64-bit systems. Seems to be related
+    to the C/Fortran interface.
+
+(2) The validation of testngf1.nec and testngf2.nec is known to fail
 on alpha platforms (both Tru64 Unix and Linux). This is due to a
 precision problems in regenerating the geometry data from the binary
 NGF file causing tan(0,x) to be 180 instead of 0 due to noise in small
