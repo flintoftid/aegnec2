@@ -1,7 +1,7 @@
-.TH CSOMNEC 1
+.TH AEGSOMNEC 1
 .\"
-.\" cnec2 - Dynamically Allocated Numerical Electromagnetics Code Version 2 
-.\" Copyright (C) 1998-2009 Ian David Flintoft <idf1@ohm.york.ac.uk>
+.\" aegnec2 - Dynamically Allocated Numerical Electromagnetics Code Version 2 
+.\" Copyright (C) 1998-2016 Ian David Flintoft <ian.flintoft@york.ac.uk>
 .\"
 .\" This program is free software: you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 csomnec (cnec2)\- Sommerfeld-Norton Ground Parameter Program For NEC2.
 
 .SH "SYNOPSIS"
-.B csomnec
+.B aegsomnec
 [
 .B \-h
 |
@@ -59,11 +59,11 @@ csomnec (cnec2)\- Sommerfeld-Norton Ground Parameter Program For NEC2.
 .BR jobname [.som]
 
 .SH "DESCRIPTION"
-.B csomnec
+.B aegsomnec
 is a Sommerfeld-Norton lossy ground program for the Numerical
 Electromagnetics Code Version 2. It reads in user supplied ground
 parameters and generates a binary data file for use in
-.B cnec2
+.B aegnec2
 with the lossy ground options.
 
 .SH "OPTIONS"
@@ -98,7 +98,7 @@ Print out table of ground calculation.
 .SH "EXAMPLES"
 Basic usage:
 .PP
-.B csomnec 
+.B aegsomnec 
 -e 20.0 -c 0.015 -f 1.0 job.som
 
 will calculate the ground parameters at 1 MHz for
@@ -106,14 +106,14 @@ a relative permittivity of 20.0 and conductivity of 0.015 S/m
 and put the results into the file job.som.
 
 .SH "SEE ALSO"
-.BR cnec2 (1)
+.BR aegnec2 (1)
 
 .SH "COPYRIGHT"
-GNU General Public License (GPL) Version 2.
+GNU General Public License (GPL) Version 3.
 
 .SH "BUGS"
 No known bugs. Please report bugs to Ian David Flintoft
-<idf1@ohm.york.ac.uk>.
+<ian.flintoft@york.ac.uk>.
 
 .SH "AUTHORS"
 George B. Christianson <gchristianson@pppl.gov>, Princeton University
@@ -121,4 +121,4 @@ Plasma Physics Laboratory.
 
 This version of SOMNEC was developed by
 .PP
-Ian David Flintoft <idf1@ohm.york.ac.uk>.
+Ian David Flintoft <ian.flintoft@york.ac.uk>.

@@ -1,6 +1,6 @@
 #
-# cnec2 - Dynamically Allocated Numerical Electromagnetics Code Version 2 
-# Copyright (C) 1998-2009 Ian David Flintoft <idf1@ohm.york.ac.uk>
+# aegnec2 - Dynamically Allocated Numerical Electromagnetics Code Version 2 
+# Copyright (C) 1998-2016 Ian David Flintoft <ian.flintoft@york.ac.uk>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,11 +18,10 @@
 
 if( NOT BUILTIN_SOMNEC )
 
-   add_executable( csomnec cdrive.c csomnec.c cdrive.h csomnec.h )
-   target_link_libraries( csomnec somnec somtest )
-   set_target_properties( csomnec PROPERTIES LINKER_LANGUAGE Fortran )
+   add_executable( aegsomnec cdrive.c csomnec.c cdrive.h csomnec.h )
+   target_link_libraries( aegsomnec somnec somtest )
+   set_target_properties( aegsomnec PROPERTIES LINKER_LANGUAGE Fortran )
 
-   install( TARGETS csomnec RUNTIME DESTINATION bin )
+   install( TARGETS aegsomnec RUNTIME DESTINATION bin )
 
 endif( NOT BUILTIN_SOMNEC )
-

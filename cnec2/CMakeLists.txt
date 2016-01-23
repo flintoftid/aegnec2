@@ -1,6 +1,6 @@
 #
-# cnec2 - Dynamically Allocated Numerical Electromagnetics Code Version 2 
-# Copyright (C) 1998-2009 Ian David Flintoft <idf1@ohm.york.ac.uk>
+# aegnec2 - Dynamically Allocated Numerical Electromagnetics Code Version 2 
+# Copyright (C) 1998-2016 Ian David Flintoft <ian.flintoft@.york.ac.uk>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,7 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-add_executable( cnec2 cnec2d.c cnec2d.h nec.c nec.h )
-target_link_libraries( cnec2 nec2d ${NEC_LIBS} )
-set_target_properties( cnec2 PROPERTIES LINKER_LANGUAGE Fortran )
-install( TARGETS cnec2 RUNTIME DESTINATION bin )
+add_executable( aegnec2 cnec2d.c cnec2d.h nec.c nec.h )
+target_link_libraries( aegnec2 nec2d ${NEC_LIBS} )
+set_target_properties( aegnec2 PROPERTIES LINKER_LANGUAGE Fortran )
+install( TARGETS aegnec2 RUNTIME DESTINATION bin )
+

@@ -1,7 +1,7 @@
-.TH CNEC2 1
+.TH AEGNEC2 1
 .\"
-.\" cnec2 - Dynamically Allocated Numerical Electromagnetics Code Version 2 
-.\" Copyright (C) 1998-2009 Ian David Flintoft <idf1@ohm.york.ac.uk>
+.\" aegnec2 - Dynamically Allocated Numerical Electromagnetics Code Version 2 
+.\" Copyright (C) 1998-2016 Ian David Flintoft <ian.flintoft@york.ac.uk>
 .\"
 .\" This program is free software: you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 cnec2 \- Numerical Electromagnetics Code Version 2.
 
 .SH "SYNOPSIS"
-.B cnec2
+.B aegnec2
 [
 .B \-h
 |
@@ -100,7 +100,7 @@ cnec2 \- Numerical Electromagnetics Code Version 2.
 .BR jobname [.nec]
 
 .SH "DESCRIPTION"
-.B cnec2
+.B aegnec2
 is a version of the Numerical Electromagnetics Code Version 2. It uses
 the Method of Moments to perform frequency domain electromagnetic
 analysis of wire structures. This implementation allows the storage to
@@ -188,41 +188,25 @@ Force removal of old output files before starting job.
 .SH "EXAMPLES"
 Basic usage:
 .PP
-.B cnec2 dipole.nec
+.B aegnec2 dipole.nec
 
 To increase the number of segments allowed to 2000:
 .PP
-.B cnec2 -s 2000 dipole.nec
+.B aegnec2 -s 2000 dipole.nec
 
 To limit the core size to 4 megabytes:
 .PP
-.B cnec2 -s 2000 -c 4m dipole.nec
+.B aegnec2 -s 2000 -c 4m dipole.nec
 
 .SH "SEE ALSO"
-.BR somnec (1)
-
-On-line NEC2 Manuals: 
-.P 
-.B http://members.home.net:80/nec2/preface.html
- 
-The unofficial Numerical Electromagnetic Code (NEC) Archives: 
-.P
-.B http://www.qsl.net/wb6tpu/swindex.html
- 
-NEC mailing list subscription information
-.P
-.B http://www.emclab.umr.edu/neclist.html
- 
-NEC mailing list archives:
-.P
-.B http://ectmuxs1.et.tudelft.nl/~koen/Nec/index.html             
+.BR aegsomnec (1)
 
 .SH "COPYRIGHT"
-GNU General Public License (GPL) Version 2.
+GNU General Public License (GPL) Version 3.
 
 .SH "BUGS"
 No known bugs. Please report bugs to Ian David Flintoft
-<idf1@ohm.york.ac.uk>.
+<ian.flintoft@york.ac.uk>.
 
 .SH "AUTHORS"
 Many people have contributed to NEC2 including:
@@ -243,4 +227,4 @@ E. S. Selden.
 
 This version of NEC2 was developed by
 .PP
-Ian David Flintoft <idf1@ohm.york.ac.uk>.
+Ian David Flintoft <ian.flintoft@york.ac.uk>.

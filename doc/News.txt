@@ -1,6 +1,6 @@
 
-CNEC2 User Visible Changes
-==========================
+AEGNEC2 User Visible Changes
+============================
 
 
 This file notes major user visible changes to the code. Details may be

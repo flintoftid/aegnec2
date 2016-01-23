@@ -1,11 +1,11 @@
 
-Reporting Bugs in CNEC2
-=======================
+Reporting Bugs in AEGNEC2
+=========================
 
-Report all bugs in this version of CNEC2 to idf1@ohm.york.ac.uk
+Report all bugs in this version of AEGNEC2 to idf1@ohm.york.ac.uk
 
 
-Known Bugs In CNEC2
+Known Bugs In AEGNEC2
 ===================
 
 (1) SOMNEC appears to be broken on 64-bit systems. Seems to be related
@@ -24,7 +24,7 @@ not significant. It is however annoying and will be fixed eventually.
 Workaround: Ignore errors in testsuite caused by this problem.
  
 
-Known Issues In CNEC2
+Known Issues In AEGNEC2
 =====================
 
 (1) - VSRC array limit in NETWK. This limit was 30 and is now changed
@@ -66,13 +66,13 @@ SunOS xxxx.xx.xx 5.6 Generic_105181-17 sun4u sparc SUNW,Ultra-Enterprise
 due to a portability problem in the new version of autoconf. The compile command
 comes out as
 
-cc -DHAVE_CONFIG_H -I. -I../../cnec2-0.6.6a1/lib -I.. -I.. -I../../cnec2-0.6.6a1/lib \
-`test -f ../../cnec2-0.6.6a1/lib/error.c || echo '../../cnec2-0.6.6a1/lib/'`error.c
+cc -DHAVE_CONFIG_H -I. -I../../AEGNEC2-0.6.6a1/lib -I.. -I.. -I../../AEGNEC2-0.6.6a1/lib \
+`test -f ../../AEGNEC2-0.6.6a1/lib/error.c || echo '../../AEGNEC2-0.6.6a1/lib/'`error.c
 
 instead of 
 
-cc -DHAVE_CONFIG_H -I. -I../../cnec2-0.6.6a1/lib -I.. -I.. -I../../cnec2-0.6.6a1/lib \
-`test -f ../../cnec2-0.6.6a1/lib/error.c || echo '../../cnec2-0.6.6a1/lib/'`../../cnec2-0.6.6a1/lib/error.c
+cc -DHAVE_CONFIG_H -I. -I../../AEGNEC2-0.6.6a1/lib -I.. -I.. -I../../AEGNEC2-0.6.6a1/lib \
+`test -f ../../AEGNEC2-0.6.6a1/lib/error.c || echo '../../AEGNEC2-0.6.6a1/lib/'`../../AEGNEC2-0.6.6a1/lib/error.c
 
 Workaround: Build in source directory.
 

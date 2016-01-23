@@ -22,7 +22,7 @@ cmake_minimum_required( VERSION 2.8.0 )
 
 set( CNEC2_PACKAGE "\"cnec2\"" )
 set( CNEC2_VERSION_MAJOR "0" )
-set( CNEC2_VERSION_MINOR "8" )
+set( CNEC2_VERSION_MINOR "9" )
 set( CNEC2_VERSION_PATCH "0" )
 set( CNEC2_VERSION_STRING "\"${CNEC2_VERSION_MAJOR}.${CNEC2_VERSION_MINOR}.${CNEC2_VERSION_PATCH}\"" )
 
@@ -130,16 +130,20 @@ add_subdirectory( doc )
 
 # Package testing.
 enable_testing()
+find_program( BASH_PROGRAM bash )
 add_subdirectory ( tests )
+
+# Installation.
+install( FILES ReadMe.txt Licence.txt DESTINATION doc/aegnec2 )
 
 # Package generation.
 include( InstallRequiredSystemLibraries )
-set( CPACK_PACKAGE_NAME "cnec2" )
-set( CPACK_PACKAGE_DESCRIPTION_SUMMARY "NEC2 Numerical CEM code" )
-set( CPACK_PACKAGE_VENDOR "Ian Flintoft <idf1@ohm.york.ac.uk>" )
-set( CPACK_PACKAGE_CONTACT "Ian Flintoft <idf1@ohm.york.ac.uk>" )
-set( CPACK_PACKAGE_DESCRIPTION_FILE "${CNEC2_SOURCE_DIR}/doc/ReadMe.txt" )
-set( CPACK_RESOURCE_FILE_LICENSE "${CNEC2_BINARY_DIR}/doc/License.txt" )
+set( CPACK_PACKAGE_NAME "aegnec2" )
+set( CPACK_PACKAGE_DESCRIPTION_SUMMARY "AEGNEC2 CEM code" )
+set( CPACK_PACKAGE_VENDOR "Ian Flintoft <ian.flintoft@york.ac.uk>" )
+set( CPACK_PACKAGE_CONTACT "Ian Flintoft <ian.flintoft@york.ac.uk>" )
+set( CPACK_PACKAGE_DESCRIPTION_FILE "${CNEC2_SOURCE_DIR}/ReadMe.txt" )
+set( CPACK_RESOURCE_FILE_LICENSE "${CNEC2_SOURCE_DIR}/Licence.txt" )
 set( CPACK_PACKAGE_VERSION_MAJOR "${CNEC2_VERSION_MAJOR}" )
 set( CPACK_PACKAGE_VERSION_MINOR "${CNEC2_VERSION_MINOR}" )
 set( CPACK_PACKAGE_VERSION_PATCH "${CNEC2_VERSION_PATCH}" )
