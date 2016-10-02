@@ -242,7 +242,7 @@ The source code in the lapack directory is from netlib. See individual
 source files for author information.
 
 For information on the various source files see [Licence.md][] in the source or binary package. 
-For a history of NEC codes see ACES Newsletter, vol. 8, no. 3, pp. 8-10, November 1993 [Adler1993][].
+For a history of NEC codes see ([Adler1993][]).
 
 
 ## Related links
