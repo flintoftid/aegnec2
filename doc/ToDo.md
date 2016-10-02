@@ -1,228 +1,217 @@
 
-AEGNEC2 TODO List
-=================
+# AEG NEC2 To Do List
 
 
-0.8.1
------
+## Version 0.8.1
 
- * Release objectives for 0.8.1 release:
+### Release objectives for 0.8.1
 
-   1. Initial Windows support via MINGW and NSIS.
+1. Initial Windows support via MINGW and NSIS.
 
-   2. Performance assessment with MINGW
+2. Performance assessment with MINGW.
 
-   3. Documentation for building with MINGW.
+3. Documentation for building with MINGW.
 
-   4. Tested (not via test suite) on WinXP/Intel.
+4. Tested (not via test suite) on WinXP/Intel.
 
- * Help screen won't fit into a DOS box in Win95/98/NT. Need an
-   abbreviated help or some way to work around the problem. cnec2 -h|more
-   doesn't seem to work. Maybe:
-     
-   Short help with -h (note to use -V as well for more help) and long
-   help with -V -h and a "Hit return to continue" set up. How many lines
-   per screen?
+### Help screen won't fit into a DOS box in Win95/98/NT. 
 
- * Add more support for building under Windows and using the Intel
-   Maths Kernel Libraries. How do you do this? Make a windows source
-   distribution using some additional targets in the make file. Could
-   for example combine all the Fortran code into a single file and 
-   pre-process for known windows support. May need to leave HAVE_BLAS
-   as a definable. 
+Need an abbreviated help or some way to work around the problem. 
 
- * Investigate how to get optimised BLAS in Win32. 
+    cnec2 -h|more
+    
+doesn't seem to work. Maybe short help with `-h` (note to use `-V` as well 
+for more help) and long help with `-V -h` and a `"Hit return to continue"` 
+set up. How many lines per screen?
 
-   a. Cygwin/mingw: Either need source (asm) for an optimised BLAS or a way
-      of using the Intel Performance Library DLL with mingw. Cygwin is slow
-      anyway.
+### Add more support for building under Windows
 
-   b. Native MS compilers: should work with Intel Performance Library but need
-      a "make" system for compilation. Is there a portable way to do this for
-      all Win32 compilers/IDEs etc (dream on)?
+Including using the Intel Maths Kernel Libraries. How do you do this? 
+Make a windows source distribution using some additional targets in the 
+make file. Could for example combine all the Fortran code into a single 
+file and pre-process for known windows support. May need to leave HAVE_BLAS
+as a definable. 
 
-   c. ATLAS.
+### Investigate how to get optimised BLAS in Win32. 
+
+1. Cygwin/mingw: Either need source (asm) for an optimised BLAS or a way
+   of using the Intel Performance Library DLL with mingw. Cygwin is slow
+   anyway.
+
+2. Native MS compilers: should work with Intel Performance Library but need
+   a "make" system for compilation. Is there a portable way to do this for
+   all Win32 compilers/IDEs etc (dream on)?
+
+3. ATLAS.
 
 
-0.8.2
------
+## Version 0.8.2
 
-  * Release objectives for 0.8.2:
+### Release objectives for 0.8.2
 
-    1. Port testsuite to work on Win32 and Unix.
+1. Port testsuite to work on Win32 and Unix.
 
-  * Fix broken tests? Issues are negative zero's
+### Fix broken tests
 
-    0.00 versus -0.00
+Issues are negative zero's: 0.00 versus -0.00. Could preprocess results 
+file and change any negative zero to positive. Could be different number 
+of digits after decimal point. Need some serious regexp!
 
-    Could preprocess results file and change any negative
-    zero to positive. Could be different number of digits  
-    after decimal point. Need some serious regexp!
+### Convert testsuite drivers to Python
 
-  * Convert testsuite driers to Python.
+### More robust way to extract timing data
 
-  * More robust way to extract timing data.
+### More robust way to perform comparision of results file
 
-  * More robust way to perform comparision
-    of results file.
-
- * The validation of testngf1.nec and testngf2.nec is known to fail
-   on alpha platforms (both Tru64 Unix and Linux). This is due to a
-   precision problems in regenerating the geometry data from the binary
-   NGF file causing tan(0,x) to be 180 instead of 0 due to noise in small
-   values of x. atgn2.f wraps the standard DATAN2(Y,X) function such that
-   it returns 0 if X==Y==0. If Y==0 but X is a very small number then
-   rounding in the NGF code can flip its sign causing ATGN2 to flip from
-   0 to 180. These values are effectively degenerate so the failure is
-   not significant. It is however annoying and will be fixed eventually.
-   Can this be solved using a tolerance? "DX" <= 1D-15 goes to zero? Can 
-   the calculation in GFIL be improved for small vales of X, Y ,Z? Could 
-   this be done in the atgn2 routine or is this too low level? For 
-   example (note changed XX<-->YY for sanity):
+The validation of `testngf1.nec` and `testngf2.nec` is known to fail
+on alpha platforms, both Tru64 Unix and Linux. This is due to a
+precision problems in regenerating the geometry data from the binary
+NGF file causing `tan(0,x)` to be 180 instead of 0 due to noise in small
+values of `x`. `atgn2.f` wraps the standard `DATAN2(Y,X)` function such that
+it returns `0` if `X==Y==0`. If `Y==0` but `X` is a very small number then
+rounding in the NGF code can flip its sign causing `ATGN2` to flip from
+`0` to `180`. These values are effectively degenerate so the failure is
+not significant. It is however annoying and will be fixed eventually.
+Can this be solved using a tolerance? `"DX" <= 1D-15` goes to zero? Can 
+the calculation in GFIL be improved for small vales of `X, Y ,Z`? Could 
+this be done in the atgn2 routine or is this too low level? For 
+example (note changed XX<-->YY for sanity):
  
-      REAL*8 FUNCTION ATGN2 ( YY , XX )
-      IMPLICIT NONE
-      REAL*8 XX , YY
-      IF( XX.LT.1.0D-15 ) THEN
-         IF( YY.LT.1.0D-15 ) THEN
-            ATGN2 = 0.0D0
-         ELSE
-            ATGN2 = DATAN2(YY,XX)	
-         ENDIF
-      ELSE
-         ATGN2 = DATAN2(YY,XX)	
-      ENDIF
-      RETURN
-      END
+    REAL*8 FUNCTION ATGN2 ( YY , XX )
+    IMPLICIT NONE
+    REAL*8 XX , YY
+    IF( XX.LT.1.0D-15 ) THEN
+       IF( YY.LT.1.0D-15 ) THEN
+          ATGN2 = 0.0D0
+       ELSE
+          ATGN2 = DATAN2(YY,XX)	
+       ENDIF
+    ELSE
+       ATGN2 = DATAN2(YY,XX)	
+    ENDIF
+    RETURN
+    END
 
-   Does this incur a significant performance penalty? Do I need test on
-   YY in outer ELSE statement?
-
-
-0.8.3
------
-
- * Release objectives for 0.8.3:
-
-   1. Debian packaging support.
-
- * Update Debian support to latest policy - i.e. that for etch.
-
- * Use CPack ti implement packaging.
+Does this incur a significant performance penalty? Do I need test on
+YY in outer ELSE statement?
 
 
-Future
-------
+## Future versions
 
- * Run sphere model again on new machine.
+### Run sphere model again on new machine
 
- * Add code to wire.f to catch adding wires beyond end
-   of array sizes (LD). Presumably there will be other
-   places where this may occur - candidates are:
+### Add code to wire.f to catch adding wires beyond end of array sizes (LD)
 
-   emc5 $ grep "^ *X(.*) *=" *.f *.F
-   arc.f:         X(I) = XS1
-   conect.f:            X(IX) = XA
-   datagn.f:         X(I) = X(I)*XW1
-   datagn.f:         X(I) = X(I)*XW1
-   datagn.f:         X(I) = (X(I)+X2(I))*0.5D0
-   gfil.f:         X(I) = XI - ALP(I)*DX
-   gfil.f:         X(I) = X(I)*WLAM
-   helix.f:         X(I) = A1*DCOS(2.0D0*PI*Z(I)/SSS)
-   helix.f:         X(I) = (A1+(A2-A1)*Z(I)/DABS(HL))*DCOS(2.0D0*PI*Z(I)/SSS)
-   helix.f:         X(I) = Y(I)
-   move.f:            X(K) = XI*XX + YI*XY + ZI*XZ + XXS
-   move.f:            X(KR) = XI*XX + YI*XY + ZI*XZ + XXS
-   patch.f:      X(MI) = X1
-   patch.f:      X(MI) = X1 + 0.5D0*(S1X+S2X)
-   patch.f:      X(MI) = (X1+XXX2+X3)/3.0D0
-   patch.f:      X(MI) = (XA*(X1+XXX2+X3)+XST*(X1+X3+X4))*SALPN
-   patch.f:            X(MI) = XN2 + XST*S1X
-   reflc.f:         X(I) = XK*CS - YK*SS
-   reflc.f:         X(J) = XK*CS - YK*SS
-   subph.f:         X(NYP) = X(IX)
-   subph.f:         X(MIA) = XXS + XT*S1X + YT*S2X
-   wire.f:         X(I) = XS1
-   nec2d.F:         X(I) = XTEMP(I)*FR
-   nec2d.F:         X(J) = XTEMP(J)*FR
+Presumably there will be other places where this may occur - candidates are:
+
+    emc5 $ grep "^ *X(.*) *=" *.f *.F
+    arc.f:         X(I) = XS1
+    conect.f:            X(IX) = XA
+    datagn.f:         X(I) = X(I)*XW1
+    datagn.f:         X(I) = X(I)*XW1
+    datagn.f:         X(I) = (X(I)+X2(I))*0.5D0
+    gfil.f:         X(I) = XI - ALP(I)*DX
+    gfil.f:         X(I) = X(I)*WLAM
+    helix.f:         X(I) = A1*DCOS(2.0D0*PI*Z(I)/SSS)
+    helix.f:         X(I) = (A1+(A2-A1)*Z(I)/DABS(HL))*DCOS(2.0D0*PI*Z(I)/SSS)
+    helix.f:         X(I) = Y(I)
+    move.f:            X(K) = XI*XX + YI*XY + ZI*XZ + XXS
+    move.f:            X(KR) = XI*XX + YI*XY + ZI*XZ + XXS
+    patch.f:      X(MI) = X1
+    patch.f:      X(MI) = X1 + 0.5D0*(S1X+S2X)
+    patch.f:      X(MI) = (X1+XXX2+X3)/3.0D0
+    patch.f:      X(MI) = (XA*(X1+XXX2+X3)+XST*(X1+X3+X4))*SALPN
+    patch.f:            X(MI) = XN2 + XST*S1X
+    reflc.f:         X(I) = XK*CS - YK*SS
+    reflc.f:         X(J) = XK*CS - YK*SS
+    subph.f:         X(NYP) = X(IX)
+    subph.f:         X(MIA) = XXS + XT*S1X + YT*S2X
+    wire.f:         X(I) = XS1
+    nec2d.F:         X(I) = XTEMP(I)*FR
+    nec2d.F:         X(J) = XTEMP(J)*FR
  
- * Add documentation for PL card:
+### Add documentation for PL card
 
-   PL IPLP1 IPLP2 IPLP3 IPLP4
+    PL IPLP1 IPLP2 IPLP3 IPLP4
 
-   IPLP1 2 Near pattern printed to channel 8 (CHRPAT)
-   IPLP2 1 Print fields as complex numbers i.e. real and imag
-         2 Print fields as mag and phase
-   IPLP3 1 Print EX only
-         2 Print EY only
-         3 Print EZ only
-         4 Print EX, EY and EZ
-         5 Print ETOT (IPLP2=2 only)
-   IPLP4 1 Print X pos of obs point
-         2 Print Y pos of obs point
-         3 Print Z pos of obs point
+    IPLP1 2 Near pattern printed to channel 8 (CHRPAT)
+    IPLP2 1 Print fields as complex numbers i.e. real and imag
+          2 Print fields as mag and phase
+    IPLP3 1 Print EX only
+          2 Print EY only
+          3 Print EZ only
+          4 Print EX, EY and EZ
+          5 Print ETOT (IPLP2=2 only)
+    IPLP4 1 Print X pos of obs point
+          2 Print Y pos of obs point
+          3 Print Z pos of obs point
 
-   datagn.f
+`datagn.f`:
 
-   IPLP1=1 
+    IPLP1=1 
 	  
-   PL also seems to have effects in datagn.f, nec2.F, rdpat.f and
-   possibly else where - check these out and document.
+PL also seems to have effects in `datagn.f`, `nec2.F`, `rdpat.f` and
+possibly else where - check these out and document.
 
-   PL 1 1 1 1
+    PL 1 1 1 1
 
-   Currents on segment in real and imaginary form
+Currents on segment in real and imaginary form
 
- * See if possible to remove equivalenced INTEGER and REAL*8 types. If
-   so remove configure test as well. Do in both C interface and fdrive.f.
-   What is impact on memory usage of doing this (as a function of core
-   size)? Want a graph of percentage memory increase versus number of
-   segments. All the equivalenced arrays are at most O(N) so effect should 
-   rapidly decline with N.
+### See if possible to remove equivalenced INTEGER and REAL*8 types
 
- * Consider removing preprocessed Fortran code. Can do this using
-   autoconf to process timer.f.in for example or substituting source
-   files, eg timer-etime.f, timer-cpu_time.f etc using autoconf. For
-   timing stuff later option is probably better. For blas support this 
-   option would really have to be used (factrs-nec.f, factrs-blas.f, 
-   solves-nec.f, solves-blas.f) since a number of lines of code are 
-   involved.
+If so remove configure test as well. Do in both C interface and `fdrive.f`.
+What is impact on memory usage of doing this (as a function of core
+size)? Want a graph of percentage memory increase versus number of
+segments. All the equivalenced arrays are at most O(N) so effect should 
+rapidly decline with N.
 
-   Could INCLUDE be used to remove dependence of a preprocessor?
-   E.g FLUSH case: May also be able to do generated INCLUDE flush.inc 
-   file which is blank if not supported.
+### Consider removing preprocessed Fortran code
 
- * See if constants in ZINT can be recalculated to greater precision
-   using MuPAD. Yes - fairly straightforward (A+S). Need more terms in
-   series? (#ifdef?). Details are in my LINK Project Note Book (don't
-   know when I did this)! See scanned file kelvin.pdf.
+Can do this using autoconf to process `timer.f`.in for example or substituting 
+source files, eg `timer-etime.f`, `timer-cpu_time.f` etc using autoconf. For
+timing stuff later option is probably better. For blas support this 
+ option would really have to be used (`factrs-nec.f`, `factrs-blas.f`, 
+`solves-nec.f`, `solves-blas.f`) since a number of lines of code are 
+involved.
 
- * Remake headers with gxchk.
+Could `INCLUDE` be used to remove dependence of a preprocessor?
+E.g FLUSH case: May also be able to do generated INCLUDE `flush.inc` 
+file which is blank if not supported.
 
- * PATOFF needs to be greater than or equal to NUM_SEG_MAX in
-   nec.h. Currently both are set to 10000 (standard NEC2 offset) for
-   safety. Need to get this limit from the same place in both C and
-   Fortran. What is the 10000.0D0 in subph for?
+### See if constants in ZINT can be recalculated to greater precision using MuPAD
 
- * Files: File suffices should be set in just one place and all
-   buffers should automatically scale to fit the biggest. Not so easy
-   since in Fortran we have
+Yes - fairly straightforward (A+S). Need more terms in
+series? (#ifdef?). Details are in my LINK Project Note Book (don't
+know when I did this)! See scanned file `kelvin.pdf`.
+
+### Remake headers with gxchk
+
+### PATOFF needs to be greater than or equal to NUM_SEG_MAX in nec.h
+
+Currently both are set to 10000 (standard NEC2 offset) for
+safety. Need to get this limit from the same place in both C and
+Fortran. What is the 10000.0D0 in subph for?
+
+### File suffices should be set in just one place
+
+Also all buffers should automatically scale to fit the biggest. Not so easy
+since in Fortran we have
      
       CHARACTER*3 SUFINP
       PARAMETER( SUFINP = 'nec' ) 
 
-   while C needs
+while C needs
 
-      char SUFINP[4];
-      SUFINP="nec";
+    char SUFINP[4];
+    SUFINP="nec";
 
-   Could do this with a built source but that would really mess up
-   portability to none Unix/POSIX systems. Could define all suffices in C
-   and pass to Fortran.  In some ways this solves many problems but adds
-   to the already massive argument lists. Could call a F77 routine from
-   cnec2d which returns the biggest length of the suffices in
-   nec2d.inc. Maybe this is the best way to do it! A second call could
-   then get the actual name of the input file suffix.
+Could do this with a built source but that would really mess up
+portability to none Unix/POSIX systems. Could define all suffices in C
+and pass to Fortran.  In some ways this solves many problems but adds
+to the already massive argument lists. Could call a F77 routine from
+`cnec2d` which returns the biggest length of the suffices in
+`nec2d.inc`. Maybe this is the best way to do it! A second call could
+then get the actual name of the input file suffix.
 
       INTEGER max_suf_len;
       char *buf;
@@ -230,44 +219,48 @@ Future
       buf = (char*)malloc( max_suf_len + 1 );
       getinp_( buf, max_suf_len );
 
- * Is there a better way of doing the dynamic memory allocation? Could
-   use compiler specific Fortran extensions or see if possible to
-   call C routines from within F77 to do the allocations (this would
-   realistically need to work without make changes to the way the arrays
-   are used).
+### Is there a better way of doing the dynamic memory allocation?
 
- * Alter cnec2d interface to allow memory to be left allocated after
-   call (static global pointers) and reused or, possible with a remalloc
-   in a subsequent call. Also want a call to just free existing
-   memory. Need a integer control param CNEC2D_REALLOC_FREE,
-   CNED2D_REALLOC_HOLD, CNEC2D_ALLOC_FREE, CNEC2D_ALLOC_HOLD,
-   CNEC2D_FREE.
+Could use compiler specific Fortran extensions or see if possible to
+call C routines from within F77 to do the allocations (this would
+realistically need to work without make changes to the way the arrays
+are used).
 
- * Using the portable cfortran interface would be good except:
+### Alter cnec2d interface to allow memory to be left allocated after call 
 
-   a. License is restrictive. The next version is meant to be GPL'd.
+Use static global pointers and reused or, possible with a remalloc
+in a subsequent call. Also want a call to just free existing
+memory. Need a integer control param `CNEC2D_REALLOC_FREE`,
+`CNED2D_REALLOC_HOLD`, `CNEC2D_ALLOC_FREE`, `CNEC2D_ALLOC_HOLD`,
+`CNEC2D_FREE`.
 
-   b. I need about > 90 dummy args which is going to blow up a lot of brain-dead
-      C preprocessors. Don't know if it is worth even beginning to consider
-      working around. 
+### Using the portable cfortran interface would be good except:
 
-   Next GPL'd version may be feasible if number of args up to 100 is possible.
+1. License is restrictive. The next version is meant to be GPL'd.
+
+2. I need about > 90 dummy args which is going to blow up a lot of brain-dead
+   C preprocessors. Don't know if it is worth even beginning to consider
+   working around. 
+
+Next GPL'd version may be feasible if number of args up to 100 is possible.
  
- * cnec2 - allow files with ^M^J (i.e. windows format) to work on unix
-   and visa-versa. Not sure how easy this is in Fortran.
+## Allow files with ^M^J (i.e. windows format) to work on unix
 
- * Add code to check the condition number of the impedance matrix and
-   warn if there is likely to be a problem. See the file
-   condition_number.txt in maintainer/doc.
+And visa-versa. Not sure how easy this is in Fortran.
 
-* Port completely to C99. Some versions already out there have done
-  this. 
+### Add code to check the condition number of the impedance matrix
 
-* Port to F90/95 to get dynamic arrays directly in fortran.
+Warn if there is likely to be a problem. See the file
+`condition_number.txt` in maintainer/doc.
+
+### Port completely to C99
+
+Some versions already out there have done this. 
+
+### Port to F90/95 to get dynamic arrays directly in fortran
  
 
-Done
-====
+## Done
 
  * Release objectives for 0.8.0:
 

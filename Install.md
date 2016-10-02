@@ -1,9 +1,7 @@
 
-Installation of aegnec2
-=======================
+# Installation of AEG NEC2
 
-Configuration
--------------
+## Configuration
 
 The package uses [CMake][] for configuration. It is strongly recommended to
 build the software outside the source tree. Assuming that the source code 
@@ -63,8 +61,8 @@ can be changed with
 
 where `/somepath` will be prefixed to the installation paths.
 
-Compilation
------------
+
+## Compilation
 
 Type
 
@@ -88,8 +86,7 @@ your system is IEEE 754 floating point compliant. Slight variation in
 the last couple of decimal places in currents and fields may occur under
 certain circumstances on some systems.
 
-Installation
-------------
+## Installation
 
 The `aegnec2` and `somnec` executables and the man pages can be installed
 with
@@ -109,8 +106,8 @@ and then installed separately.
 Two types of binary package are available: a compessed tar file and 
 a self-extracting Bourne shell installer.
 
-Platform specific notes
------------------------
+
+## Platform specific notes
 
 ### Linux x86 & GNU Compilers
 
