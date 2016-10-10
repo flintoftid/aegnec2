@@ -1,6 +1,6 @@
 #
 # aegnec2 - Dynamically Allocated Numerical Electromagnetics Code Version 2 
-# Copyright (C) 1998-2016 Ian David Flintoft <ian.flintoft@york.ac.uk>
+# Copyright (C) 1998-2016 Ian David Flintoft <ian.flintoft@googlemail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ endif( NOT BUILTIN_SOMNEC )
  
 file( WRITE ${CNEC2_BINARY_DIR}/doc/License.txt "
 aegnec2 - Dynamically Allocated Numerical Electromagnetics Code Version 2
-Copyright (C) 1998-2016 Ian David Flintoft <ian.flintoft@york.ac.uk>
+Copyright (C) 1998-2016 Ian David Flintoft <ian.flintoft@googlemail.com>
 
 This version of NEC2 is distributed under the terms of the GNU General
 Public License Version 3. See below for full license.

@@ -1,6 +1,6 @@
 /*
  * aegnec2 - Dynamically Allocated Numerical Electromagnetics Code Version 2 
- * Copyright (C) 1998-2016 Ian David Flintoft <ian.flintoft@york.ac.uk>
+ * Copyright (C) 1998-2016 Ian D. Flintoft <ian.flintoft@googlemail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -195,8 +195,8 @@ version_info( int verbose )
 {
   
   printf( "\ncnec2 (%s) %s\n", PACKAGE, VERSION );
-  printf( "Copyright (C) 1999-2002 Ian David Flintoft\n" );
-  printf( "Maintained by Ian David Flintoft <idf1@ohm.york.ac.uk>\n" );
+  printf( "Copyright (C) 1999-2016 Ian David Flintoft\n" );
+  printf( "Maintained by Ian D. Flintoft <ian.flintoft@googlemail.com>\n" );
   printf( "%s comes with NO WARRANTY,\n", PACKAGE );
   printf( "to the extent permitted by law.\n" );
   printf( "You may redistribute copies of %s\n", PACKAGE );
@@ -297,7 +297,7 @@ usage( const int exitcode, const char *error, const char *add )
   printf( "    -m, --multi-file      Enable multiple file output\n" );
   printf( "    -M, --old-multi-file  Enable old style multiple file output\n" );
   printf( "    -r, --remove-old      Remove old output files before running solver\n" );
-  printf( "\nReport bugs to Ian Flintoft <idf1@ohm.york.ac.uk>\n" ); 
+  printf( "\nReport bugs to Ian Flintoft <ian.flintoft@googlemail.com>\n" ); 
   printf( "\n" );
 
   if(error) 

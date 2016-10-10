@@ -1,6 +1,6 @@
 #
 # cnec2 - Dynamically Allocated Numerical Electromagnetics Code Version 2 
-# Copyright (C) 1998-2009 Ian David Flintoft <idf1@ohm.york.ac.uk>
+# Copyright (C) 1998-2016 Ian D. Flintoft <ian.flintoft@googlemail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -140,8 +140,8 @@ install( FILES ReadMe.txt Licence.txt DESTINATION doc/aegnec2 )
 include( InstallRequiredSystemLibraries )
 set( CPACK_PACKAGE_NAME "aegnec2" )
 set( CPACK_PACKAGE_DESCRIPTION_SUMMARY "AEGNEC2 CEM code" )
-set( CPACK_PACKAGE_VENDOR "Ian Flintoft <ian.flintoft@york.ac.uk>" )
-set( CPACK_PACKAGE_CONTACT "Ian Flintoft <ian.flintoft@york.ac.uk>" )
+set( CPACK_PACKAGE_VENDOR "Ian Flintoft <ian.flintoft@googlemail.com>" )
+set( CPACK_PACKAGE_CONTACT "Ian Flintoft <ian.flintoft@googlemail.com>" )
 set( CPACK_PACKAGE_DESCRIPTION_FILE "${CNEC2_SOURCE_DIR}/ReadMe.txt" )
 set( CPACK_RESOURCE_FILE_LICENSE "${CNEC2_SOURCE_DIR}/Licence.txt" )
 set( CPACK_PACKAGE_VERSION_MAJOR "${CNEC2_VERSION_MAJOR}" )

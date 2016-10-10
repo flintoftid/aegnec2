@@ -1,6 +1,6 @@
 C* 
 C* aegnec2 - Dynamically Allocated Numerical Electromagnetics Code Version 2 
-C* Copyright (C) 1998-2016 Ian David Flintoft <ian.flintoft@york.ac.uk>
+C* Copyright (C) 1998-2016 Ian D. Flintoft <ian.flintoft@googlemail.com>
 C*
 C* This program is free software: you can redistribute it and/or modify
 C* it under the terms of the GNU General Public License as published by
