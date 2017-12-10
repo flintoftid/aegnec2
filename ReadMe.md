@@ -5,7 +5,7 @@
 The Applied Electromagnetics Group ([AEG][]) boundary element method ([BEM][]) 
 method-of-moments ([MoM][]) solver, `aegnec2`, is an [Open Source][] derivative of 
 the Numerical Electromagnetics Code Version 2 ([NEC2][]). It was developed in the in 
-the [Department of Electronics][] at the [University of York][] for research in 
+the [Department of Electronic Engineering][] at the [University of York][] for research in 
 electromagnetic compatibility ([EMC][]) and computational electromagnetics ([CEM][]).
 
 
@@ -29,7 +29,6 @@ electromagnetic compatibility ([EMC][]) and computational electromagnetics ([CEM
   more flexible.
 
 * Bug fixes and portability improvements.
-
 
 ## Requirements
 
@@ -99,14 +98,10 @@ have been tested with aegnec2 include:
  
 * The Intel Math Kernel Library ([MKL][]) for GNU/Linux.
 
-
-## Installation
+## Documentation
 
 Installation instructions are contained in the file [Install.md][] in the 
 source distribution.
-
-
-## Documentation
 
 Basic usage information for the `aegnec2` and `aegsomnec2` programs is 
 available from the executables using the `-h` or `--help` flags, e.g.
@@ -184,7 +179,6 @@ e.g. if four NE cards are used (or one NE with four frequency points):
 
 will be created.
 
-
 ## Bugs and support
 
 Known significant bugs are listed in the file doc/[Bugs.md][] in the source code. 
@@ -200,6 +194,18 @@ For general guidance on how to write a good bug report see, for example:
 
 Some of the tips in <http://www.catb.org/esr/faqs/smart-questions.html> are also relevant to reporting bugs.
 
+## How to contribute
+
+We welcome any contributions to the development of the code, including:
+
+* Fixing bugs.
+
+* Interesting examples that can be used for test-cases.
+
+* Improving the user documentation.
+
+Please contact [Dr Ian Flintoft][], <ian.flintoft@googlemail.com>, if you are 
+interested in helping with these or any other aspect of development.
 
 ## Licence
 
@@ -212,11 +218,15 @@ These files are distributed under their own GPL compatible license.
 
 See the file [Licence.md][] in the souce code distribution for details.
 
-
 ## Developer 
 
 [Dr Ian Flintoft][], <ian.flintoft@googlemail.com>
 
+## Contacts
+
+[Dr Ian Flintoft][] : <ian.flintoft@googlemail.com>
+
+[Dr John Dawson][] : <john.dawson@york.ac.uk>
 
 ## Credits
 
@@ -238,12 +248,72 @@ E. S. Selden
 
 This version of NEC2, called aegnec2, is maintained by [Dr Ian Flintoft][], <ian.flintoft@googlemail.com>.
 
-The source code in the lapack directory is from netlib. See individual
+The source code in the lapack directory is from [netlib][]. See individual
 source files for author information.
 
 For information on the various source files see [Licence.md][] in the source or binary package. 
 For a history of NEC codes see ([Adler1993][]).
 
+## Publications using AEG NEC2
+
+[Capstick2009]: http://dx.doi.org/10.1109/TIM.2008.2005263
+
+([Capstick2009]) M. H. Capstick, J. Jekkonen, A. C. Marvin, I. D. Flintoft and L. Dawson, 
+“A novel indirect method to determine the radiation impedance of a handheld antenna structure”, 
+IEEE Transactions on Instrumentation and Measurement, vol. 58, no. 3, pp. 578-585, 2009.
+
+[Jekkonen2005b]: http://www.ursi.org/publications.php
+
+([Jekkonen2005b]) J. Jekkonen, I. D. Flintoft, M. H. Capstick and A. C. Marvin, 
+“Application of indirect measurements techniques to mobile communication antenna systems”,
+XXVIIIth Triennial General Assembly of the International Union of Radio Science, New Delhi, 
+India, paper no. B05P.11(072), 23-29 Oct. 2005.
+
+(Jekkonen2005a) J. Jekkonen, I. D. Flintoft, M. H. Capstick and A. C. Marvin, “A novel 
+indirect method to determine the radiation impedance of an unknown antenna structure”, 
+16th International Zurich Symposium and Technical Exhibition on Electromagnetic Compatibility, 
+pp. 179-182, Zurich, Switzerland, 14-18 Feb. 2005.
+
+[Papatsoris2004]: http://dx.doi.org/10.1049/ip-smt:20040566
+
+([Papatsoris2004])	A. D. Papatsoris, I. D. Flintoft, D. W. Welsh and A. C. Marvin, 
+“Modelling the cumulative emission field of unstructured telecommunication 
+transmission networks”, IEE Proceedings on Science, Measurement and Technology, 
+vol. 151, no. 4, pp. 244-252, 2004.
+
+(Flintoft2003) I. D. Flintoft, A. D. Papatsoris, D. W. Welsh, A. C. Marvin, “Radiated 
+emissions from unstructured networks: Potential impact on maritime and aeronautical radio 
+services”, 15th International Zurich Symposium and Technical Exhibition on Electromagnetic 
+Compatibility, Zurich, Switzerland, pp. 93-98, 18-20 Feb. 2003.
+
+[Papatsoris2002]: http://dx.doi.org/10.1049/el:20021090
+
+([Papatsoris2002]) A. D. Papatsoris and I. D. Flintoft, “Model for the emission 
+electric field of distributed unstructured telecommunication transmission networks”, 
+IEE Electronics Letters, vol. 38, no. 24, pp.1610-1611, 2002.
+
+[Jekkonen2002]: http://www.ursi.org/publications.php
+
+([Jekkonen2002]) J. Jekkonen, A. C. Marvin and I. D. Flintoft, “An indirect method for 
+measuring the radiation impedance of an unknown antenna structure”, XXVIIth Triennial General 
+Assembly of the International Union of Radio Science, Maastricht, The Netherlands, 
+paper no. AE.O.4, 17-24 Aug. 2002.
+
+(Welsh2001) D. W. Welsh, A. D. Papatsoris, I. D. Flintoft and A. C. Marvin, “Investigation 
+of likely increases in established radio noise floor due to widespread deployment of PLT, 
+ADSL and VDSL broadband access technologies”, 14th International Zurich Symposium and 
+Technical Exhibition on Electromagnetic Compatibility, Zurich, Switzerland, pp. 595-600, 
+20-22 Feb 2001.
+
+[Papatsoris2000]: http://dx.doi.org/10.1049/el:20000841
+
+([Papatsoris2000]) A. D. Papatsoris and I. D. Flintoft, “Modelling the cumulative 
+ground wave electric fields from the widespread deployment of xDSL data distribution 
+systems”, IEE Electronics Letters, vol. 36, no. 13, pp. 1171-1172, 2000.
+
+(Flintoft1998) I. D. Flintoft, S. J. Porter and A. C. Marvin, “Interaction of wired IT 
+networks and mobile telecommunication systems”, 3rd European Symposium on Electromagnetic
+Compatibility (EMC’98 Roma), Rome, Italy, pp. 832-836, 14-18 Sep. 1998.
 
 ## Related links
 
@@ -253,7 +323,6 @@ For a history of NEC codes see ([Adler1993][]).
 
 * The original [NEC2 Report][], G J Burke and A J Poggio, Numerical Electromagnetics Code (NEC), 
   Technical Report UCID-18834, Lawrence Livermore National Laboratories, 1981.
-
 
 ## References
 
@@ -267,13 +336,13 @@ For a history of NEC codes see ([Adler1993][]).
 [NEC2 Manuals]: http://www.nec2.org
 [NEC Mailing List]: http://www.robomod.net/mailman/listinfo/nec-list
 [Unofficial NEC Archives]: http://nec-archives.pa3kj.com
-
 [GPL3]: http://www.gnu.org/copyleft/gpl.html
 [Open Source]: http://opensource.org
 [Mercurial]: http://mercurial.selenic.com
 [CMake]: http://www.cmake.org
 [C89]: https://en.wikipedia.org/wiki/ANSI_C#C89
 [Fortran77]: https://en.wikipedia.org/wiki/Fortran
+[netlib]: http://www.netlib.org
 [LAPACK]: http://www.netlib.org/lapack
 [BLAS]: http://www.netlib.org/blas
 [GCC]: https://gcc.gnu.org
@@ -285,14 +354,13 @@ For a history of NEC codes see ([Adler1993][]).
 [MoM]: https://en.wikipedia.org/wiki/Computational_electromagnetics
 [BEM]: https://en.wikipedia.org/wiki/Boundary_element_method
 [University of York]: http://www.york.ac.uk
-[Department of Electronics]: http://www.elec.york.ac.uk
-[AEG]: http://www.elec.york.ac.uk/research/physLayer/appliedEM.html
+[Department of Electronic Engineering]: https://www.york.ac.uk/electronic-engineering
+[AEG]: https://www.york.ac.uk/electronic-engineering/research/communication-technologies/applied-electromagnetics-devices
 [Dr Ian Flintoft]: https://idflintoft.bitbucket.io
-[Dr John Dawson]: http://www.elec.york.ac.uk/staff/jfd1.html
-[Dr Stuart Porter]: http://www.elec.york.ac.uk/staff/sjp1.html
+[Dr John Dawson]: https://www.york.ac.uk/electronic-engineering/staff/john_dawson
+[Dr Stuart Porter]: https://www.york.ac.uk/electronic-engineering/staff/stuart_porter
 [EMC]: http://www.elec.york.ac.uk/research/physLayer/appliedEM/emc.html 
 [CEM]: http://www.elec.york.ac.uk/research/physLayer/appliedEM/numerical.html
-
 [Licence.md]: https://bitbucket.org/uoyaeg/aegnec2/raw/tip/Licence.md
 [Install.md]: https://bitbucket.org/uoyaeg/aegnec2/raw/tip/Install.md
 [Bugs.md]: https://bitbucket.org/uoyaeg/aegnec2/raw/tip/doc/Bugs.md
