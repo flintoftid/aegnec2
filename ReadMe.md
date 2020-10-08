@@ -1,4 +1,4 @@
-![](https://github.com/flintoftid/aegnec2/wiki/aegnec2.jpg )
+![](https://github.com/flintoftid/aegnec2/blob/master/doc/aegnec2.jpg)
 
 # AEG NEC2: An open source MoM solver for electromagnetic simulations
 
@@ -317,8 +317,6 @@ Compatibility (EMC’98 Roma), Rome, Italy, pp. 832-836, 14-18 Sep. 1998.
 
 ## Related links
 
-* The [NEC Mailing List][]. 
-
 * Other versions of [NEC2][] can be found in the [Unofficial NEC Archives][].
 
 * The original [NEC2 Report][], G J Burke and A J Poggio, Numerical Electromagnetics Code (NEC), 
@@ -334,7 +332,6 @@ Compatibility (EMC’98 Roma), Rome, Italy, pp. 832-836, 14-18 Sep. 1998.
 [NEC2]: https://en.wikipedia.org/wiki/Numerical_Electromagnetics_Code
 [NEC2 Report]: http://www.dtic.mil/dtic/tr/fulltext/u2/a956129.pdf
 [NEC2 Manuals]: http://www.nec2.org
-[NEC Mailing List]: http://www.robomod.net/mailman/listinfo/nec-list
 [Unofficial NEC Archives]: http://nec-archives.pa3kj.com
 [GPL3]: http://www.gnu.org/copyleft/gpl.html
 [Open Source]: http://opensource.org
@@ -355,13 +352,13 @@ Compatibility (EMC’98 Roma), Rome, Italy, pp. 832-836, 14-18 Sep. 1998.
 [University of York]: http://www.york.ac.uk
 [Department of Electronic Engineering]: https://www.york.ac.uk/electronic-engineering
 [AEG]: https://www.york.ac.uk/electronic-engineering/research/communication-technologies/applied-electromagnetics-devices
-[Dr Ian Flintoft]: https://idflintoft.github.io
+[Dr Ian Flintoft]: https://flintoftid.github.io
 [Dr John Dawson]: https://www.york.ac.uk/electronic-engineering/staff/john_dawson
 [Dr Stuart Porter]: https://www.york.ac.uk/electronic-engineering/staff/stuart_porter
 [EMC]: https://www.york.ac.uk/electronic-engineering/research/communication-technologies/applied-electromagnetics-devices/emc-shielding/
 [CEM]: https://www.york.ac.uk/electronic-engineering/research/communication-technologies/applied-electromagnetics-devices/numerical-modelling-optimisation/
-[Licence.md]: https://github.com/flintoftid/aegnec2/raw/tip/Licence.md
-[Install.md]: https://github.com/flintoftid/aegnec2/raw/tip/Install.md
-[Bugs.md]: https://github.com/flintoftid/aegnec2/raw/tip/doc/Bugs.md
-[ToDo.md]: https://github.com/flintoftid/aegnec2/raw/tip/doc/ToDo.md
+[Licence.md]: https://github.com/flintoftid/aegnec2/blob/master/Licence.md
+[Install.md]: https://github.com/flintoftid/aegnec2/blob/master/Install.md
+[Bugs.md]: https://github.com/flintoftid/aegnec2/blob/master/doc/Bugs.md
+[ToDo.md]: https://github.com/flintoftid/aegnec2/blob/master/doc/ToDo.md
 
