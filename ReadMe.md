@@ -1,4 +1,4 @@
-![](https://bitbucket.org/uoyaeg/aegnec2/wiki/aegnec2.jpg )
+![](https://github.com/flintoftid/aegnec2/wiki/aegnec2.jpg )
 
 # AEG NEC2: An open source MoM solver for electromagnetic simulations
 
@@ -183,8 +183,8 @@ will be created.
 
 Known significant bugs are listed in the file doc/[Bugs.md][] in the source code. 
 
-Please report bugs using the bitbucket issue tracker at
-<https://bitbucket.org/uoyaeg/aegnec2/issues> or by email to <ian.flintoft@googlemail.com>.
+Please report bugs using the gitgub issue tracker at
+<https://github.com/flintoftid/aegnec2/issues> or by email to <ian.flintoft@googlemail.com>.
 
 For general guidance on how to write a good bug report see, for example:
 
@@ -338,7 +338,6 @@ Compatibility (EMC’98 Roma), Rome, Italy, pp. 832-836, 14-18 Sep. 1998.
 [Unofficial NEC Archives]: http://nec-archives.pa3kj.com
 [GPL3]: http://www.gnu.org/copyleft/gpl.html
 [Open Source]: http://opensource.org
-[Mercurial]: http://mercurial.selenic.com
 [CMake]: http://www.cmake.org
 [C89]: https://en.wikipedia.org/wiki/ANSI_C#C89
 [Fortran77]: https://en.wikipedia.org/wiki/Fortran
@@ -356,13 +355,13 @@ Compatibility (EMC’98 Roma), Rome, Italy, pp. 832-836, 14-18 Sep. 1998.
 [University of York]: http://www.york.ac.uk
 [Department of Electronic Engineering]: https://www.york.ac.uk/electronic-engineering
 [AEG]: https://www.york.ac.uk/electronic-engineering/research/communication-technologies/applied-electromagnetics-devices
-[Dr Ian Flintoft]: https://idflintoft.bitbucket.io
+[Dr Ian Flintoft]: https://idflintoft.github.io
 [Dr John Dawson]: https://www.york.ac.uk/electronic-engineering/staff/john_dawson
 [Dr Stuart Porter]: https://www.york.ac.uk/electronic-engineering/staff/stuart_porter
-[EMC]: http://www.elec.york.ac.uk/research/physLayer/appliedEM/emc.html 
-[CEM]: http://www.elec.york.ac.uk/research/physLayer/appliedEM/numerical.html
-[Licence.md]: https://bitbucket.org/uoyaeg/aegnec2/raw/tip/Licence.md
-[Install.md]: https://bitbucket.org/uoyaeg/aegnec2/raw/tip/Install.md
-[Bugs.md]: https://bitbucket.org/uoyaeg/aegnec2/raw/tip/doc/Bugs.md
-[ToDo.md]: https://bitbucket.org/uoyaeg/aegnec2/raw/tip/doc/ToDo.md
+[EMC]: https://www.york.ac.uk/electronic-engineering/research/communication-technologies/applied-electromagnetics-devices/emc-shielding/
+[CEM]: https://www.york.ac.uk/electronic-engineering/research/communication-technologies/applied-electromagnetics-devices/numerical-modelling-optimisation/
+[Licence.md]: https://github.com/flintoftid/aegnec2/raw/tip/Licence.md
+[Install.md]: https://github.com/flintoftid/aegnec2/raw/tip/Install.md
+[Bugs.md]: https://github.com/flintoftid/aegnec2/raw/tip/doc/Bugs.md
+[ToDo.md]: https://github.com/flintoftid/aegnec2/raw/tip/doc/ToDo.md
 
