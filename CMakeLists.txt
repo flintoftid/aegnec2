@@ -134,7 +134,7 @@ find_program( BASH_PROGRAM bash )
 add_subdirectory ( tests )
 
 # Installation.
-install( FILES ReadMe.txt Licence.txt DESTINATION doc/aegnec2 )
+install( FILES ReadMe.md Licence.md DESTINATION doc/aegnec2 )
 
 # Package generation.
 include( InstallRequiredSystemLibraries )
@@ -142,8 +142,8 @@ set( CPACK_PACKAGE_NAME "aegnec2" )
 set( CPACK_PACKAGE_DESCRIPTION_SUMMARY "AEGNEC2 CEM code" )
 set( CPACK_PACKAGE_VENDOR "Ian Flintoft <ian.flintoft@googlemail.com>" )
 set( CPACK_PACKAGE_CONTACT "Ian Flintoft <ian.flintoft@googlemail.com>" )
-set( CPACK_PACKAGE_DESCRIPTION_FILE "${CNEC2_SOURCE_DIR}/ReadMe.txt" )
-set( CPACK_RESOURCE_FILE_LICENSE "${CNEC2_SOURCE_DIR}/Licence.txt" )
+set( CPACK_PACKAGE_DESCRIPTION_FILE "${CNEC2_SOURCE_DIR}/ReadMe.md" )
+set( CPACK_RESOURCE_FILE_LICENSE "${CNEC2_SOURCE_DIR}/Licence.md" )
 set( CPACK_PACKAGE_VERSION_MAJOR "${CNEC2_VERSION_MAJOR}" )
 set( CPACK_PACKAGE_VERSION_MINOR "${CNEC2_VERSION_MINOR}" )
 set( CPACK_PACKAGE_VERSION_PATCH "${CNEC2_VERSION_PATCH}" )

@@ -32,4 +32,4 @@ distributed under their own GPL compatible license - see the file
 mlapack/[LAPACK_LICENSE.txt][] in the souce code distribution.
  
 
-[LAPACK_LICENSE.txt]: https://bitbucket.org/uoyaeg/aegnec2/raw/tip/mlapack/LAPACK_LICENSE.txt
+[LAPACK_LICENSE.txt]: https://github.com/flintoftid/aegnec2/blob/master/mlapack/LAPACK_LICENSE.txt

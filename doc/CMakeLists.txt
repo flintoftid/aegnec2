@@ -49,5 +49,6 @@ endif( USE_MLAPACK )
 
 install( FILES ${CNEC2_MANPAGES} DESTINATION man/man1 )
 
-install( FILES Authors.txt Bugs.txt ChangeLog.txt 
-         ${CNEC2_BINARY_DIR}/doc/License.txt News.txt ToDo.txt DESTINATION doc/aegnec2 )
+install( FILES Bugs.md ${CNEC2_SOURCE_DIR}/ChangeLog.txt 
+         ${CNEC2_BINARY_DIR}/doc/License.txt News.md ToDo.md DESTINATION doc/aegnec2 )
+

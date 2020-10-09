@@ -1,8 +1,8 @@
 
 # Known Bugs In AEGNEC2
 
-Please report bugs using the bitbucket issue tracker at
-<https://bitbucket.org/uoyaeg/aegnec2/issues> or by email 
+Please report bugs using the issue tracker at
+<https://github.com/flintoftid/aegnec2/issues> or by email 
 to <ian.flintoft@googlemail.com>.
 
 ## SOMNEC appears to be broken on 64-bit systems
